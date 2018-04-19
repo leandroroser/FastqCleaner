@@ -1,0 +1,38 @@
+Package: FastqCleaner
+Type: Package
+Title: A Shiny Application to Clean FASTQ Files
+Version: 0.99.13
+Date: 2018-04-19
+Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
+             email = "learoser@gmail.com"), 
+             person(given = "Fernán", family = "Agüero", role = "aut"),
+             person(given = "Daniel", family = "Sánchez", role = "aut"))
+Description: An interactive web application for quality control, 
+             filtering and trimming of FASTQ files. The tool combines 
+             a pipeline for data processing based on Biostrings and ShortRead 
+             infrastructure, with a cutting-edge visual environment. 
+License: GPL (>= 2)
+LazyData: TRUE
+Imports: shiny, stats, IRanges, Biostrings, ShortRead, DT, 
+         methods, S4Vectors, graphics, htmltools, shinyBS, 
+         Rcpp (>= 0.12.12)
+Suggests: 
+    BiocStyle,
+    testthat,
+    knitr, 
+    rmarkdown
+LinkingTo: Rcpp
+Collate:'roxygen.auxiliar.R' 'auxiliar.R' 'matching.R' 
+        'server_functions.R' 'n_filter.R' 'seq_filter.R' 
+        'complex_filter.R' 'adapter_filter.R' 'launch_fqc.R' 
+        'length_filter.R' 'fixed_filter.R' 'trim3q_filter.R'
+        'unique_filter.R' 'plotObjects.R' 'qmean_filter.R'
+        'simulate.R' 'RcppExports.R'
+biocViews: QualityControl,Sequencing,Software,SangerSeq,SequenceMatching
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
+Packaged: 2018-04-19 11:01:00 UTC; leandro
+Author: Leandro Roser [aut, cre],
+  Fernán Agüero [aut],
+  Daniel Sánchez [aut]
+Encoding: UTF-8

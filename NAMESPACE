@@ -1,0 +1,38 @@
+
+useDynLib(FastqCleaner)
+export(adapter_filter)
+export(check_encoding)
+export(complex_filter)
+export(cutLseq)
+export(cutRseq)
+export(fixed_filter)
+export(inject_letter_random)
+export(launch_fqc)
+export(length_filter)
+export(n_filter)
+export(qmean_filter)
+export(random_length)
+export(random_qual)
+export(random_seq)
+export(seq_filter)
+export(seq_names)
+export(trim3q_filter)
+export(unique_filter)
+import(Rcpp)
+import(htmltools)
+import(shiny, except=c(dataTableOutput, renderDataTable))
+importFrom(shinyBS, bsPopover, bsModal, bsAlert)
+importFrom(DT,dataTableOutput)
+importFrom(DT,renderDataTable)
+importFrom(S4Vectors,isConstant)
+importFrom(graphics,hist)
+importFrom(methods,as)
+importFrom(stats,quantile)
+importFrom(ShortRead, FastqStreamer, yield, sread, id, ShortReadQ, writeFastq, 
+        countLines, nFilter, qa, tables, FastqSampler, occurrenceFilter,  
+        narrow)
+importFrom(Biostrings, BStringSet, PhredQuality, DNAString, width, start, end, 
+        dinucleotideFrequency, which.isMatchingStartingAt, as.matrix, 
+        oligonucleotideFrequency, reverse, replaceLetterAt, trimLRPatterns,  
+        reverseComplement,isMatchingStartingAt, isMatchingEndingAt, quality, 
+        DNAStringSet, subseq)
