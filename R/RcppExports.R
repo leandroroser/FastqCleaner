@@ -63,4 +63,3 @@ cpp_which_true <- function(m, width, origin) {
     .Call('_FastqCleaner_cpp_which_true', 
     PACKAGE = 'FastqCleaner', m, width, origin)
 }
-

@@ -1,13 +1,13 @@
 Package: FastqCleaner
 Type: Package
-Title: A Shiny Application to Clean FASTQ Files
-Version: 0.99.15
+Title: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
+Version: 0.99.16
 Date: 2018-04-19
 Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
              email = "learoser@gmail.com"), 
              person(given = "Fernán", family = "Agüero", role = "aut"),
              person(given = "Daniel", family = "Sánchez", role = "aut"))
-Description: An interactive web application for quality control, 
+Description: FastqCleaner is an interactive web application for quality control, 
              filtering and trimming of FASTQ files. The tool combines 
              a pipeline for data processing based on Biostrings and ShortRead 
              infrastructure, with a cutting-edge visual environment. 

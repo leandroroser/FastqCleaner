@@ -202,7 +202,7 @@ cutLseq <- function(subject, Lpattern, with.indels = FALSE,
 
 method <- match.arg(method)
 Lpattern <- DNAString(Lpattern)
-# start checking -------------------------------------------------------------#
+
 if (checks) {
     if (class(Lpattern) != "DNAString") {
         stop("Rpattern must be a character string or a DNAString object")

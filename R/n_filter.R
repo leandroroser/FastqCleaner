@@ -61,4 +61,3 @@ n_filter <- function(input, rm.N) {
     ThisFilter <- nFilter(threshold = rm.N)
     input[ThisFilter(sread(input))]
 }
-

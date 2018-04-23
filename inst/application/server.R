@@ -57,8 +57,8 @@ shinyServer(
         numeric()), list(numeric(), numeric())), 
       duplicFilterCatch = list(list(numeric(), 
         numeric()), list(numeric(), numeric())))
-    
-    # setear mensajes at start
+ 
+
     messages <- reactiveValues(nFilterCatch = c("Filter unused", ""), 
       lowComplexFilterCatch = c("Filter unused", ""), 
       seqFilterCatch = c("Filter unused", ""), 
@@ -156,7 +156,7 @@ shinyServer(
       
       output$set_encoding_radio <- renderText({
         out <- list()
-        for (i in 1:5) {
+        for (i in seq_len(5)) {
           out[[i + 1]] <- HTML({
             paste0("<script>
               $( \"input[name='customEncod'][value ='", 
@@ -494,7 +494,7 @@ shinyServer(
         radio_to_check <- my_encoding$value[["y"]]
         output$set_encoding_radio <- renderText({
           out <- list()
-          for (i in 1:6) {
+          for (i in seq_len(6)) {
             if (radio_to_check != i) {
               out[[i]] <- HTML({
                 paste0("<script>

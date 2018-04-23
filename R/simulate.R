@@ -430,4 +430,3 @@ random_length <- function(n, widths, random_widths = TRUE,
     
     ShortReadQ(s_out, q_out, n_out)
 }
-
