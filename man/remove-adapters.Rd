@@ -6,12 +6,12 @@
 \title{Remove left and right full and partial patterns}
 \usage{
 cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
-method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
-ranges = FALSE, checks = TRUE, min_match_flank = 0L, ...)
+  method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
+  ranges = FALSE, checks = TRUE, min_match_flank = 0L, ...)
 
 cutLseq(subject, Lpattern, with.indels = FALSE, fixed = "subject",
-method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
-ranges = FALSE, min_match_flank = 1L, checks = TRUE, ...)
+  method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
+  ranges = FALSE, min_match_flank = 1L, checks = TRUE, ...)
 }
 \arguments{
 \item{subject}{\code{\link[Biostrings:DNAString-class]{DNAString}} or 
@@ -57,7 +57,7 @@ if a match has min_match_flank of less length. Default 1L
 (only trim with >=2 coincidences in a flank match)}
 
 \item{...}{additional parameters passed to
-\code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} and
+ \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} and
 \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}}
 
 \item{Lpattern}{5' pattern,
@@ -77,10 +77,10 @@ of the sequence and the adapter, and a second in an error rate.
 When indels are allowed, the error rate consists in the edit distance. 
 IUPAC simbols are allowed. The methods use the 
 \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} function
-of the \pkg{Biostrings} package to find matches. IUPAC symbols
+ of the \pkg{Biostrings} package to find matches. IUPAC symbols
 are allowed in all the cases. The present function 
 also removes partial adapters, without the need of additional steps
-(for example, creating a padded adapter with 'Ns', etc). 
+ (for example, creating a padded adapter with 'Ns', etc). 
 A similar result to the output of \code{\link[Biostrings]{trimLRPatterns}}
 can be obtained with the option anchored = TRUE.
 When several matches are found, the function removes the subsequence 

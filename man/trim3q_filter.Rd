@@ -5,7 +5,7 @@
 \title{Filter sequences with low quality in 3' tails}
 \usage{
 trim3q_filter(input, rm.3qual, q_format = NULL, check.encod = TRUE,
-remove_zero = TRUE)
+  remove_zero = TRUE)
 }
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
@@ -35,7 +35,7 @@ require('Biostrings')
 require('ShortRead')
 
 # create 6 sequences of width 20
-
+ 
 input <- random_seq(6, 20, seed = 10)
 
 # create qualities of width 15 and paste to qualities

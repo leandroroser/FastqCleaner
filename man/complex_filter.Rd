@@ -30,9 +30,9 @@ require('Biostrings')
 require('ShortRead')
 
 # create  sequences of different width
-
+ 
 input <- lapply(c(0, 6, 10, 16, 20, 26, 30, 36, 40), 
-function(x) random_seq(1, x, seed = 10))
+               function(x) random_seq(1, x, seed = 10))
 
 
 # create repetitive 'CG' sequences with length adequante 
@@ -40,7 +40,7 @@ function(x) random_seq(1, x, seed = 10))
 # input +  CG = 40
 
 CG <- lapply(c(20, 17, 15, 12, 10, 7, 5, 2, 0), 
-function(x) paste(rep('CG', x), collapse = ''))
+            function(x) paste(rep('CG', x), collapse = ''))
 
 
 # concatenate input and CG
@@ -59,7 +59,7 @@ plot(H/H_max, type='b', xlab = 'Sequence', ylab= 'E')
 # create qualities of width 40
 
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
-seed = 10, encod = 'Sanger')
+                       seed = 10, encod = 'Sanger')
 
 # create names
 input_names <- seq_names(9)

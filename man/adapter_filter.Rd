@@ -5,10 +5,10 @@
 \title{Remove full and partial adapters from a ShortReadQ object}
 \usage{
 adapter_filter(input, Lpattern = "", Rpattern = "", method = c("exact",
-"er"), rc.L = FALSE, rc.R = FALSE, first = c("R", "L"),
-with_indels = FALSE, error_rate = 0.2, anchored = TRUE,
-fixed = "subject", remove_zero = TRUE, checks = TRUE,
-min_match_flank = 1L, ...)
+  "er"), rc.L = FALSE, rc.R = FALSE, first = c("R", "L"),
+  with_indels = FALSE, error_rate = 0.2, anchored = TRUE,
+  fixed = "subject", remove_zero = TRUE, checks = TRUE,
+  min_match_flank = 1L, ...)
 }
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
@@ -50,7 +50,7 @@ where L_s is the length of the subsequence s}
 \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
 or \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}. 
 Default 'subject', where only ambiguities in the pattern are
-interpreted as wildcard}
+ interpreted as wildcard}
 
 \item{remove_zero}{Remove zero-length sequences? Default TRUE}
 
@@ -73,8 +73,8 @@ object
 \description{
 This program can remove adapters and partial 
 adapters from 3' and 5', using the functions
-\code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} and 
-\code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
+ \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} and 
+ \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
 of \pkg{Biostrings}.  The program extends the methodology of
 the \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
 being also capable of removing adapters present within reads. 
