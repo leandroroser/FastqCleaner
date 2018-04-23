@@ -59,7 +59,7 @@
 #' in the last match when cutLseq is used.
 #' 
 #' @examples
-#' 
+#' \dontrun{
 #' library(Biostrings)
 #' 
 #' subject <- DNAStringSet(c('ATCATGCCATCATGAT',
@@ -76,9 +76,10 @@
 #' cutLseq(subject, Lpattern, method = 'er', error_rate = 0.2)
 #' cutLseq(subject, Lpattern, method = 'er', error_rate = 0.2, 
 #' with.indels = TRUE)
+#' }
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}
-#' @rdname remove-adapters
+#' @rdname matching
 #' @keywords internal
 
 

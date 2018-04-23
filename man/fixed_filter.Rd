@@ -26,7 +26,7 @@ require('Biostrings')
 require('ShortRead')
 
 # create 6 sequences of width 20
- 
+
 input <- random_seq(6, 20, seed = 10)
 
 # create qualities of width 20 
