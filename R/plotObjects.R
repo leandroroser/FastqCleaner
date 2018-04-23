@@ -1,6 +1,8 @@
 
 #' plotObjects
-#' Create the information for the plots. This is the input of myplot
+#' Create the information required to construct the plots. 
+#' This is the input of myplot, which uses the values created for 
+#' this function to construct the plots
 #' @return List with information to construct the diagnostic plots
 #' @keywords internal
 
@@ -191,8 +193,9 @@ out
 }
 
 
-#' myplot
-#' @description Diagnostic plots construction
+#' myPlot
+#' @description Construction of diagnostic plots. The function depends
+#' of the values created by plotObject
 #' @return List with Highcharts plots
 #' @keywords internal
 

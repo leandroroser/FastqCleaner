@@ -1,10 +1,10 @@
 
 #' Filter sequences by their average quality
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param minq quality threshold
-#' @param q_format quality format used for the file, as returned 
+#' @param minq Quality threshold
+#' @param q_format Quality format used for the file, as returned 
 #' by check.encoding
-#' @param check.encod check the encoding of the sequence? This argument 
+#' @param check.encod Check the encoding of the sequence? This argument 
 #' is incompatible with q_format
 #' @description The program removes the sequences with a quality 
 #' lower the 'minq' threshold 

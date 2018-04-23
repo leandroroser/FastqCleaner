@@ -9,16 +9,17 @@ fixed_filter(input, trim3 = NA, trim5 = NA)
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
 
-\item{trim3}{number of bases to remove from 3'}
+\item{trim3}{Number of bases to remove from 3'}
 
-\item{trim5}{number of bases to remove from 5'}
+\item{trim5}{Number of bases to remove from 5'}
 }
 \value{
-Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
+object
 }
 \description{
 The program removes a given number of bases from the 3' or 5'
-extremes of the sequences in a ShortReadQ object
+regions of the sequences contained in a ShortReadQ object
 }
 \examples{
 require('Biostrings')
@@ -47,7 +48,7 @@ filtered5 <- fixed_filter(my_read, trim3 = 5)
 
 filtered3and5 <- fixed_filter(my_read, trim3 = 10, trim5 = 5)
 
-# watch the trimmed sequences
+# look at the trimmed sequences
 sread(filtered3)
 sread(filtered5)
 sread(filtered3and5)

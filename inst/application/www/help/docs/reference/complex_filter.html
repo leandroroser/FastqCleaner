@@ -92,7 +92,7 @@
 
     
     <p>The program removes low complexity sequences, computing the 
-entropy with the frequency of dinucleotides.</p>
+entropy with the observed frequency of dinucleotides.</p>
     
 
     <pre class="usage"><span class='fu'>complex_filter</span>(<span class='no'>input</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>referenceEntropy</span> <span class='kw'>=</span> <span class='fl'>3.908135</span>)</pre>
@@ -106,11 +106,12 @@ entropy with the frequency of dinucleotides.</p>
     </tr>
     <tr>
       <th>threshold</th>
-      <td><p>computed H/ reference H treshold</p></td>
+      <td><p>A threshold value computed as the relation of the H 
+of the sequences and the reference H. Default is 0.5</p></td>
     </tr>
     <tr>
       <th>referenceEntropy</th>
-      <td><p>reference entropy. By default, 
+      <td><p>Reference entropy. By default, 
 the program uses a value of 3.908, that corresponds 
 to the entropy of the human genome in bits</p></td>
     </tr>
@@ -118,7 +119,8 @@ to the entropy of the human genome in bits</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code> object</p>
+    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code>
+object</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -129,7 +131,7 @@ to the entropy of the human genome in bits</p></td>
 <span class='co'># create  sequences of different width</span>
 
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>6</span>, <span class='fl'>10</span>, <span class='fl'>16</span>, <span class='fl'>20</span>, <span class='fl'>26</span>, <span class='fl'>30</span>, <span class='fl'>36</span>, <span class='fl'>40</span>),
-<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>1</span>, <span class='no'>x</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>1</span>, <span class='no'>x</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 
 
 <span class='co'># create repetitive 'CG' sequences with length adequante </span>
@@ -137,7 +139,7 @@ to the entropy of the human genome in bits</p></td>
 <span class='co'># input +  CG = 40</span>
 
 <span class='no'>CG</span> <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='fu'>c</span>(<span class='fl'>20</span>, <span class='fl'>17</span>, <span class='fl'>15</span>, <span class='fl'>12</span>, <span class='fl'>10</span>, <span class='fl'>7</span>, <span class='fl'>5</span>, <span class='fl'>2</span>, <span class='fl'>0</span>),
-<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'>paste</span>(<span class='fu'>rep</span>(<span class='st'>'CG'</span>, <span class='no'>x</span>), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>''</span>))
+            <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'>paste</span>(<span class='fu'>rep</span>(<span class='st'>'CG'</span>, <span class='no'>x</span>), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>''</span>))
 
 
 <span class='co'># concatenate input and CG</span>
@@ -152,10 +154,10 @@ to the entropy of the human genome in bits</p></td>
 <span class='no'>H_max</span> <span class='kw'>&lt;-</span> <span class='fl'>3.908135</span>  <span class='co'># max entropy</span>
 <span class='fu'>plot</span>(<span class='no'>H</span>/<span class='no'>H_max</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'b'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>'Sequence'</span>, <span class='kw'>ylab</span><span class='kw'>=</span> <span class='st'>'E'</span>)</div><div class='img'><img src='complex_filter-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 
-<span class='co'># create qualities of widths 40</span>
+<span class='co'># create qualities of width 40</span>
 
 <span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>40</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 
 <span class='co'># create names</span>
 <span class='no'>input_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='seq_names.html'>seq_names</a></span>(<span class='fl'>9</span>)
@@ -163,10 +165,10 @@ to the entropy of the human genome in bits</p></td>
 <span class='co'># create ShortReadQ object</span>
 <span class='no'>my_read</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>input</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>input_q</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)
 
-<span class='co'># apply the filter, </span>
+<span class='co'># apply the filter</span>
 <span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>complex_filter</span>(<span class='no'>my_read</span>)
 
-<span class='co'># watch the filtered sequences</span>
+<span class='co'># look at the filtered sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 7
 #&gt;     width seq
 #&gt; [1]    40 TGGTCCGGTGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCG

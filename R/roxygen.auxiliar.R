@@ -1,4 +1,4 @@
-# Auxiliar commands for package documentation with roxygen2 in Rstudio
+# Auxiliar commands for documentation of the package with roxygen2 in Rstudio
 
 #'@useDynLib FastqCleaner
 #' @import  Rcpp

@@ -934,56 +934,6 @@ isUnique(as.character(sread(filtered)))
 
 &nbsp;
 
-*   **cutRseq / cutLseq**
-
-The functions use the `r Biocpkg("Biostrings")` isMatchingStartingAt 
-and isMatchingEndingAt functions to find matches between the sequences
-of a FASTQ input and adapter sequences. IUPAC symbols are allowed
-in all the cases. The difference with the `r Biocpkg("Biostrings")` 
-trimLRpatterns function is that the present also removes partial adapters,
-without the need of additional steps (for example, creating a padded adapter
-with ‘Ns’, loosing the possibility of using IUPAC symbols). A similar result
-of the obtained with `r Biocpkg("Biostrings")` trimLRpatterns when the raw
-adaptor is passed to `r Biocpkg("FastqCleaner")` with the option 
-anchored = TRUE. When several matches are found, the function removes
-the subsequence starting from the first match in cutRseq, and ending
-in the last one in cutLseq.
-
-```{r}
-
-# Create sequnces and adapters
-subject <- DNAStringSet(c("ATCATGCCATCATGAT", "CATGATATTA", 
-                        "TCATG", "AAAAAA", "AGGTCATG"))
-subject
-
-Lpattern <- Rpattern <- "TCATG"
-
-# Remove left pattern
-cutLseq(subject, Lpattern, anchored = FALSE, ranges = FALSE)
-# Get ranges
-cutLseq(subject, Lpattern, anchored = FALSE, ranges = TRUE)
-
-# Remove right pattern
-cutRseq(subject, Rpattern, anchored = FALSE, ranges = FALSE)
-
-# Remove left pattern, anchored
-cutLseq(subject, Lpattern, anchored = TRUE, ranges = FALSE)
-
-# Remove left pattern, using error rate
-cutLseq(subject, Lpattern, method = "er", error_rate = 0.2, ranges = FALSE)
-
-# Remove left pattern using error rate and indels
-cutLseq(subject, Lpattern, method = "er", error_rate = 0.2, with.indels = TRUE, 
-        ranges = FALSE)
-
-# Remove right pattern
-cutRseq(subject, Rpattern, anchored=TRUE, ranges = FALSE)
-```
-
-
-[Documentation of the functions](docs/reference/remove-adapters.html)
-
-&nbsp;
 
 
 Auxiliary functions

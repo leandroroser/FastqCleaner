@@ -93,36 +93,36 @@
     
     <p>Create a
 <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/XStringSet-class'>DNAStringSet</a></code> object
-with random sequences.</p>
+with random sequences</p>
     
 
     <pre class="usage"><span class='fu'>random_seq</span>(<span class='no'>slength</span>, <span class='no'>swidth</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nuc</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DNA"</span>, <span class='st'>"RNA"</span>),
-<span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>))</pre>
+  <span class='kw'>prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>slength</th>
-      <td><p>number of sequences</p></td>
+      <td><p>Number of sequences</p></td>
     </tr>
     <tr>
       <th>swidth</th>
-      <td><p>width of the sequences</p></td>
+      <td><p>Width of the sequences</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>random seed. Default: NULL</p></td>
+      <td><p>Random seed. Default NULL</p></td>
     </tr>
     <tr>
       <th>nuc</th>
-      <td><p>create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
+      <td><p>Create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
 RNA (nucleotides = c('A, 'C', 'G', 'U'))?. Default: 'DNA'</p></td>
     </tr>
     <tr>
       <th>prob</th>
-      <td><p>a vector of four probabilities values to set the frequency of 
-the nucleotides 'A', 'C', 'G', 'T', for DNA,
+      <td><p>A vector of four probability values used 
+to set the frequency of the nucleotides 'A', 'C', 'G', 'T', for DNA,
 or 'A', 'C', 'G', 'U', for RNA. For example = c(0.25, 0.25, 0.5, 0).
 Default is = c(0.25, 0.25, 0.25, 0.25) (equiprobability for the 4 bases).
 If the sum of the probabilities is &gt; 1, the values will be nomalized 

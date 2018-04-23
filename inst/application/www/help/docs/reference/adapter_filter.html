@@ -92,31 +92,30 @@
 
     
     <p>This program can remove adapters and partial 
-adapters from 3' and 5', using the
-<code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingEndingAt</a></code> and 
-<code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> 
+adapters from 3' and 5', using the functions
+ <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingEndingAt</a></code> and 
+ <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> 
 of <span class="pkg">Biostrings</span>.  The program extends the methodology of
-the <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code> function of <span class="pkg">Biostrings</span>
-and can in addition remove adapters present within reads. 
-For a given position in the read, these two functions return TRUE 
+the <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code> function of <span class="pkg">Biostrings</span>,
+being also capable of removing adapters present within reads. 
+For a given position in the read, the two Biostrings functions return TRUE 
 when a match is present between a substring of the read and the adapter.
-As <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code>, the function also selects
-the best match as the longest subsequence that includes the aligned
-region and goes up to the end of the sequence in the corresponding flank.
+As <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code>, adapter_filter also selects
+region and goes up to the end of the sequence in the corresponding flank 
+as the best match.
 If several valid matches are found, the function removes the
-largest subsequence.
-Adapters can be anchored or not.  Two methods are available: 
-one based on the exact matching of the adapter and
-the reads, and other in an error rate. When indels are allowed, 
-the second method uses the 'edit distance' between the sequences 
-and the adapter.</p>
+largest subsequence. Adapters can be anchored or not.  
+Two methods are available:  one based on the exact matching of the adapter
+and the reads, and other in an error rate. When indels are allowed, 
+the second method uses the 'edit distance' between the subsequences 
+and the adapter</p>
     
 
     <pre class="usage"><span class='fu'>adapter_filter</span>(<span class='no'>input</span>, <span class='kw'>Lpattern</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>Rpattern</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>,
-<span class='st'>"er"</span>), <span class='kw'>rc.L</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rc.R</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"R"</span>, <span class='st'>"L"</span>),
-<span class='kw'>with_indels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>fixed</span> <span class='kw'>=</span> <span class='st'>"subject"</span>, <span class='kw'>remove_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='no'>...</span>)</pre>
+  <span class='st'>"er"</span>), <span class='kw'>rc.L</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rc.R</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"R"</span>, <span class='st'>"L"</span>),
+  <span class='kw'>with_indels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='st'>"subject"</span>, <span class='kw'>remove_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -137,43 +136,44 @@ and the adapter.</p>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>Method used for trimming. If 'exact' the metod is based
-on the exact matching of a subsequences of the subject and adapter(s).
+      <td><p>Method used for trimming. If 'exact' the method is based
+on the exact match between the possible subsequences of the subject and 
+adapter(s).
 If 'er' the metod is based on the error-rate between the subsequences, 
-allowing mismatches in any place.</p></td>
+allowing mismatches in any place</p></td>
     </tr>
     <tr>
       <th>rc.L</th>
-      <td><p>reverse complement Lpattern? default FALSE</p></td>
+      <td><p>Reverse complement Lpattern? default FALSE</p></td>
     </tr>
     <tr>
       <th>rc.R</th>
-      <td><p>reverse complement Rpatter? default FALSE</p></td>
+      <td><p>Reverse complement Rpatter? default FALSE</p></td>
     </tr>
     <tr>
       <th>first</th>
       <td><p>trim first right('R') or left ('L') side of sequences
-when both Lpattern and Rpattern are passed.</p></td>
+when both Lpattern and Rpattern are passed</p></td>
     </tr>
     <tr>
       <th>with_indels</th>
-      <td><p>allow indels? This is available only 
-when error_rate is not null.</p></td>
+      <td><p>Allow indels? This feature is available only 
+when the error_rate is not null</p></td>
     </tr>
     <tr>
       <th>error_rate</th>
-      <td><p>Error rate (value in [0, 1] value for 'er' method.
+      <td><p>Error rate (value in the range [0, 1] used for the 
+'er' method.
 The error rate is the proportion of mismatches allowed between
 the adapter and the aligned portion  of the subject.
 For a given adapter A, the number of allowed mismatches between each 
-subsequence s of A and the subject is computed as error_rate * L_s,
-where L_s is the length of the subsequence s.</p></td>
+subsequence s of A and the subject is computed as: error_rate * L_s,
+where L_s is the length of the subsequence s</p></td>
     </tr>
     <tr>
       <th>anchored</th>
       <td><p>Adapter or partial adapter within sequence
-(anchored = FALSE, default)
-or only in 3' and 5' terminals (anchored = TRUE).</p></td>
+(anchored = FALSE, default) or only in 3' and 5' terminals? (anchored = TRUE)</p></td>
     </tr>
     <tr>
       <th>fixed</th>
@@ -181,23 +181,23 @@ or only in 3' and 5' terminals (anchored = TRUE).</p></td>
 <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> 
 or <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingEndingAt</a></code>. 
 Default 'subject', where only ambiguities in the pattern are
-interpreted as wildcard.</p></td>
+ interpreted as wildcard</p></td>
     </tr>
     <tr>
       <th>remove_zero</th>
-      <td><p>Remove zero-length sequences? Default TRUE.</p></td>
+      <td><p>Remove zero-length sequences? Default TRUE</p></td>
     </tr>
     <tr>
       <th>checks</th>
-      <td><p>perform checks? Default TRUE.</p></td>
+      <td><p>Perform checks? Default TRUE</p></td>
     </tr>
     <tr>
       <th>min_match_flank</th>
       <td><p>When a match is found between a subsequence
 of the subject and the adapter in the corresponding flank,  
 which would be the minimum length of the overlapping region 
-(threshold) form trimming?  Default is 0L (trim when &gt;= 1 
-base(s) match).</p></td>
+(threshold) used for trimming?  Default is 0L (trim when &gt;= 1 
+base(s) match)</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -215,45 +215,13 @@ object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>require</span>(<span class='st'>'Biostrings'</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: Biostrings</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘BiocGenerics’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:parallel’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span>
-#&gt; <span class='message'>    clusterExport, clusterMap, parApply, parCapply, parLapply,</span>
-#&gt; <span class='message'>    parLapplyLB, parRapply, parSapply, parSapplyLB</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    IQR, mad, sd, var, xtabs</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,</span>
-#&gt; <span class='message'>    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,</span>
-#&gt; <span class='message'>    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,</span>
-#&gt; <span class='message'>    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
-#&gt; <span class='message'>    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,</span>
-#&gt; <span class='message'>    table, tapply, union, unique, unsplit, which, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: XVector</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘Biostrings’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    strsplit</span></div><div class='input'><span class='fu'>require</span>(<span class='st'>'ShortRead'</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: ShortRead</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocParallel</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Rsamtools</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicAlignments</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: SummarizedExperiment</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: DelayedArray</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘matrixStats’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:Biobase’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘DelayedArray’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:matrixStats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:Biostrings’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    type</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    apply</span></div><div class='input'>
+<span class='fu'>require</span>(<span class='st'>'Biostrings'</span>)
+<span class='fu'>require</span>(<span class='st'>'ShortRead'</span>)
+
 <span class='co'># create 6 sequences of width 43</span>
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>6</span>, <span class='fl'>43</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
-<span class='co'># add adapter in 3' reverse complemented. In read 1,</span>
+<span class='co'># add adapter in 3' reverse complemented. In read 1, </span>
 <span class='co'># it will appear the 5' adapter of read 2 reverse complemented.</span>
 <span class='no'>adapter</span> <span class='kw'>&lt;-</span> <span class='st'>'ATCGACT'</span>
 
@@ -273,7 +241,7 @@ object</p>
 <span class='co'># trim adapter</span>
 <span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>adapter_filter</span>(<span class='no'>my_read</span>, <span class='kw'>Rpattern</span> <span class='kw'>=</span> <span class='no'>adapter</span>, <span class='kw'>rc.R</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='co'># watch the filtered sequences</span>
+<span class='co'># look at the filtered sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 6
 #&gt;     width seq
 #&gt; [1]    43 TGGTCCGGTGTTCTGGCGGAATAGGTACAGTCCAGTAATTGCC
@@ -298,7 +266,7 @@ object</p>
 <span class='co'># trim adapter</span>
 <span class='no'>filteredR</span> <span class='kw'>&lt;-</span> <span class='fu'>adapter_filter</span>(<span class='no'>my_readR</span>, <span class='kw'>Rpattern</span> <span class='kw'>=</span> <span class='no'>adapterR</span>)
 
-<span class='co'># watch the filtered sequences</span>
+<span class='co'># look at the filtered sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filteredR</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 6
 #&gt;     width seq
 #&gt; [1]    50 ATCGACTGGCAATTACTGGACTGTACCTATTCCGCCAGAACACCGGACCA

@@ -1,6 +1,6 @@
 
 #' check onclick
-#' @description function to put a tickmark on click
+#' @description Function to put a tickmark on click
 #' @return Change value of reactive output, without return 
 #' @keywords internal
 
@@ -81,8 +81,8 @@ messageFun(.who, .chunck, .which_read, my_envir)
 
 
 #' create_cleanfunction_
-#' @description create a function to clean fastq files in function
-#' of the shiny parameters
+#' @description Create a function to process FASTQ files in function
+#' of the Shiny parameters selected by the user
 #' @return Function with selected cleaning operations
 #' @keywords internal
 
@@ -208,8 +208,11 @@ out
 }
 
 #' processingFunction_
-#' @description processing function for fastq files
-#' @return Processes the input FASTQ file, without output
+#' @description This function is the core of the application. It is used 
+#' for the program to process the FASTQ file/s in the environment 
+#' of the Shiny app. Note that this program makes a call to
+#' create_cleanfunction
+#' @return Processes the input FASTQ file, without return
 #' @keywords internal
 
 

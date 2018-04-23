@@ -10,6 +10,6 @@ check_onclick_(.menu_react, .butt_number, my_envir)
 Change value of reactive output, without return
 }
 \description{
-function to put a tickmark on click
+Function to put a tickmark on click
 }
 \keyword{internal}

@@ -92,7 +92,7 @@
 
     
     <p>The program removes a given number of bases from the 3' or 5'
-extremes of the sequences in a ShortReadQ object</p>
+regions of the sequences contained in a ShortReadQ object</p>
     
 
     <pre class="usage"><span class='fu'>fixed_filter</span>(<span class='no'>input</span>, <span class='kw'>trim3</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>trim5</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
@@ -106,17 +106,18 @@ extremes of the sequences in a ShortReadQ object</p>
     </tr>
     <tr>
       <th>trim3</th>
-      <td><p>number of bases to remove from 3'</p></td>
+      <td><p>Number of bases to remove from 3'</p></td>
     </tr>
     <tr>
       <th>trim5</th>
-      <td><p>number of bases to remove from 5'</p></td>
+      <td><p>Number of bases to remove from 5'</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code> object</p>
+    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code> 
+object</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -146,7 +147,7 @@ extremes of the sequences in a ShortReadQ object</p>
 
 <span class='no'>filtered3and5</span> <span class='kw'>&lt;-</span> <span class='fu'>fixed_filter</span>(<span class='no'>my_read</span>, <span class='kw'>trim3</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>trim5</span> <span class='kw'>=</span> <span class='fl'>5</span>)
 
-<span class='co'># watch the trimmed sequences</span>
+<span class='co'># look at the trimmed sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered3</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 6
 #&gt;     width seq
 #&gt; [1]    15 TGGTCCGGTGTTCTG

@@ -1,12 +1,15 @@
+
 #' Remove sequences with low complexity
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param threshold computed H/ reference H treshold
-#' @param referenceEntropy reference entropy. By default, 
+#' @param threshold A threshold value computed as the relation of the H 
+#' of the sequences and the reference H. Default is 0.5
+#' @param referenceEntropy Reference entropy. By default, 
 #' the program uses a value of 3.908, that corresponds 
 #' to the entropy of the human genome in bits
 #' @description The program removes low complexity sequences, computing the 
-#' entropy with the frequency of dinucleotides.
-#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+#' entropy with the observed frequency of dinucleotides.
+#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}}
+#' object
 #' @examples 
 #' 
 #' require('Biostrings')
@@ -39,7 +42,7 @@
 #' plot(H/H_max, type='b', xlab = 'Sequence', ylab= 'E')
 #' 
 #' 
-#' # create qualities of widths 40
+#' # create qualities of width 40
 #' 
 #' input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
 #'                        seed = 10, encod = 'Sanger')
@@ -51,10 +54,10 @@
 #' # create ShortReadQ object
 #' my_read <- ShortReadQ(sread = input, quality = input_q, id = input_names)
 #' 
-#' # apply the filter, 
+#' # apply the filter
 #' filtered <- complex_filter(my_read)
 #' 
-#' # watch the filtered sequences
+#' # look at the filtered sequences
 #' sread(filtered)
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}

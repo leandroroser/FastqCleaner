@@ -2,7 +2,7 @@
 % Please edit documentation in R/auxiliar.R
 \name{int2asc}
 \alias{int2asc}
-\title{integer to ASCII}
+\title{Integer to ASCII}
 \usage{
 int2asc(n)
 }
@@ -10,6 +10,6 @@ int2asc(n)
 ASCII character
 }
 \description{
-integer to ASCII
+Integer to ASCII
 }
 \keyword{internal}

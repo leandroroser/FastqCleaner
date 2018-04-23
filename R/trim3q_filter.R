@@ -1,15 +1,15 @@
 
 #' Filter sequences with low quality in 3' tails
 #' @param input \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param rm.3qual quality threshold for 3' tails
-#' @param q_format quality format used for the file, 
+#' @param rm.3qual Quality threshold for 3' tails
+#' @param q_format Quality format used for the file, 
 #' as returned by check_encoding
-#' @param check.encod check the encoding of the sequence? This argument 
+#' @param check.encod Check the encoding of the sequence? This argument 
 #' is incompatible with q_format. Default TRUE
-#' @param remove_zero remove zero-length sequences?
-#' @description The program removes the 3' tails with 
-#' nucleotides < a qualiy threshold 
-#' in a FASTQ file
+#' @param remove_zero Remove zero-length sequences?
+#' @description The program removes from the 3' tails of the sequences 
+#' a set of nucleotides showing a quality < a threshold value in a 
+#' ShortReadQ object
 #' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
 #' object
 #' @examples 
@@ -44,7 +44,7 @@
 #' # apply the filter 
 #' filtered <- trim3q_filter(my_read, rm.3qual = 28)
 #' 
-#' # watch the trimmed sequences
+#' # look at the trimmed sequences
 #' sread(filtered)
 
 #' @author Leandro Roser \email{learoser@@gmail.com}
@@ -135,4 +135,3 @@ if (length(which.zero) > 0) {
 }
 out
 }
-

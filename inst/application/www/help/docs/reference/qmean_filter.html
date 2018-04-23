@@ -106,16 +106,16 @@ lower the 'minq' threshold</p>
     </tr>
     <tr>
       <th>minq</th>
-      <td><p>quality threshold</p></td>
+      <td><p>Quality threshold</p></td>
     </tr>
     <tr>
       <th>q_format</th>
-      <td><p>quality format used for the file, as returned 
+      <td><p>Quality format used for the file, as returned 
 by check.encoding</p></td>
     </tr>
     <tr>
       <th>check.encod</th>
-      <td><p>check the encoding of the sequence? This argument 
+      <td><p>Check the encoding of the sequence? This argument 
 is incompatible with q_format</p></td>
     </tr>
     </table>
@@ -136,10 +136,10 @@ object</p>
 <span class='co'># create qualities of width 20 </span>
 <span class='co'>## high quality (15 sequences)</span>
 <span class='no'>my_qual</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 <span class='co'>## low quality (15 sequences)</span>
 <span class='no'>my_qual_2</span> <span class='kw'>&lt;-</span>   <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>5</span>,<span class='fl'>30</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+                           <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 
 <span class='co'># concatenate vectors</span>
 <span class='no'>input_q</span><span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='no'>my_qual</span>, <span class='no'>my_qual_2</span>)

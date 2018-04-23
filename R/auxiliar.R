@@ -34,15 +34,15 @@ TRUE
 asc2int <- function(x) strtoi(charToRaw(x), 16L)
 
 
-#' integer to ASCII 
+#' Integer to ASCII 
 #' @return ASCII character
 #' @keywords internal
 
 int2asc <- function(n) rawToChar(as.raw(n))
 
 
-#' check quality encoding
-#' @param x quality values
+#' Check quality encoding
+#' @param x Quality values
 #' @param custom custom encoding from the following:
 #' 
 #' 'Sanger' --------> expected range: [0, 40]

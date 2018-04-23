@@ -1,11 +1,12 @@
-#'
+
 #'  Remove a fixed number of bases of a ShortReadQ object from 3' or 5'
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param trim3 number of bases to remove from 3'
-#' @param trim5 number of bases to remove from 5'
+#' @param trim3 Number of bases to remove from 3'
+#' @param trim5 Number of bases to remove from 5'
 #' @description The program removes a given number of bases from the 3' or 5'
-#' extremes of the sequences in a ShortReadQ object
-#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+#' regions of the sequences contained in a ShortReadQ object
+#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
+#' object
 #' @examples
 #' require('Biostrings')
 #' require('ShortRead')
@@ -33,7 +34,7 @@
 #' 
 #' filtered3and5 <- fixed_filter(my_read, trim3 = 10, trim5 = 5)
 #' 
-#' # watch the trimmed sequences
+#' # look at the trimmed sequences
 #' sread(filtered3)
 #' sread(filtered5)
 #' sread(filtered3and5)

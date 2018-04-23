@@ -91,7 +91,7 @@
     </div>
 
     
-    <p>The program removes the sequences from a fastq file
+    <p>The program removes from a ShortReadQ object those sequences
 with a length lower than rm.min or/and higher than rm.max</p>
     
 
@@ -106,17 +106,18 @@ with a length lower than rm.min or/and higher than rm.max</p>
     </tr>
     <tr>
       <th>rm.min</th>
-      <td><p>threshold of minimun number of bases</p></td>
+      <td><p>Threshold value for the minimun number of bases</p></td>
     </tr>
     <tr>
       <th>rm.max</th>
-      <td><p>threshold of maximum number of bases</p></td>
+      <td><p>Threshold value for the  maximum number of bases</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code> object</p>
+    <p>Filtered <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></code> 
+object</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -127,10 +128,10 @@ with a length lower than rm.min or/and higher than rm.max</p>
 
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_length.html'>random_length</a></span>(<span class='fl'>100</span>, <span class='kw'>widths</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>100</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
-<span class='co'># apply the filter, removing sequences with  10&gt;length&gt; 80</span>
+<span class='co'># apply the filter, removing sequences with  10&gt; length &gt; 80</span>
 <span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>length_filter</span>(<span class='no'>input</span>, <span class='kw'>rm.min</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>rm.max</span> <span class='kw'>=</span> <span class='fl'>80</span>)
 
-<span class='co'># watch the filtered sequences</span>
+<span class='co'># look at the filtered sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 78
 #&gt;      width seq
 #&gt;  [1]    51 TGGTCCGGTGTTCTGGCGGAATAGGTACAGTCCAGTAATTGCCTCCCGCAG

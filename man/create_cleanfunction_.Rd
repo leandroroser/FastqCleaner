@@ -10,7 +10,7 @@ create_cleanfunction_(my_envir, .which_read = c("FORWARD", "REVERSE"))
 Function with selected cleaning operations
 }
 \description{
-create a function to clean fastq files in function
-of the shiny parameters
+Create a function to process FASTQ files in function
+of the Shiny parameters selected by the user
 }
 \keyword{internal}

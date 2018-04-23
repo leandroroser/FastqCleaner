@@ -9,10 +9,11 @@ seq_filter(input, rm.seq)
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
 
-\item{rm.seq}{character vector with sequences to remove}
+\item{rm.seq}{Ccharacter vector with sequences to remove}
 }
 \value{
-Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
+object
 }
 \description{
 Removes a set of sequences

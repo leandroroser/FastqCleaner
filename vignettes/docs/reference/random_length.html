@@ -96,10 +96,10 @@ object with random sequences and qualities</p>
     
 
     <pre class="usage"><span class='fu'>random_length</span>(<span class='no'>n</span>, <span class='no'>widths</span>, <span class='kw'>random_widths</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>len_prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seq_prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>), <span class='kw'>q_prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-<span class='kw'>nuc</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DNA"</span>, <span class='st'>"RNA"</span>), <span class='kw'>qual</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sanger"</span>, <span class='st'>"Illumina1.8"</span>,
-<span class='st'>"Illumina1.5"</span>, <span class='st'>"Illumina1.3"</span>, <span class='st'>"Solexa"</span>), <span class='kw'>base_name</span> <span class='kw'>=</span> <span class='st'>"s"</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>len_prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>seq_prob</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>, <span class='fl'>0.25</span>), <span class='kw'>q_prob</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>nuc</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DNA"</span>, <span class='st'>"RNA"</span>), <span class='kw'>qual</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sanger"</span>, <span class='st'>"Illumina1.8"</span>,
+  <span class='st'>"Illumina1.5"</span>, <span class='st'>"Illumina1.3"</span>, <span class='st'>"Solexa"</span>), <span class='kw'>base_name</span> <span class='kw'>=</span> <span class='st'>"s"</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -130,8 +130,8 @@ Default NULL (equiprobability)</p></td>
     </tr>
     <tr>
       <th>seq_prob</th>
-      <td><p>a vector of four probabilities values to set the frequency of 
-the nucleotides 'A', 'C', 'G', 'T', for DNA,
+      <td><p>a vector of four probabilities values to set 
+the frequency of the nucleotides 'A', 'C', 'G', 'T', for DNA,
 or 'A', 'C', 'G', 'U', for RNA. For example = c(0.25, 0.25, 0.5, 0).
 Default is = c(0.25, 0.25, 0.25, 0.25) (equiprobability for the 4 bases).
 If the sum of the probabilities is &gt; 1, the values will be nomalized 

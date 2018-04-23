@@ -1,5 +1,5 @@
+
 #' Remove left and right full and partial patterns
-#'
 #' @param subject \code{\link[Biostrings:DNAString-class]{DNAString}} or 
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
 #' @param Lpattern 5' pattern,
@@ -7,20 +7,21 @@
 #' @param Rpattern 3' pattern,
 #'  \code{\link[Biostrings:DNAString-class]{DNAString}} object
 #' @param method  Method used for trimming. If 'exact' the metod is based
-#' in the exact matching of the subsequences of the subject and  adapters 
-#' If 'er' the metod is based on the eror-rate between the subsequences, 
-#' allowing mismatches.
-#' @param error_rate Error rate (value in [0, 1] value for 'er' method. 
+#' on the exact matching of the posible subsequences of the subject and 
+#' the adapters. If 'er' the metod is based on the eror-rate between 
+#' the subsequences, allowing mismatches.
+#' @param error_rate Error rate (value in [0, 1] used for 'er' method). 
 #' The error rate is the proportion of mismatches allowed between
 #' the adapter and the aligned portion of the subject.
 #' For a given adapter A, the number of allowed mismatches between each 
-#' subsequence s of A and the subject is computed as error_rate * L_s,
+#' subsequence s of A and the subject is computed as: error_rate * L_s,
 #' where L_s is the length of the subsequence s.
-#' @param with.indels Allow indels? This is available only for er method.
+#' @param with.indels Allow indels? This feature is only available
+#' for er method.
 #' @param anchored Can the adapter or partial adapter be within 
-#' the sequence? (dafault: anchored = TRUE)
-#' or only in the terminal regions of the sequence (anchored; anchored = TRUE).
-#' Default TRUE (trim only flanking regions).
+#' the sequence? (anchored = FALSE)
+#' or only in the terminal regions of the sequence? (anchored = TRUE).
+#' Default TRUE (trim only flanking regions)
 #' @param fixed Parameter passed to 
 #' code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} and
 #' \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}  
@@ -28,8 +29,8 @@
 #' as wildcard. See the argument fixed in 
 #' code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} and
 #' \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} 
-#' @param ranges return ranges? Default FALSE
-#' @param checks perform internal checks? Default TRUE
+#' @param ranges Return ranges? Default FALSE
+#' @param checks Perform internal checks? Default TRUE
 #' @param min_match_flank Do not trim in flanks of the subject,
 #'  if a match has min_match_flank of less length. Default 1L 
 #'  (only trim with >=2 coincidences in a flank match)
@@ -38,7 +39,9 @@
 #' \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} 
 #' @return  Edited \code{\link[Biostrings:DNAString-class]{DNAString}} or 
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
-#' @description This program can remove adapters and partial 
+#' @description This set of programs are internal, 
+#' and the function adapter_filter is recommended for trimming. 
+#' The programs can remove adapters and partial 
 #' adapters from 3' and 5'. The adapters can be anchored or not. 
 #' Two methods are available: one based on the exact matching 
 #' of the sequence and the adapter, and a second in an error rate. 
@@ -48,14 +51,12 @@
 #'  of the \pkg{Biostrings} package to find matches. IUPAC symbols
 #' are allowed in all the cases. The present function 
 #' also removes partial adapters, without the need of additional steps
-#'  (for example, creating a padded adapter
-#' with 'Ns', etc). 
-#' A similar to what obtained with \code{\link[Biostrings]{trimLRPatterns}}
-#'  when the raw adaptor is passed, 
+#'  (for example, creating a padded adapter with 'Ns', etc). 
+#' A similar result to the output of \code{\link[Biostrings]{trimLRPatterns}}
 #' can be obtained with the option anchored = TRUE.
 #' When several matches are found, the function removes the subsequence 
-#' starting from the first match in cutRseq, and ending 
-#' in the last one in cutLseq.
+#' that starts in the first match when cutRseq is used, or ends 
+#' in the last match when cutLseq is used.
 #' 
 #' @examples
 #' 
@@ -78,7 +79,7 @@
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}
 #' @rdname remove-adapters
-#' @export
+#' @keywords internal
 
 
 cutRseq <- function(subject, Rpattern, with.indels = FALSE,

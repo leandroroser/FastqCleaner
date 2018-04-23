@@ -9,18 +9,20 @@ complex_filter(input, threshold = 0.5, referenceEntropy = 3.908135)
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
 
-\item{threshold}{computed H/ reference H treshold}
+\item{threshold}{A threshold value computed as the relation of the H 
+of the sequences and the reference H. Default is 0.5}
 
-\item{referenceEntropy}{reference entropy. By default, 
+\item{referenceEntropy}{Reference entropy. By default, 
 the program uses a value of 3.908, that corresponds 
 to the entropy of the human genome in bits}
 }
 \value{
-Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}}
+object
 }
 \description{
 The program removes low complexity sequences, computing the 
-entropy with the frequency of dinucleotides.
+entropy with the observed frequency of dinucleotides.
 }
 \examples{
 
@@ -54,7 +56,7 @@ H_max <- 3.908135  # max entropy
 plot(H/H_max, type='b', xlab = 'Sequence', ylab= 'E')
 
 
-# create qualities of widths 40
+# create qualities of width 40
 
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
 seed = 10, encod = 'Sanger')
@@ -65,10 +67,10 @@ input_names <- seq_names(9)
 # create ShortReadQ object
 my_read <- ShortReadQ(sread = input, quality = input_q, id = input_names)
 
-# apply the filter, 
+# apply the filter
 filtered <- complex_filter(my_read)
 
-# watch the filtered sequences
+# look at the filtered sequences
 sread(filtered)
 
 }

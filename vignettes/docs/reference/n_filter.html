@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove sequences with non identified bases (N) from a ShortReadQ object — n_filter • FastqCleaner</title>
+<title>Remove sequences with non-identified bases (Ns) from a ShortReadQ object — n_filter • FastqCleaner</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -87,7 +87,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove sequences with non identified bases (N) from a ShortReadQ object</h1>
+    <h1>Remove sequences with non-identified bases (Ns) from a ShortReadQ object</h1>
     </div>
 
     
@@ -109,10 +109,10 @@ All the sequences with a number of N &gt; rm.N (N &gt;= rm.N) will be removed</p
     </tr>
     <tr>
       <th>rm.N</th>
-      <td><p>threshold of N's to remove a sequence in the output 
-(sequences with N &gt; threshold are removed)
-file. For example, if rm.N is 3, all the sequences 
-with a number of N &gt; 3 (N &gt;= 4) will be removed</p></td>
+      <td><p>Threshold value of N's to remove a sequence from the output 
+(sequences with number of Ns &gt; threshold are removed)
+For example, if rm.N is 3, all the sequences 
+with a number of Ns &gt; 3 (Ns &gt;= 4) will be removed</p></td>
     </tr>
     </table>
     

@@ -2,14 +2,14 @@
 #' Create random sequences
 #' @description Create a
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
-#' with random sequences.
-#' @param slength number of sequences
-#' @param swidth width of the sequences
-#' @param seed random seed. Default: NULL
-#' @param nuc create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
+#' with random sequences
+#' @param slength Number of sequences
+#' @param swidth Width of the sequences
+#' @param seed Random seed. Default NULL
+#' @param nuc Create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
 #'  RNA (nucleotides = c('A, 'C', 'G', 'U'))?. Default: 'DNA'
-#' @param prob a vector of four probabilities values to set the frequency of 
-#' the nucleotides 'A', 'C', 'G', 'T', for DNA,
+#' @param prob A vector of four probability values used 
+#' to set the frequency of the nucleotides 'A', 'C', 'G', 'T', for DNA,
 #' or 'A', 'C', 'G', 'U', for RNA. For example = c(0.25, 0.25, 0.5, 0).
 #' Default is = c(0.25, 0.25, 0.25, 0.25) (equiprobability for the 4 bases).
 #' If the sum of the probabilities is > 1, the values will be nomalized 

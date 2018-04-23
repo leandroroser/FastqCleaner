@@ -9,12 +9,12 @@ qmean_filter(input, minq, q_format = NULL, check.encod = TRUE)
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
 
-\item{minq}{quality threshold}
+\item{minq}{Quality threshold}
 
-\item{q_format}{quality format used for the file, as returned 
+\item{q_format}{Quality format used for the file, as returned 
 by check.encoding}
 
-\item{check.encod}{check the encoding of the sequence? This argument 
+\item{check.encod}{Check the encoding of the sequence? This argument 
 is incompatible with q_format}
 }
 \value{

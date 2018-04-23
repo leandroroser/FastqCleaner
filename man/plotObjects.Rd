@@ -3,7 +3,9 @@
 \name{plotObjects}
 \alias{plotObjects}
 \title{plotObjects
-Create the information for the plots. This is the input of myplot}
+Create the information required to construct the plots. 
+This is the input of myplot, which uses the values created for 
+this function to construct the plots}
 \usage{
 plotObjects(fq, klength, basename, maxFreq, sampleSize)
 }
@@ -12,6 +14,8 @@ List with information to construct the diagnostic plots
 }
 \description{
 plotObjects
-Create the information for the plots. This is the input of myplot
+Create the information required to construct the plots. 
+This is the input of myplot, which uses the values created for 
+this function to construct the plots
 }
 \keyword{internal}

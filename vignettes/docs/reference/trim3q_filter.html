@@ -91,13 +91,13 @@
     </div>
 
     
-    <p>The program removes the 3' tails with 
-nucleotides &lt; a qualiy threshold 
-in a FASTQ file</p>
+    <p>The program removes from the 3' tails of the sequences 
+a set of nucleotides showing a quality &lt; a threshold value in a 
+ShortReadQ object</p>
     
 
     <pre class="usage"><span class='fu'>trim3q_filter</span>(<span class='no'>input</span>, <span class='no'>rm.3qual</span>, <span class='kw'>q_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>check.encod</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>remove_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>remove_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -108,21 +108,21 @@ in a FASTQ file</p>
     </tr>
     <tr>
       <th>rm.3qual</th>
-      <td><p>quality threshold for 3' tails</p></td>
+      <td><p>Quality threshold for 3' tails</p></td>
     </tr>
     <tr>
       <th>q_format</th>
-      <td><p>quality format used for the file, 
+      <td><p>Quality format used for the file, 
 as returned by check_encoding</p></td>
     </tr>
     <tr>
       <th>check.encod</th>
-      <td><p>check the encoding of the sequence? This argument 
+      <td><p>Check the encoding of the sequence? This argument 
 is incompatible with q_format. Default TRUE</p></td>
     </tr>
     <tr>
       <th>remove_zero</th>
-      <td><p>remove zero-length sequences?</p></td>
+      <td><p>Remove zero-length sequences?</p></td>
     </tr>
     </table>
     
@@ -163,7 +163,7 @@ object</p>
 <span class='co'># apply the filter </span>
 <span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>trim3q_filter</span>(<span class='no'>my_read</span>, <span class='kw'>rm.3qual</span> <span class='kw'>=</span> <span class='fl'>28</span>)
 
-<span class='co'># watch the trimmed sequences</span>
+<span class='co'># look at the trimmed sequences</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 6
 #&gt;     width seq
 #&gt; [1]    20 TGGTCCGGTGTTCTGGCGGA

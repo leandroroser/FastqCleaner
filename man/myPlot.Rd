@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotObjects.R
 \name{myPlot}
 \alias{myPlot}
-\title{myplot}
+\title{myPlot}
 \usage{
 myPlot(isPaired, location, sampleSize, kmerLength, theFile, maxFreq)
 }
@@ -10,6 +10,7 @@ myPlot(isPaired, location, sampleSize, kmerLength, theFile, maxFreq)
 List with Highcharts plots
 }
 \description{
-Diagnostic plots construction
+Construction of diagnostic plots. The function depends
+of the values created by plotObject
 }
 \keyword{internal}

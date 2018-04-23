@@ -1,9 +1,10 @@
 #' Remove a set of sequences
 #' @description Removes a set of sequences 
 #' @param  input \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param rm.seq character vector with sequences to remove
+#' @param rm.seq Ccharacter vector with sequences to remove
 #' @author Leandro Roser \email{learoser@@gmail.com}
-#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
+#' object
 #' @examples 
 #' 
 #' require(ShortRead)

@@ -1,9 +1,10 @@
+
 #' Launch FastqCleaner application
 #' @param launch.browser Launch in browser? Default TRUE
 #' @param ... Additional parameters passed to \code{\link[shiny]{runApp}}
 #' @author Leandro Roser \email{learoser@@gmail.com}
 #' @examples 
-#' # Paste in te console to launch the application:
+#' # Uncomment and paste in te console to launch the application:
 #' # launch_fqc() 
 #' 
 #' NULL

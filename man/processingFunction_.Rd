@@ -7,9 +7,12 @@
 processingFunction_(my_envir)
 }
 \value{
-Processes the input FASTQ file, without output
+Processes the input FASTQ file, without return
 }
 \description{
-processing function for fastq files
+This function is the core of the application. It is used 
+for the program to process the FASTQ file/s in the environment 
+of the Shiny app. Note that this program makes a call to
+create_cleanfunction
 }
 \keyword{internal}

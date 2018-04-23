@@ -2,12 +2,12 @@
 % Please edit documentation in R/auxiliar.R
 \name{check_encoding}
 \alias{check_encoding}
-\title{check quality encoding}
+\title{Check quality encoding}
 \usage{
 check_encoding(x = NULL, custom = NULL)
 }
 \arguments{
-\item{x}{quality values}
+\item{x}{Quality values}
 
 \item{custom}{custom encoding from the following:
 
@@ -25,7 +25,7 @@ check_encoding(x = NULL, custom = NULL)
 List with encoding information
 }
 \description{
-check quality encoding
+Check quality encoding
 }
 \examples{
 

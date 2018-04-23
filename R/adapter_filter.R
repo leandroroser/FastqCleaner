@@ -1,64 +1,64 @@
 
-
 #' Remove full and partial adapters from a ShortReadQ object
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
 #' @param Lpattern 5' pattern (character or
 #'  \code{\link[Biostrings:DNAString-class]{DNAString}} object)
 #' @param Rpattern 3' pattern (character or 
 #' \code{\link[Biostrings:DNAString-class]{DNAString}} object)
-#' @param method  Method used for trimming. If 'exact' the metod is based
-#' on the exact matching of a subsequences of the subject and adapter(s).
+#' @param method  Method used for trimming. If 'exact' the method is based
+#' on the exact match between the possible subsequences of the subject and 
+#' adapter(s).
 #' If 'er' the metod is based on the error-rate between the subsequences, 
-#' allowing mismatches in any place. 
-#' @param rc.L reverse complement Lpattern? default FALSE
-#' @param rc.R reverse complement Rpatter? default FALSE
+#' allowing mismatches in any place
+#' @param rc.L Reverse complement Lpattern? default FALSE
+#' @param rc.R Reverse complement Rpatter? default FALSE
 #' @param first trim first right('R') or left ('L') side of sequences
-#'  when both Lpattern and Rpattern are passed.
-#' @param error_rate Error rate (value in [0, 1] value for 'er' method.
+#'  when both Lpattern and Rpattern are passed
+#' @param error_rate Error rate (value in the range [0, 1] used for the 
+#' 'er' method.
 #' The error rate is the proportion of mismatches allowed between
 #' the adapter and the aligned portion  of the subject.
 #' For a given adapter A, the number of allowed mismatches between each 
-#' subsequence s of A and the subject is computed as error_rate * L_s,
-#' where L_s is the length of the subsequence s. 
-#' @param with_indels allow indels? This is available only 
-#' when error_rate is not null.
+#' subsequence s of A and the subject is computed as: error_rate * L_s,
+#' where L_s is the length of the subsequence s
+#' @param with_indels Allow indels? This feature is available only 
+#' when the error_rate is not null
 #' @param anchored Adapter or partial adapter within sequence
-#' (anchored = FALSE, default)
-#' or only in 3' and 5' terminals (anchored = TRUE).
+#' (anchored = FALSE, default) or only in 3' and 5' terminals? (anchored = TRUE)
 #' @param fixed Parameter passed to 
 #' \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
 #' or \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}. 
 #' Default 'subject', where only ambiguities in the pattern are
-#'  interpreted as wildcard.
-#' @param remove_zero Remove zero-length sequences? Default TRUE.
-#' @param checks perform checks? Default TRUE.
+#'  interpreted as wildcard
+#' @param remove_zero Remove zero-length sequences? Default TRUE
+#' @param checks Perform checks? Default TRUE
 #' @param ... additional parameters passed to  
 #' \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
 #' or \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}.
 #' @param min_match_flank When a match is found between a subsequence
 #' of the subject and the adapter in the corresponding flank,  
 #' which would be the minimum length of the overlapping region 
-#' (threshold) form trimming?  Default is 0L (trim when >= 1 
-#' base(s) match).
+#' (threshold) used for trimming?  Default is 0L (trim when >= 1 
+#' base(s) match)
 #' @description This program can remove adapters and partial 
-#' adapters from 3' and 5', using the
+#' adapters from 3' and 5', using the functions
 #'  \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} and 
 #'  \code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} 
 #' of \pkg{Biostrings}.  The program extends the methodology of
-#' the \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings}
-#' and can in addition remove adapters present within reads. 
-#' For a given position in the read, these two functions return TRUE 
+#' the \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
+#' being also capable of removing adapters present within reads. 
+#' For a given position in the read, the two Biostrings functions return TRUE 
 #' when a match is present between a substring of the read and the adapter.
-#' As \code{\link[Biostrings]{trimLRPatterns}}, the function also selects
-#' the best match as the longest subsequence that includes the aligned
-#' region and goes up to the end of the sequence in the corresponding flank.
+#' As \code{\link[Biostrings]{trimLRPatterns}}, adapter_filter also selects
+#  the longest subsequence that includes the aligned
+#' region and goes up to the end of the sequence in the corresponding flank 
+#' as the best match.
 #' If several valid matches are found, the function removes the
-#' largest subsequence.
-#' Adapters can be anchored or not.  Two methods are available: 
-#' one based on the exact matching of the adapter and
-#' the reads, and other in an error rate. When indels are allowed, 
-#' the second method uses the 'edit distance' between the sequences 
-#' and the adapter.
+#' largest subsequence. Adapters can be anchored or not.  
+#' Two methods are available:  one based on the exact matching of the adapter
+#' and the reads, and other in an error rate. When indels are allowed, 
+#' the second method uses the 'edit distance' between the subsequences 
+#' and the adapter
 #' 
 #' @examples
 #' 
@@ -88,7 +88,7 @@
 #' # trim adapter
 #' filtered <- adapter_filter(my_read, Rpattern = adapter, rc.R = TRUE)
 #'
-#' # watch the filtered sequences
+#' # look at the filtered sequences
 #' sread(filtered)
 #' 
 #' # adapter in the second strand of paired-end reads is reverse-complemented,
@@ -107,7 +107,7 @@
 #' # trim adapter
 #' filteredR <- adapter_filter(my_readR, Rpattern = adapterR)
 #'
-#' # watch the filtered sequences
+#' # look at the filtered sequences
 #' sread(filteredR)
 #' 
 #' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
@@ -125,8 +125,6 @@ adapter_filter <- function(input, Lpattern = "",
     
     method <- match.arg(method)
     first <- match.arg(first)
-    
-    # remove spaces in adapters
     
     if (is.character(Lpattern)) {
         Lpattern <- sub(" ", "", Lpattern)

@@ -18,7 +18,7 @@ Launch the application, without return value
 Launch FastqCleaner application
 }
 \examples{
-# Paste in te console to launch the application:
+# Uncomment and paste in te console to launch the application:
 # launch_fqc() 
 
 NULL

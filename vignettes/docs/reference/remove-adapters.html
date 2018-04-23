@@ -91,33 +91,33 @@
     </div>
 
     
-    <p>This program can remove adapters and partial 
+    <p>This set of programs are internal, 
+and the function adapter_filter is recommended for trimming. 
+The programs can remove adapters and partial 
 adapters from 3' and 5'. The adapters can be anchored or not. 
 Two methods are available: one based on the exact matching 
 of the sequence and the adapter, and a second in an error rate. 
 When indels are allowed, the error rate consists in the edit distance. 
 IUPAC simbols are allowed. The methods use the 
 <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> function
-of the <span class="pkg">Biostrings</span> package to find matches. IUPAC symbols
+ of the <span class="pkg">Biostrings</span> package to find matches. IUPAC symbols
 are allowed in all the cases. The present function 
 also removes partial adapters, without the need of additional steps
-(for example, creating a padded adapter
-with 'Ns', etc). 
-A similar to what obtained with <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code>
-when the raw adaptor is passed, 
+ (for example, creating a padded adapter with 'Ns', etc). 
+A similar result to the output of <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/trimLRPatterns'>trimLRPatterns</a></code>
 can be obtained with the option anchored = TRUE.
 When several matches are found, the function removes the subsequence 
-starting from the first match in cutRseq, and ending 
-in the last one in cutLseq.</p>
+that starts in the first match when cutRseq is used, or ends 
+in the last match when cutLseq is used.</p>
     
 
     <pre class="usage"><span class='fu'>cutRseq</span>(<span class='no'>subject</span>, <span class='no'>Rpattern</span>, <span class='kw'>with.indels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='st'>"subject"</span>,
-<span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>, <span class='st'>"er"</span>), <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='no'>...</span>)
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>, <span class='st'>"er"</span>), <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='no'>...</span>)
 
 <span class='fu'>cutLseq</span>(<span class='no'>subject</span>, <span class='no'>Lpattern</span>, <span class='kw'>with.indels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='st'>"subject"</span>,
-<span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>, <span class='st'>"er"</span>), <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>, <span class='st'>"er"</span>), <span class='kw'>error_rate</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>anchored</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>ranges</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -134,7 +134,8 @@ in the last one in cutLseq.</p>
     </tr>
     <tr>
       <th>with.indels</th>
-      <td><p>Allow indels? This is available only for er method.</p></td>
+      <td><p>Allow indels? This feature is only available
+for er method.</p></td>
     </tr>
     <tr>
       <th>fixed</th>
@@ -149,33 +150,33 @@ code<a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-m
     <tr>
       <th>method</th>
       <td><p>Method used for trimming. If 'exact' the metod is based
-in the exact matching of the subsequences of the subject and  adapters 
-If 'er' the metod is based on the eror-rate between the subsequences, 
-allowing mismatches.</p></td>
+on the exact matching of the posible subsequences of the subject and 
+the adapters. If 'er' the metod is based on the eror-rate between 
+the subsequences, allowing mismatches.</p></td>
     </tr>
     <tr>
       <th>error_rate</th>
-      <td><p>Error rate (value in [0, 1] value for 'er' method. 
+      <td><p>Error rate (value in [0, 1] used for 'er' method). 
 The error rate is the proportion of mismatches allowed between
 the adapter and the aligned portion of the subject.
 For a given adapter A, the number of allowed mismatches between each 
-subsequence s of A and the subject is computed as error_rate * L_s,
+subsequence s of A and the subject is computed as: error_rate * L_s,
 where L_s is the length of the subsequence s.</p></td>
     </tr>
     <tr>
       <th>anchored</th>
       <td><p>Can the adapter or partial adapter be within 
-the sequence? (dafault: anchored = TRUE)
-or only in the terminal regions of the sequence (anchored; anchored = TRUE).
-Default TRUE (trim only flanking regions).</p></td>
+the sequence? (anchored = FALSE)
+or only in the terminal regions of the sequence? (anchored = TRUE).
+Default TRUE (trim only flanking regions)</p></td>
     </tr>
     <tr>
       <th>ranges</th>
-      <td><p>return ranges? Default FALSE</p></td>
+      <td><p>Return ranges? Default FALSE</p></td>
     </tr>
     <tr>
       <th>checks</th>
-      <td><p>perform internal checks? Default TRUE</p></td>
+      <td><p>Perform internal checks? Default TRUE</p></td>
     </tr>
     <tr>
       <th>min_match_flank</th>
@@ -186,7 +187,7 @@ if a match has min_match_flank of less length. Default 1L
     <tr>
       <th>...</th>
       <td><p>additional parameters passed to
-<code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> and
+ <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingStartingAt</a></code> and
 <code><a href='http://www.rdocumentation.org/packages/Biostrings/topics/lowlevel-matching'>isMatchingEndingAt</a></code></p></td>
     </tr>
     <tr>

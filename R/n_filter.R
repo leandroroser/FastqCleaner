@@ -1,11 +1,10 @@
 
-#' Remove sequences with non identified bases (N) from a ShortReadQ object
-#' 
+#' Remove sequences with non-identified bases (Ns) from a ShortReadQ object
 #' @param input \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param rm.N threshold of N's to remove a sequence in the output 
-#' (sequences with N > threshold are removed)
-#' file. For example, if rm.N is 3, all the sequences 
-#' with a number of N > 3 (N >= 4) will be removed
+#' @param rm.N Threshold value of N's to remove a sequence from the output 
+#' (sequences with number of Ns > threshold are removed)
+#' For example, if rm.N is 3, all the sequences 
+#' with a number of Ns > 3 (Ns >= 4) will be removed
 #' @description This program is a wrapper to
 #' \code{\link[ShortRead:srFilter]{nFilter}}. 
 #' It removes the sequences with a number of N's above 

@@ -1,10 +1,12 @@
+
 #' Filter sequences of a FASTQ file by length 
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
-#' @param rm.min threshold of minimun number of bases 
-#' @param rm.max threshold of maximum number of bases
-#' @description The program removes the sequences from a fastq file
+#' @param rm.min Threshold value for the minimun number of bases 
+#' @param rm.max Threshold value for the  maximum number of bases
+#' @description The program removes from a ShortReadQ object those sequences
 #' with a length lower than rm.min or/and higher than rm.max
-#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
+#' @return  Filtered \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} 
+#' object
 #' 
 #' @examples 
 #' require('Biostrings')
@@ -14,10 +16,10 @@
 #'  
 #' input <- random_length(100, widths = 1:100, seed = 10)
 #' 
-#' # apply the filter, removing sequences with  10>length> 80
+#' # apply the filter, removing sequences with  10> length > 80
 #' filtered <- length_filter(input, rm.min = 10, rm.max = 80)
 #' 
-#' # watch the filtered sequences
+#' # look at the filtered sequences
 #' sread(filtered)
 #' @author Leandro Roser \email{learoser@@gmail.com}
 #' @export
