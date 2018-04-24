@@ -20,7 +20,7 @@ cpp_base_content <- function(x, relative = TRUE) {
 NULL
 
 cpp_check_quality_threshold <- function(x, thresVector) {
-    .Call('_FastqCleaner_cpp_check_quality_threshold', 
+    .Call('_FastqCleaner_cpp_check_quality_threshold',
     PACKAGE = 'FastqCleaner', x, thresVector)
 }
 
