@@ -13,6 +13,7 @@ revised: "February 14, 2018"
 output:
     BiocStyle::html_document
 df_print: paged
+self_contained: no
 abstract: |
     `r Biocpkg("FastqCleaner")` provides a Shiny application 
     for both exploratory analysis and pre-processing of FASTQ files. 
@@ -23,8 +24,11 @@ vignette: |
     %\VignetteIndexEntry{An Introduction to FastqCleaner}
     %\VignetteEncoding{UTF-8}
     %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
+knitr::opts_chunk$set(dpi=300) 
 
 Instructions for direct installation from the GitHub repository 
 ===============================================================
