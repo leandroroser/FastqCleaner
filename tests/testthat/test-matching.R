@@ -1,4 +1,5 @@
 context("test-matching.R")
+skip_on_cran()
 
 library(Biostrings)
 Lpattern <- Rpattern <- "TCATG"

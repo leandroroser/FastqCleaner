@@ -1,4 +1,5 @@
 context("test-seq_filter.R")
+skip_on_cran()
 
 require("Biostrings")
 require("ShortRead")
