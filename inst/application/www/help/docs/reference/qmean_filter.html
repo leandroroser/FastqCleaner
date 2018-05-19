@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Filter sequences by their average quality — qmean_filter" />
+
+<meta property="og:description" content="The program removes the sequences with a quality 
+lower the 'minq' threshold" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">FastqCleaner</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">FastqCleaner</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.28</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,20 +99,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Filter sequences by their average quality</h1>
+    
+    <div class="hidden name"><code>qmean_filter.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The program removes the sequences with a quality 
 lower the 'minq' threshold</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>qmean_filter</span>(<span class='no'>input</span>, <span class='no'>minq</span>, <span class='kw'>q_format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>check.encod</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -130,52 +149,34 @@ object</p>
     <pre class="examples"><div class='input'>
 <span class='fu'>require</span>(<span class='no'>ShortRead</span>)
 
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='co'># create 6 sequences of width 20</span>
-<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>30</span>, <span class='fl'>20</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>30</span>, <span class='fl'>20</span>)
 
 <span class='co'># create qualities of width 20 </span>
 <span class='co'>## high quality (15 sequences)</span>
-<span class='no'>my_qual</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
-<span class='co'>## low quality (15 sequences)</span>
-<span class='no'>my_qual_2</span> <span class='kw'>&lt;-</span>   <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>5</span>,<span class='fl'>30</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-                           <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
-
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>my_qual</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)</div><div class='output co'>#&gt; <span class='error'>Error in random_qual(c(30, 40), slength = 15, seed = 10, encod = "Sanger"): unused argument (seed = 10)</span></div><div class='input'><span class='co'>## low quality (15 sequences)</span>
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>my_qual_2</span> <span class='kw'>&lt;-</span>   <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>5</span>,<span class='fl'>30</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+                           <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)</div><div class='output co'>#&gt; <span class='error'>Error in random_qual(c(5, 30), slength = 15, seed = 10, encod = "Sanger"): unused argument (seed = 10)</span></div><div class='input'>
 <span class='co'># concatenate vectors</span>
-<span class='no'>input_q</span><span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='no'>my_qual</span>, <span class='no'>my_qual_2</span>)
-
+<span class='no'>input_q</span><span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='no'>my_qual</span>, <span class='no'>my_qual_2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): objeto 'my_qual' no encontrado</span></div><div class='input'>
 <span class='co'># create names</span>
 <span class='no'>input_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='seq_names.html'>seq_names</a></span>(<span class='fl'>30</span>)
 
 <span class='co'># create ShortReadQ object</span>
-<span class='no'>my_read</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>input</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>input_q</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)
-
+<span class='no'>my_read</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>input</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>input_q</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ShortReadQ(sread = input, quality = input_q, id = input_names): objeto 'input_q' no encontrado</span></div><div class='input'>
 <span class='co'># watch the average qualities</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/alphabetScore'>alphabetScore</a></span>(<span class='no'>my_read</span>) / <span class='fu'>width</span>(<span class='no'>my_read</span>)</div><div class='output co'>#&gt;  [1] 34.95 34.65 36.55 34.80 35.20 35.35 34.65 34.20 34.45 35.05 34.80 34.70
-#&gt; [13] 34.40 34.80 35.85 15.95 16.55 19.65 16.85 16.65 18.20 16.80 18.00 14.85
-#&gt; [25] 18.90 17.00 16.65 16.15 16.80 20.35</div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/alphabetScore'>alphabetScore</a></span>(<span class='no'>my_read</span>) / <span class='fu'>width</span>(<span class='no'>my_read</span>)</div><div class='output co'>#&gt; <span class='error'>Error in alphabetScore(my_read): objeto 'my_read' no encontrado</span></div><div class='input'>
 <span class='co'># apply the filter</span>
-<span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>qmean_filter</span>(<span class='no'>my_read</span>, <span class='kw'>minq</span> <span class='kw'>=</span> <span class='fl'>30</span>)
-
+<span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>qmean_filter</span>(<span class='no'>my_read</span>, <span class='kw'>minq</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sread(input): objeto 'my_read' no encontrado</span></div><div class='input'>
 <span class='co'># watch the average qualities</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/alphabetScore'>alphabetScore</a></span>(<span class='no'>my_read</span>) / <span class='fu'>width</span>(<span class='no'>my_read</span>)</div><div class='output co'>#&gt;  [1] 34.95 34.65 36.55 34.80 35.20 35.35 34.65 34.20 34.45 35.05 34.80 34.70
-#&gt; [13] 34.40 34.80 35.85 15.95 16.55 19.65 16.85 16.65 18.20 16.80 18.00 14.85
-#&gt; [25] 18.90 17.00 16.65 16.15 16.80 20.35</div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/alphabetScore'>alphabetScore</a></span>(<span class='no'>my_read</span>) / <span class='fu'>width</span>(<span class='no'>my_read</span>)</div><div class='output co'>#&gt; <span class='error'>Error in alphabetScore(my_read): objeto 'my_read' no encontrado</span></div><div class='input'>
 
 <span class='co'># watch the filtered sequences</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 15
-#&gt;      width seq
-#&gt;  [1]    20 TGGTCCGGTGTTCTGGCGGA
-#&gt;  [2]    20 ATAGGTACAGTCCAGTAATT
-#&gt;  [3]    20 GCCTCCCGCAGACGCTGGGT
-#&gt;  [4]    20 CCGGAATGCCCTTTCTGAGC
-#&gt;  [5]    20 AGCTCCAGCCGTTTGACTTC
-#&gt;  ...   ... ...
-#&gt; [11]    20 CTTACTAAGATTTGCAATAC
-#&gt; [12]    20 CTAAGCGAAGTGACAGATAT
-#&gt; [13]    20 GTTCGTCATTCATCCAGGCA
-#&gt; [14]    20 AGTGCGCGGACATCAATTAC
-#&gt; [15]    20 CACACAATTAAATATGACTC</div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sread(filtered): objeto 'filtered' no encontrado</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -201,11 +202,14 @@ Leandro Roser <a href='mailto:learoser@gmail.com'>learoser@gmail.com</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

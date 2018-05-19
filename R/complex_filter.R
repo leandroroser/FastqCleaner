@@ -16,9 +16,9 @@
 #' require('ShortRead')
 #' 
 #' # create  sequences of different width
-#'  
+#' set.seed(10)
 #'input <- lapply(c(0, 6, 10, 16, 20, 26, 30, 36, 40), 
-#'                function(x) random_seq(1, x, seed = 10))
+#'                function(x) random_seq(1, x))
 #'
 #'
 #' # create repetitive 'CG' sequences with length adequante 

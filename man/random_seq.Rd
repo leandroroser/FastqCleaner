@@ -4,15 +4,13 @@
 \alias{random_seq}
 \title{Create random sequences}
 \usage{
-random_seq(slength, swidth, seed = NULL, nuc = c("DNA", "RNA"),
-prob = c(0.25, 0.25, 0.25, 0.25))
+random_seq(slength, swidth, nuc = c("DNA", "RNA"), prob = c(0.25, 0.25,
+0.25, 0.25))
 }
 \arguments{
 \item{slength}{Number of sequences}
 
 \item{swidth}{Width of the sequences}
-
-\item{seed}{Random seed. Default NULL}
 
 \item{nuc}{Create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
 RNA (nucleotides = c('A, 'C', 'G', 'U'))?. Default: 'DNA'}
@@ -34,10 +32,15 @@ with random sequences
 }
 \examples{
 
-s1 <- random_seq(slength = 10, swidth = 20, seed = 10)
+# For reproducible examples, make a call to set.seed before 
+# running each random function
+
+set.seed(10)
+s1 <- random_seq(slength = 10, swidth = 20)
 s1
 
-s2 <- random_seq(slength = 10, swidth = 20, seed = 10, 
+set.seed(10)
+s2 <- random_seq(slength = 10, swidth = 20, 
 prob = c(0.6, 0.1, 0.3, 0))
 s2
 

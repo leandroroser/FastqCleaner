@@ -4,11 +4,12 @@ skip_on_cran()
 require("Biostrings")
 require("ShortRead")
 
-input <- random_length(30, 3:7, seed = 10)
+set.seed(10)
+input <- random_length(30, 3:7)
 
 test_that("seq filter works", {
   
-rm.seq  = c("TGGTC", "CGGT", "GTTCT", "ATA")
+rm.seq  = c("GAGA", "ATTTAT", "TAGC")
 match_before <- unlist(lapply(rm.seq, function(x) grep(x, as.character(sread(input)))))
 filtered <- seq_filter(input,rm.seq =  rm.seq)
 match_after <- unlist(lapply(rm.seq, function(x) grep(x, as.character(sread(filtered)))))

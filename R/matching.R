@@ -87,7 +87,7 @@ cutRseq <- function(subject, Rpattern, with.indels = FALSE,
                     fixed = "subject", method = c("exact", "er"), 
                     error_rate = 0.2, 
                     anchored = TRUE, ranges = FALSE,
-                    checks = TRUE, min_match_flank = 0L, 
+                    checks = TRUE, min_match_flank = 1L, 
                     ...) {
 
 method <- match.arg(method)

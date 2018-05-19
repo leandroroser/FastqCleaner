@@ -38,8 +38,8 @@
 #' @param min_match_flank When a match is found between a subsequence
 #' of the subject and the adapter in the corresponding flank,  
 #' which would be the minimum length of the overlapping region 
-#' (threshold) used for trimming?  Default is 0L (trim when >= 1 
-#' base(s) match)
+#' (threshold) used for trimming?  Default is 1L (trim when >= 2 
+#' base(s) match).
 #' @description This program can remove adapters and partial 
 #' adapters from 3' and 5', using the functions
 #'  \code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}} and 
@@ -66,7 +66,8 @@
 #' require('ShortRead')
 #' 
 #' # create 6 sequences of width 43
-#' input <- random_seq(6, 43, seed = 10)
+#' set.seed(10)
+#' input <- random_seq(6, 43)
 #' 
 #' # add adapter in 3' reverse complemented. In read 1, 
 #' # it will appear the 5' adapter of read 2 reverse complemented.
@@ -76,8 +77,9 @@
 #' input <- DNAStringSet(input)
 #' 
 #' # create qualities of width 50
+#' set.seed(10)
 #' input_q <- random_qual(c(30,40), slength = 6, swidth = 50, 
-#' seed = 10, encod = 'Sanger')
+#' encod = 'Sanger')
 #'
 #' # create names
 #' input_names <- seq_names(length(input))
@@ -99,8 +101,9 @@
 #' 
 #' 
 #' # create qualities of width 50
+#' set.seed(10)
 #' inputqR <- random_qual(c(30,40), slength = 6, swidth = 50,
-#' seed = 10, encod = 'Sanger')
+#' encod = 'Sanger')
 #' 
 #' my_readR <- ShortReadQ(sread = inputR, quality = inputqR, id = input_names)
 #'

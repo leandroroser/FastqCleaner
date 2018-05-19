@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Remove a fixed number of bases of a ShortReadQ object from 3' or 5' — fixed_filter" />
+
+<meta property="og:description" content="The program removes a given number of bases from the 3' or 5'
+regions of the sequences contained in a ShortReadQ object" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">FastqCleaner</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">FastqCleaner</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.28</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,20 +99,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove a fixed number of bases of a ShortReadQ object from 3' or 5'</h1>
+    
+    <div class="hidden name"><code>fixed_filter.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The program removes a given number of bases from the 3' or 5'
 regions of the sequences contained in a ShortReadQ object</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>fixed_filter</span>(<span class='no'>input</span>, <span class='kw'>trim3</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>trim5</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -126,12 +145,14 @@ object</p>
 
 <span class='co'># create 6 sequences of width 20</span>
 
-<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>6</span>, <span class='fl'>20</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>6</span>, <span class='fl'>20</span>)
 
 <span class='co'># create qualities of width 20 </span>
 
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+<span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 
 
 <span class='co'># create names</span>
@@ -195,11 +216,14 @@ Leandro Roser <a href='mailto:learoser@gmail.com'>learoser@gmail.com</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -31,12 +31,13 @@ require('Biostrings')
 require('ShortRead')
 
 # create 6 sequences of width 20
-input <- random_seq(50, 20, seed = 10)
+set.seed(10)
+input <- random_seq(50, 20)
 
 # inject N's
-
+set.seed(10)
 input <- inject_letter_random(input, how_many_seqs = 1:30, 
-how_many = 1:10, seed = 10)
+how_many = 1:10)
 
 input <- DNAStringSet(input)
 
@@ -45,8 +46,9 @@ input <- DNAStringSet(input)
 hist(letterFrequency(input, 'N'), breaks = 0:10, 
 main  = 'Ns Frequency', xlab = '# Ns')
 
-# create qualities of width 20 
-input_q <- random_qual(50, 20, seed = 10)
+# create qualities of width 20
+set.seed(10) 
+input_q <- random_qual(50, 20)
 
 # create names
 input_names <- seq_names(50)

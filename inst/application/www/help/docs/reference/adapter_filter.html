@@ -18,13 +18,39 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Remove full and partial adapters from a ShortReadQ object — adapter_filter" />
+
+<meta property="og:description" content="This program can remove adapters and partial 
+adapters from 3' and 5', using the functions
+ isMatchingEndingAt and 
+ isMatchingStartingAt 
+of Biostrings.  The program extends the methodology of
+the trimLRPatterns function of Biostrings,
+being also capable of removing adapters present within reads. 
+For a given position in the read, the two Biostrings functions return TRUE 
+when a match is present between a substring of the read and the adapter.
+As trimLRPatterns, adapter_filter also selects
+region and goes up to the end of the sequence in the corresponding flank 
+as the best match.
+If several valid matches are found, the function removes the
+largest subsequence. Adapters can be anchored or not.  
+Two methods are available:  one based on the exact matching of the adapter
+and the reads, and other in an error rate. When indels are allowed, 
+the second method uses the 'edit distance' between the subsequences 
+and the adapter" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +73,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">FastqCleaner</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">FastqCleaner</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.28</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +107,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,12 +115,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove full and partial adapters from a ShortReadQ object</h1>
+    
+    <div class="hidden name"><code>adapter_filter.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This program can remove adapters and partial 
 adapters from 3' and 5', using the functions
@@ -110,6 +144,7 @@ and the reads, and other in an error rate. When indels are allowed,
 the second method uses the 'edit distance' between the subsequences 
 and the adapter</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>adapter_filter</span>(<span class='no'>input</span>, <span class='kw'>Lpattern</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>Rpattern</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"exact"</span>,
   <span class='st'>"er"</span>), <span class='kw'>rc.L</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rc.R</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>first</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"R"</span>, <span class='st'>"L"</span>),
@@ -117,7 +152,7 @@ and the adapter</p>
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='st'>"subject"</span>, <span class='kw'>remove_zero</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>checks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>min_match_flank</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -196,8 +231,8 @@ Default 'subject', where only ambiguities in the pattern are
       <td><p>When a match is found between a subsequence
 of the subject and the adapter in the corresponding flank,  
 which would be the minimum length of the overlapping region 
-(threshold) used for trimming?  Default is 0L (trim when &gt;= 1 
-base(s) match)</p></td>
+(threshold) used for trimming?  Default is 1L (trim when &gt;= 2 
+base(s) match).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -219,7 +254,8 @@ object</p>
 <span class='fu'>require</span>(<span class='st'>'ShortRead'</span>)
 
 <span class='co'># create 6 sequences of width 43</span>
-<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>6</span>, <span class='fl'>43</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>6</span>, <span class='fl'>43</span>)
 
 <span class='co'># add adapter in 3' reverse complemented. In read 1, </span>
 <span class='co'># it will appear the 5' adapter of read 2 reverse complemented.</span>
@@ -229,8 +265,9 @@ object</p>
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/Biostrings/topics/XStringSet-class'>DNAStringSet</a></span>(<span class='no'>input</span>)
 
 <span class='co'># create qualities of width 50</span>
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>50</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+<span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 
 <span class='co'># create names</span>
 <span class='no'>input_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='seq_names.html'>seq_names</a></span>(<span class='fu'>length</span>(<span class='no'>input</span>))
@@ -258,8 +295,9 @@ object</p>
 
 
 <span class='co'># create qualities of width 50</span>
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='no'>inputqR</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>50</span>,
-<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
+<span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
 
 <span class='no'>my_readR</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>inputR</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>inputqR</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)
 
@@ -300,11 +338,14 @@ Leandro Roser <a href='mailto:learoser@gmail.com'>learoser@gmail.com</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

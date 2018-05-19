@@ -6,7 +6,7 @@
 \usage{
 cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
 method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
-ranges = FALSE, checks = TRUE, min_match_flank = 0L, ...)
+ranges = FALSE, checks = TRUE, min_match_flank = 1L, ...)
 }
 \arguments{
 \item{subject}{\code{\link[Biostrings:DNAString-class]{DNAString}} or 

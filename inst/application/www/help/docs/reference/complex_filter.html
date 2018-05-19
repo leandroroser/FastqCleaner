@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Remove sequences with low complexity — complex_filter" />
+
+<meta property="og:description" content="The program removes low complexity sequences, computing the 
+entropy with the observed frequency of dinucleotides." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">FastqCleaner</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">FastqCleaner</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.28</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +91,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,20 +99,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove sequences with low complexity</h1>
+    
+    <div class="hidden name"><code>complex_filter.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The program removes low complexity sequences, computing the 
 entropy with the observed frequency of dinucleotides.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>complex_filter</span>(<span class='no'>input</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>referenceEntropy</span> <span class='kw'>=</span> <span class='fl'>3.908135</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -129,9 +148,9 @@ object</p>
 <span class='fu'>require</span>(<span class='st'>'ShortRead'</span>)
 
 <span class='co'># create  sequences of different width</span>
-
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>6</span>, <span class='fl'>10</span>, <span class='fl'>16</span>, <span class='fl'>20</span>, <span class='fl'>26</span>, <span class='fl'>30</span>, <span class='fl'>36</span>, <span class='fl'>40</span>),
-               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>1</span>, <span class='no'>x</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+               <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>1</span>, <span class='no'>x</span>))
 
 
 <span class='co'># create repetitive 'CG' sequences with length adequante </span>
@@ -152,32 +171,21 @@ object</p>
 <span class='no'>freq</span>  <span class='kw'>&lt;-</span> <span class='no'>freq</span> /<span class='fu'>rowSums</span>(<span class='no'>freq</span>)
 <span class='no'>H</span> <span class='kw'>&lt;-</span> -<span class='fu'>rowSums</span>(<span class='no'>freq</span>  * <span class='fu'>log2</span>(<span class='no'>freq</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>H_max</span> <span class='kw'>&lt;-</span> <span class='fl'>3.908135</span>  <span class='co'># max entropy</span>
-<span class='fu'>plot</span>(<span class='no'>H</span>/<span class='no'>H_max</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'b'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>'Sequence'</span>, <span class='kw'>ylab</span><span class='kw'>=</span> <span class='st'>'E'</span>)</div><div class='img'><img src='complex_filter-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>H</span>/<span class='no'>H_max</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>'b'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>'Sequence'</span>, <span class='kw'>ylab</span><span class='kw'>=</span> <span class='st'>'E'</span>)</div><div class='img'><img src='complex_filter-1.png' alt='' width='700' height='433' /></div><div class='input'>
 
 <span class='co'># create qualities of width 40</span>
 
 <span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fu'>c</span>(<span class='fl'>30</span>,<span class='fl'>40</span>), <span class='kw'>slength</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>swidth</span> <span class='kw'>=</span> <span class='fl'>40</span>,
-                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)
-
+                       <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>encod</span> <span class='kw'>=</span> <span class='st'>'Sanger'</span>)</div><div class='output co'>#&gt; <span class='error'>Error in random_qual(c(30, 40), slength = 9, swidth = 40, seed = 10, encod = "Sanger"): unused argument (seed = 10)</span></div><div class='input'>
 <span class='co'># create names</span>
 <span class='no'>input_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='seq_names.html'>seq_names</a></span>(<span class='fl'>9</span>)
 
 <span class='co'># create ShortReadQ object</span>
-<span class='no'>my_read</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>input</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>input_q</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)
-
+<span class='no'>my_read</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/ShortReadQ-class'>ShortReadQ</a></span>(<span class='kw'>sread</span> <span class='kw'>=</span> <span class='no'>input</span>, <span class='kw'>quality</span> <span class='kw'>=</span> <span class='no'>input_q</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>input_names</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ShortReadQ(sread = input, quality = input_q, id = input_names): objeto 'input_q' no encontrado</span></div><div class='input'>
 <span class='co'># apply the filter</span>
-<span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>complex_filter</span>(<span class='no'>my_read</span>)
-
+<span class='no'>filtered</span> <span class='kw'>&lt;-</span> <span class='fu'>complex_filter</span>(<span class='no'>my_read</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sread(input): objeto 'my_read' no encontrado</span></div><div class='input'>
 <span class='co'># look at the filtered sequences</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt;   A DNAStringSet instance of length 7
-#&gt;     width seq
-#&gt; [1]    40 TGGTCCGGTGCGCGCGCGCGCGCGCGCGCGCGCGCGCGCG
-#&gt; [2]    40 TGGTCCGGTGTTCTGGCGCGCGCGCGCGCGCGCGCGCGCG
-#&gt; [3]    40 TGGTCCGGTGTTCTGGCGGACGCGCGCGCGCGCGCGCGCG
-#&gt; [4]    40 TGGTCCGGTGTTCTGGCGGAATAGGTCGCGCGCGCGCGCG
-#&gt; [5]    40 TGGTCCGGTGTTCTGGCGGAATAGGTACAGCGCGCGCGCG
-#&gt; [6]    40 TGGTCCGGTGTTCTGGCGGAATAGGTACAGTCCAGTCGCG
-#&gt; [7]    40 TGGTCCGGTGTTCTGGCGGAATAGGTACAGTCCAGTAATT</div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sread(filtered): objeto 'filtered' no encontrado</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -203,11 +211,14 @@ Leandro Roser <a href='mailto:learoser@gmail.com'>learoser@gmail.com</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

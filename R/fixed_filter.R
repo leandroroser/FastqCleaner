@@ -13,12 +13,14 @@
 #' 
 #' # create 6 sequences of width 20
 #'  
-#' input <- random_seq(6, 20, seed = 10)
+#' set.seed(10)
+#' input <- random_seq(6, 20)
 #' 
 #' # create qualities of width 20 
 #' 
+#' set.seed(10)
 #' input_q <- random_qual(c(30,40), slength = 6, swidth = 20, 
-#' seed = 10, encod = 'Sanger')
+#' encod = 'Sanger')
 #' 
 #' 
 #' # create names

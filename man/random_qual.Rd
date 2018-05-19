@@ -5,7 +5,7 @@
 \title{Create random qualities for a given encoding}
 \usage{
 random_qual(slength, swidth, qual = NULL, encod = c("Sanger", "Illumina1.8",
-"Illumina1.5", "Illumina1.3", "Solexa"), seed = NULL, prob = NULL)
+"Illumina1.5", "Illumina1.3", "Solexa"), prob = NULL)
 }
 \arguments{
 \item{slength}{number of sequences}
@@ -29,8 +29,6 @@ example: for a range from 20 to 30 in Sanger encoding,
 pass the argument = c(20, 30)}
 
 \item{encod}{sequence encoding}
-
-\item{seed}{random seed. Default: NULL}
 
 \item{prob}{a vector of range = range(qual), with probabilities to set 
 the frequency of each quality value. Default is equiprobability.

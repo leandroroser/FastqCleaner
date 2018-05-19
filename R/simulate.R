@@ -5,7 +5,6 @@
 #' with random sequences
 #' @param slength Number of sequences
 #' @param swidth Width of the sequences
-#' @param seed Random seed. Default NULL
 #' @param nuc Create sequences of DNA (nucleotides = c('A', 'C', 'G', 'T')) or
 #'  RNA (nucleotides = c('A, 'C', 'G', 'U'))?. Default: 'DNA'
 #' @param prob A vector of four probability values used 
@@ -18,23 +17,24 @@
 #' 
 #' @examples 
 #' 
-#' s1 <- random_seq(slength = 10, swidth = 20, seed = 10)
+#' # For reproducible examples, make a call to set.seed before 
+#' # running each random function
+#' 
+#' set.seed(10)
+#' s1 <- random_seq(slength = 10, swidth = 20)
 #' s1
 #' 
-#' s2 <- random_seq(slength = 10, swidth = 20, seed = 10, 
+#' set.seed(10)
+#' s2 <- random_seq(slength = 10, swidth = 20, 
 #' prob = c(0.6, 0.1, 0.3, 0))
 #' s2
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}
 #' @export
 
-random_seq <- function(slength, swidth, seed = NULL, nuc = c("DNA", "RNA"), 
+random_seq <- function(slength, swidth, nuc = c("DNA", "RNA"), 
                         prob = c(0.25, 
                         0.25, 0.25, 0.25)) {
-    
-    
-    if (!is.null(seed)) 
-        set.seed(seed)
     
     nuc <- match.arg(nuc)
     if (length(prob) > 4 || !is.numeric(prob) || any(prob < 0)) {
@@ -91,7 +91,6 @@ random_seq <- function(slength, swidth, seed = NULL, nuc = c("DNA", "RNA"),
 #' @param slength number of sequences
 #' @param swidth width of the sequences
 #' @param encod sequence encoding
-#' @param seed random seed. Default: NULL
 #' @param prob a vector of range = range(qual), with probabilities to set 
 #' the frequency of each quality value. Default is equiprobability.
 #' If the sum of the probabilities is > 1, the values will be nomalized 
@@ -110,11 +109,7 @@ random_seq <- function(slength, swidth, seed = NULL, nuc = c("DNA", "RNA"),
 
 random_qual <- function(slength, swidth, qual = NULL,
     encod = c("Sanger", "Illumina1.8", 
-    "Illumina1.5", "Illumina1.3", "Solexa"), seed = NULL, prob = NULL) {
-    
-    if (!is.null(seed)) 
-        set.seed(seed)
-    
+    "Illumina1.5", "Illumina1.3", "Solexa"), prob = NULL) {
     
     encod <- match.arg(encod)
     
@@ -263,24 +258,25 @@ create_uniform_width <- function(input,
 #' If NULL, a random value within the interval [1, width(my_seq[i])] 
 #' is picked for each sequence i.
 #' @param letter Letter to inject. Default: 'N'
-#' @param seed Random seed. Default: NULL
 #' @return  character vector
 #' @examples 
 #' 
+#' # For reproducible examples, make a call to set.seed before 
+#' # running each random function
 #' 
-#' s <- random_seq(slength = 10, swidth = 20, seed = 10)
-#' s <- inject_letter_random(s, how_many_seqs = 1:30, how_many= 2:10, seed = 10)
+#' set.seed(10)
+#' s <- random_seq(slength = 10, swidth = 20)
+#' 
+#' set.seed(10)
+#' s <- inject_letter_random(s, how_many_seqs = 1:30, how_many= 2:10)
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}
 #' @export
 
 
 inject_letter_random <- function(my_seq, how_many_seqs = NULL, 
-                                how_many_letters = NULL, 
-    seed = NULL, letter = "N") {
-    
-    if (!is.null(seed)) 
-        set.seed(seed)
+                                how_many_letters = NULL, letter = "N") {
+
     
     if (!is.null(how_many_seqs)) {
         if (any(how_many_seqs < 0)) 
@@ -382,16 +378,21 @@ seq_names <- function(n, base_name = "s", sep = "_") {
 #' @param encod sequence encoding
 #' @param base_name Base name for strings
 #' @param sep Character separing base names and the read number. Default: '_'
-#' @param seed random seed. Default: NULL
 #' @return  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
 #' @description Create a \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}}
 #' object with random sequences and qualities
+
 #' @examples 
 #' 
-#' s1 <- random_seq(slength = 10, swidth = 20, seed = 10)
+#' # For reproducible examples, make a call to set.seed before 
+#' # running each random function
+#' 
+#' set.seed(10)
+#' s1 <- random_seq(slength = 10, swidth = 20)
 #' s1
 #' 
-#' s2 <- random_seq(slength = 10, swidth = 20, seed = 10, 
+#' set.seed(10)
+#' s2 <- random_seq(slength = 10, swidth = 20, 
 #' prob = c(0.6, 0.1, 0.3, 0))
 #' s2
 #' 
@@ -404,10 +405,8 @@ random_length <- function(n, widths, random_widths = TRUE,
                         q_prob = NULL, nuc = c("DNA", "RNA"), qual = NULL, 
                         encod = c("Sanger", "Illumina1.8", "Illumina1.5",
                                 "Illumina1.3", "Solexa"), base_name = "s", 
-                        sep = "_", seed = NULL) {
+                        sep = "_") {
     
-    if (!is.null(seed)) 
-        set.seed(seed)
     
     if (any(widths < 1)) {
         stop("lengths must be > 1")
@@ -419,12 +418,12 @@ random_length <- function(n, widths, random_widths = TRUE,
     }
     
     s_out <- random_seq(slength = n, swidth = widths, nuc = nuc, 
-                        seed = seed, prob = seq_prob)
+                        prob = seq_prob)
     
     
     q_out <- random_qual(slength = n, swidth = widths, 
                         qual = qual, encod = encod, 
-                        seed = seed, prob = q_prob)
+                        prob = q_prob)
     
     n_out <- seq_names(n = n, base_name = base_name, sep = sep)
     

@@ -7,8 +7,7 @@
 random_length(n, widths, random_widths = TRUE, replace = TRUE,
 len_prob = NULL, seq_prob = c(0.25, 0.25, 0.25, 0.25), q_prob = NULL,
 nuc = c("DNA", "RNA"), qual = NULL, encod = c("Sanger", "Illumina1.8",
-"Illumina1.5", "Illumina1.3", "Solexa"), base_name = "s", sep = "_",
-seed = NULL)
+"Illumina1.5", "Illumina1.3", "Solexa"), base_name = "s", sep = "_")
 }
 \arguments{
 \item{n}{number of sequences}
@@ -61,8 +60,6 @@ pass the argument = c(20, 30)}
 \item{base_name}{Base name for strings}
 
 \item{sep}{Character separing base names and the read number. Default: '_'}
-
-\item{seed}{random seed. Default: NULL}
 }
 \value{
 \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
@@ -73,10 +70,15 @@ object with random sequences and qualities
 }
 \examples{
 
-s1 <- random_seq(slength = 10, swidth = 20, seed = 10)
+# For reproducible examples, make a call to set.seed before 
+# running each random function
+
+set.seed(10)
+s1 <- random_seq(slength = 10, swidth = 20)
 s1
 
-s2 <- random_seq(slength = 10, swidth = 20, seed = 10, 
+set.seed(10)
+s2 <- random_seq(slength = 10, swidth = 20, 
 prob = c(0.6, 0.1, 0.3, 0))
 s2
 

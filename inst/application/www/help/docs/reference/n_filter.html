@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Remove sequences with non-identified bases (Ns) from a ShortReadQ object — n_filter" />
+
+<meta property="og:description" content="This program is a wrapper to
+nFilter. 
+It removes the sequences with a number of N's above 
+a threshold value 'rm.N'. 
+All the sequences with a number of N &gt; rm.N (N &gt;= rm.N) will be removed" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +60,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">FastqCleaner</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">FastqCleaner</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.99.28</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +94,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,12 +102,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove sequences with non-identified bases (Ns) from a ShortReadQ object</h1>
+    
+    <div class="hidden name"><code>n_filter.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This program is a wrapper to
 <code><a href='http://www.rdocumentation.org/packages/ShortRead/topics/srFilter'>nFilter</a></code>. 
@@ -97,10 +118,11 @@ It removes the sequences with a number of N's above
 a threshold value 'rm.N'. 
 All the sequences with a number of N &gt; rm.N (N &gt;= rm.N) will be removed</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>n_filter</span>(<span class='no'>input</span>, <span class='no'>rm.N</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -128,21 +150,23 @@ object</p>
 <span class='fu'>require</span>(<span class='st'>'ShortRead'</span>)
 
 <span class='co'># create 6 sequences of width 20</span>
-<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>50</span>, <span class='fl'>20</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_seq.html'>random_seq</a></span>(<span class='fl'>50</span>, <span class='fl'>20</span>)
 
 <span class='co'># inject N's</span>
-
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='inject_letter_random.html'>inject_letter_random</a></span>(<span class='no'>input</span>, <span class='kw'>how_many_seqs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>30</span>,
-<span class='kw'>how_many</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='kw'>how_many</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>)
 
 <span class='no'>input</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/Biostrings/topics/XStringSet-class'>DNAStringSet</a></span>(<span class='no'>input</span>)
 
 
 <span class='co'># watch the N's frequency</span>
 <span class='fu'>hist</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/Biostrings/topics/letterFrequency'>letterFrequency</a></span>(<span class='no'>input</span>, <span class='st'>'N'</span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fl'>0</span>:<span class='fl'>10</span>,
-<span class='kw'>main</span>  <span class='kw'>=</span> <span class='st'>'Ns Frequency'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>'# Ns'</span>)</div><div class='img'><img src='n_filter-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
-<span class='co'># create qualities of width 20 </span>
-<span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fl'>50</span>, <span class='fl'>20</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='kw'>main</span>  <span class='kw'>=</span> <span class='st'>'Ns Frequency'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>'# Ns'</span>)</div><div class='img'><img src='n_filter-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># create qualities of width 20</span>
+<span class='fu'>set.seed</span>(<span class='fl'>10</span>)
+<span class='no'>input_q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='random_qual.html'>random_qual</a></span>(<span class='fl'>50</span>, <span class='fl'>20</span>)
 
 <span class='co'># create names</span>
 <span class='no'>input_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='seq_names.html'>seq_names</a></span>(<span class='fl'>50</span>)
@@ -169,7 +193,7 @@ object</p>
 #&gt; [41]    20 NGGAATTCCCNGAANTCGCA</div><div class='input'>
 <span class='co'># watch the N's frequency</span>
 <span class='fu'>hist</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/Biostrings/topics/letterFrequency'>letterFrequency</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ShortRead/topics/accessors'>sread</a></span>(<span class='no'>filtered</span>), <span class='st'>'N'</span>),
-<span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>'Ns distribution'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>''</span>)</div><div class='img'><img src='n_filter-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>'Ns distribution'</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>''</span>)</div><div class='img'><img src='n_filter-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -195,11 +219,14 @@ Leandro Roser <a href='mailto:learoser@gmail.com'>learoser@gmail.com</a>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

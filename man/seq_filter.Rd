@@ -22,7 +22,8 @@ Removes a set of sequences
 
 require(ShortRead)
 
-input <- random_length(30, 3:7, seed = 10)
+set.seed(10)
+input <- random_length(30, 3:7)
 rm.seq  = c('TGGTC', 'CGGT', 'GTTCT', 'ATA')
 
 # verify that some sequences match

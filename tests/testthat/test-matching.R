@@ -28,6 +28,6 @@ test_that("cutRseq works", {
   expect_equal(width(out),  c(1L, 8L, 10L, 0L, 6L, 3L))
   
   out <- FastqCleaner:::cutRseq(subject, Rpattern, anchored = TRUE, ranges = FALSE)
-  expect_equal(width(out),  c(15L, 8L, 10L, 0L, 6L, 3L))
+  expect_equal(width(out),  c(16L, 8L, 10L, 0L, 6L, 3L))
   
 })

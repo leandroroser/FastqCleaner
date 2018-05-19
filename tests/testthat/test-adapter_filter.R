@@ -3,12 +3,14 @@ skip_on_cran()
 
 require("Biostrings")
 require("ShortRead")
-set.seed(10)
 
-input <- random_seq(6, 43, seed = 10)
+set.seed(10)
+input <- random_seq(6, 43)
 # create qualities of width 50
+
+set.seed(10)
 input_q <- random_qual(c(30,40), slength = 6, swidth = 50, 
-                       seed = 10, encod = "Sanger")
+                       encod = "Sanger")
 
 # create names
 input_names <- seq_names(length(input))
@@ -132,15 +134,17 @@ test_that("test that remotion of partial adapters within sequences works", {
   
 ## FROM RIGHT 
 # create qualities of width 50
+set.seed(10)
 input_q <- random_qual(c(30,40), slength = 6, 
-                       swidth = 47, seed = 10, encod = "Sanger")
+                       swidth = 47, encod = "Sanger")
 
 # create names
 input_names <- BStringSet(paste0("v", seq_len(length(input))))
 adapter <- "ATCGACT"
 ## Remove reverse complement from right
-my_seqs <- paste0(random_seq(6, 20, seed = 10), 
-                             adapter, random_seq(6, 20, seed = 10))
+set.seed(10)
+my_seqs <- paste0(random_seq(6, 20), 
+                             adapter, random_seq(6, 20))
 my_seqs <- DNAStringSet(my_seqs)
 
 # create ShortReadQ object
@@ -149,12 +153,12 @@ my_read <- ShortReadQ(sread = my_seqs, quality = input_q, id = input_names)
 # trim adapter
 filtered <- adapter_filter(my_read, Rpattern = adapter)
 
-expect_equal(unique(width(filtered[-1])), 47)
+expect_equal(unique(width(filtered[-c(4, 6)])), 47)
 
 ### FROM LEFT
 filtered <- adapter_filter(my_read, Lpattern = adapter)
 
-expect_equal(unique(width(filtered[-1])), 47)
+expect_equal(unique(width(filtered)), 47)
 
 })
 

@@ -5,7 +5,7 @@
 \title{Inject a letter in a set of sequences at random positions}
 \usage{
 inject_letter_random(my_seq, how_many_seqs = NULL, how_many_letters = NULL,
-seed = NULL, letter = "N")
+letter = "N")
 }
 \arguments{
 \item{my_seq}{character vector with sequences to inject}
@@ -24,8 +24,6 @@ that the letter will be injected in the sequence i.
 If NULL, a random value within the interval [1, width(my_seq[i])] 
 is picked for each sequence i.}
 
-\item{seed}{Random seed. Default: NULL}
-
 \item{letter}{Letter to inject. Default: 'N'}
 }
 \value{
@@ -36,9 +34,14 @@ Inject a letter in a set of sequences at random positions
 }
 \examples{
 
+# For reproducible examples, make a call to set.seed before 
+# running each random function
 
-s <- random_seq(slength = 10, swidth = 20, seed = 10)
-s <- inject_letter_random(s, how_many_seqs = 1:30, how_many= 2:10, seed = 10)
+set.seed(10)
+s <- random_seq(slength = 10, swidth = 20)
+
+set.seed(10)
+s <- inject_letter_random(s, how_many_seqs = 1:30, how_many= 2:10)
 
 }
 \author{

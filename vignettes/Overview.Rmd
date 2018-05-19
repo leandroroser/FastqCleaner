@@ -12,7 +12,7 @@ date: "May 18, 2018"
 revised: "May 18, 2018"
 
 output:
-    BiocStyle::html_document
+    BiocStyle::pdf_document
 df_print: paged
 abstract: |
     `r Biocpkg("FastqCleaner")` is an interactive application 
@@ -403,17 +403,22 @@ set.seed(10)
 require("Biostrings")
 require("ShortRead")
 require("FastqCleaner")
-set.seed(10)
 ```
 
 ```{r eval=TRUE, echo=TRUE}
 
 # create sequences
-input <- random_seq(6, 43, seed = 10)
+set.seed(10) 
+# nota that the use of set.seed before the call to the 
+# random generators allows reproducibility of the
+# examples
+
+input <- random_seq(6, 43)
 input
 
 # create qualities of width 50
-input_q <- random_qual(c(30,40), slength = 6, swidth = 50, seed = 10, 
+set.seed(10)
+input_q <- random_qual(c(30,40), slength = 6, swidth = 50, 
 encod = "Sanger")
 
 # create names
@@ -480,9 +485,9 @@ and a complexity threshold of 0.5.
 ```{r}
 
 # create  sequences of different width
-
+set.seed(10)
 input <- lapply(c(0, 6, 10, 16, 20, 26, 30, 36, 40), 
-            function(x) random_seq(1, x, seed = 10))
+            function(x) random_seq(1, x))
 
 
 # create repetitive "CG" sequences with length adequante 
@@ -512,9 +517,9 @@ H_plot(input)
 
 ```{r}
 # create qualities of widths 40
-
+set.seed(10)
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
-        seed = 10, encod = "Sanger")
+           encod = "Sanger")
 
 # create names
 input_names <- seq_names(9)
@@ -543,12 +548,13 @@ Removes the specified number of bases from 3’ or 5’.
 ```{r}
 
 # create sequences, qualities and names of width 20
-
-input <- random_seq(6, 20, seed = 10)
+set.seed(10)
+input <- random_seq(6, 20)
 input
 
+set.seed(10)
 input_q <- random_qual(c(30,40), slength = 6, swidth = 20, 
-seed = 10, encod = "Sanger")
+           encod = "Sanger")
 
 input_names <- seq_names(6)
 
@@ -580,7 +586,8 @@ minimum threshold value or/and higher than a maximum threshold value.
 ```{r}
 
 # create  ShortReadQ object width widths between 1 and 60
-input <- random_length(10, widths = 1:60, seed = 10)
+set.seed(10)
+input <- random_length(10, widths = 1:60)
 sread(input)
 
 # apply the filter, removing sequences with  5>length> 30
@@ -600,12 +607,14 @@ all those sequences with a number of N’s > a given threshold.
 
 ```{r}
 # create 10 sequences of width 20
-input <- random_seq(10, 20, seed = 10)
+set.seed(10)
+input <- random_seq(10, 20)
 input
 
 # inject N's
+set.seed(10)
 input <- inject_letter_random(input, how_many_seqs = 1:5,
-            how_many = 1:10, seed = 10)
+            how_many = 1:10)
 input
 
 #'  
@@ -618,7 +627,8 @@ hist(letterFrequency(input, "N"), breaks = 0:10,
 ```{r}
 
 # Create qualities, names and ShortReadQ object
-input_q <- random_qual(10, 20, seed = 10)
+set.seed(10)
+input_q <- random_qual(10, 20)
 input_names <- seq_names(10)
 my_read <- ShortReadQ(sread = input, quality = input_q, id = input_names)
 
@@ -643,13 +653,16 @@ Removes those sequences with quality < a give threshold.
 ```{r}
 
 # create 30 sequences of width 20, 15 with low quality and 15 with high quality
-input <- random_seq(30, 20, seed = 10)
+set.seed(10)
+input <- random_seq(30, 20)
 
+set.seed(10)
 my_qual_H <- random_qual(c(30,40), slength = 15, swidth = 20,
-                        seed = 10, encod = "Sanger")
+                         encod = "Sanger")
 
+set.seed(10)
 my_qual_L <-   random_qual(c(5,30), slength = 15, swidth = 20, 
-                        seed = 10, encod = "Sanger")
+                           encod = "Sanger")
 input_q<- c(my_qual_H, my_qual_L)
 
 input_names <- seq_names(30)
@@ -692,7 +705,8 @@ Removes sequences that match those passed as argument.
 ```{r}
 
 # Generate random sequences
-input <- random_length(30, 3:7, seed = 10)
+set.seed(10)
+input <- random_length(30, 3:7)
 
 # Remove sequences that contain the following patterns:
 rm.seq  = c("TGGTC", "CGGT", "GTTCT", "ATA")
@@ -721,20 +735,23 @@ Removes from the 3’ ends in-tandem nucleotides with a quality
 ```{r}
 
 # Create 6 sequences of width 20
-input <- random_seq(6, 20, seed = 10)
+set.seed(10)
+input <- random_seq(6, 20)
 input
 
 # Create Phred+33 qualities of width 15 and paste to qualities of length 
 # 5 used for the tails.
 # for three of the sequences, put low qualities in tails
-
-my_qual <- random_qual(c(30,40), slength = 6, swidth = 15, seed = 10, 
+set.seed(10)
+my_qual <- random_qual(c(30,40), slength = 6, swidth = 15, 
                         encod = "Sanger")
-tails <-   random_qual(c(30,40), slength = 6, swidth = 5, seed = 10, 
+set.seed(10)
+tails <-   random_qual(c(30,40), slength = 6, swidth = 5, 
                         encod = "Sanger")
 
 # Low quality tails in sequences 2, 3 & 4
-tails[2:4] <- random_qual(c(3, 20), slength = 3, swidth = 5, seed = 10,
+set.seed(10)
+tails[2:4] <- random_qual(c(3, 20), slength = 3, swidth = 5,
                         encod = "Sanger")
 my_qual <- paste0(my_qual, tails)
 input_q <- BStringSet(my_qual)

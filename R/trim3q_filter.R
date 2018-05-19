@@ -18,19 +18,24 @@
 #' require('ShortRead')
 #'
 #' # create 6 sequences of width 20
-#'  
-#' input <- random_seq(6, 20, seed = 10)
+#' set.seed(10)
+#' input <- random_seq(6, 20)
 #' 
 #' # create qualities of width 15 and paste to qualities
 #' # of length 5 used for the tails.
 #' # for two of the sequences, put low qualities in tails
 #' 
+#' set.seed(10)
 #' my_qual <- random_qual(c(30,40), slength = 6, swidth = 15, 
-#' seed = 10, encod = 'Sanger')
+#' encod = 'Sanger')
+#' 
+#' set.seed(10)
 #' tails <-   random_qual(c(30,40), slength = 6, swidth = 5, 
-#' seed = 10, encod = 'Sanger')
+#'  encod = 'Sanger')
+#'  
+#' set.seed(10)
 #' tails[2:3] <- random_qual(c(3, 20), slength = 2, 
-#' swidth = 5, seed = 10, encod = 'Sanger')
+#' swidth = 5,  encod = 'Sanger')
 #' my_qual <- paste0(my_qual, tails)
 #' input_q <- BStringSet(my_qual)
 
