@@ -46,8 +46,8 @@ this_os <- get_os()
 # Check dependences for each os
 
 if (this_os == "osx") {
-  test_xcode <- class(try(system("gcc --version", intern=T), silent = TRUE))
-  if(class(test_xcode) == "try-error") {
+  test_xcode <- class(try(system2("gcc --version", stdout = TRUE), silent = TRUE))
+  if(is(test_xcode, "try-error")) {
     
     stop(toupper("Command Line Tools is required. Please paste install Command Line Tools pasting the following 
           command in a Terminal and then selecting install in the popup dialog:\n 
@@ -61,19 +61,21 @@ if (this_os == "osx") {
 if(this_os == "linux") {
   is_ubuntu <- grep("ubuntu", sessionInfo()$running,  ignore.case = TRUE)
   if(length(is_ubuntu) > 0) {
-    p1 <- length(system("dpkg -l |grep libssl-dev", intern = TRUE))
-    p2 <- length(system("dpkg -l |grep libcurl4-openssl-dev", intern = TRUE))
+    p1 <- is(try(system2("dpkg -l |grep libssl-dev", stdout =  TRUE)), 
+                "try-error")
+    p2 <- is(try(system2("dpkg -l |grep libcurl4-openssl-dev", stdout =  TRUE)),
+                "try-error")
     msg <- ""
     what <- ""
-    if(p1 == 0 ) {
+    if(p1) {
       msg <- ("libssl-dev in required\n")
       what <- "libssl-dev "
     }
-    if(p2 == 0 ) {
+    if(p2) {
       msg <- c(msg, "libcurl4-openssl-dev in required\n")
       what <- paste0(what, "libcurl4-openssl-dev ")
     }
-    if(p1 == 0 || p2 == 0) {
+    if(p1 || p2) {
       stop(toupper(paste0(msg, "Please install the dependences with the following command\n: sudo apt get install ", what)))
     }
   } else {

@@ -101,7 +101,7 @@ if (error_rate > 1 || error_rate < 0) {
 
 if (checks) {
 
-if (class(Rpattern) != "DNAString") {
+if (!is(Rpattern, "DNAString")) {
         stop("Rpattern must be a character string or a DNAString object")
 }
 
@@ -206,7 +206,7 @@ method <- match.arg(method)
 Lpattern <- DNAString(Lpattern)
 
 if (checks) {
-    if (class(Lpattern) != "DNAString") {
+    if (!is(Lpattern, "DNAString")) {
         stop("Rpattern must be a character string or a DNAString object")
     }
 

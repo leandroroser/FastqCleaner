@@ -458,7 +458,7 @@ shinyServer(
           try(close(temporalPath), silent = TRUE)
           
           if (length(thisTemporalFile) == 0 || 
-              class(thisTemporalFile) == "try-error") {
+              is(thisTemporalFile, "try-error")) {
             filepath$x <- ""
             showModal(modalDialog(title = "FastqCleaner message",
               "Invalid file: ShortRead cannot recognize the file format, 
