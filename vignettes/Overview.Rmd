@@ -8,17 +8,18 @@ author:
 - affiliation: IIB-INTECH - UNSAM
   email: learoser@gmail.com
   name: Daniel Sánchez
-date: "February 12, 2018"
-revised: "February 14, 2018"
+date: "May 18, 2018"
+revised: "May 18, 2018"
 
 output:
     BiocStyle::html_document
 df_print: paged
 abstract: |
-    `r Biocpkg("FastqCleaner")` provides a Shiny application 
-    for both exploratory analysis and pre-processing of FASTQ files. 
-    The interface shows diagnostic information for the input and output 
-    data and provides a series of cleaning/filtering operations in 
+    `r Biocpkg("FastqCleaner")` is an interactive application 
+    for both quality control and pre-processing of FASTQ files. 
+    The interface, based on a Bioconductor back-end, 
+    provides diagnostic information for the input and output 
+    data and a series of filtering and trimming operations in 
     an interactive framework.
 vignette: |
     %\VignetteIndexEntry{An Introduction to FastqCleaner}
@@ -27,77 +28,6 @@ vignette: |
 editor_options: 
 chunk_output_type: console
 ---
-
-
-Instructions for direct installation from the GitHub repository 
-===============================================================
-
-Prerequisites
------------------
-
-* **Linux users**
-
--- *OpenSSL and libcurl libraries installed*
-
-&nbsp;
-
-
-*-> Ubuntu*:
-
-Paste the following command in terminal:
-
-```
-sudo apt-get install libssl-dev libcurl4-openssl-dev
-```
-
-For other Linux distribution, install a compatible version of the 
-*OpenSLL* and *libcurl* libraries. 
-
-&nbsp;&nbsp;
-
-
-* **Mac users**
-
--- *Command Line Tools*
-
-Type in a Terminal:
-
-```
-xcode-select --install
-```
-
-A software update popup will ask if the *Command Line Tools*
-must be installed. Press "install".
-
-&nbsp;
-
-
--- *XQuartz* 
-
-*XQuartz* can be downloaded from the following link: https://www.xquartz.org/
-
-&nbsp;&nbsp;
-
-
-* **Windows users**
-&nbsp;
-
--- *Rtools* 
-
-*Rtools* is available at https://cran.r-project.org/bin/windows/Rtools/
-&nbsp;
-
-
-Download and installation
---------------------------
-
-Paste the following command in the R console:
-
-```{r eval=FALSE, include=TRUE}
-source("https://goo.gl/u2xraS")
-```
-&nbsp;
-
 
 Launching the application
 ===========================
@@ -114,98 +44,49 @@ As an alternative method, an RStudio addin
 can be found in the Addins menu (Figure 1). 
 This button allows the direct launch of the application with a single click.
 
-![](images/Fig1.jpg)
+![](images/Fig1.png)
 **Figure 1**: addin of the app in RStudio (RStudio version >= 0.99.878 required)
 
-
-A bird’s eye view to `r Biocpkg("FastqCleaner")`
-================================================
-
-The application contains three main panels:
-
-
-First panel
-------------
-
-The first panel includes the "operations menu" and the "input menu" (Fig. 2).
-
-
-![](images/Fig2.jpg)
-
-**Figure 2**: First panel of the app
-
-&nbsp;
-
-Second panel
--------------
-
-The second panel shows the operations that were performed to the input file,
-after processing (Fig. 3).
-
-
-![](images/Fig3.jpg)
-
-**Figure 3**: Second panel of the app
-
-
-&nbsp;  
-
-
-Third panel
-------------
-
-The third panel shows interactive plots for diagnostics of input and 
-output files (Fig. 4)
-
-
-![](images/Fig4.jpg)
-
-**Figure 4**: Third panel of the app
-
-
 &nbsp;
 
 
-Description of the panels
-===========================
+Description of the application
+===============================
+
+The application contains three main panels, as described below. 
 
 First panel
 ---------------
 
-Fig. 5 shows the elements of the the two menus panel. In the next sections 
-each manu and its elements are described.  
+The first panel includes two elements: a dashboard for selection 
+of trimming and  filtering operations, and a menu for selection 
+of the input file/s (Fig. 2). 
 
 
-![](images/Fig5.jpg)
+![](images/Fig2.png)
 
-**Figure 5**: Panel 1, with its elements numbered. See explanation 
-for each element below
+**Figure 2**: Panel 1, with each compontent indicated with a number.
+See explanation for each element below
 
 &nbsp;
 
 ### Selecting operations
 
-The operations menu (Fig. 6) shows the filters that can be selected 
-for file processing.
-
-
-![](images/Fig6.jpg)
-
-**Figure 6**: Elements of the “operations menu”
-
+The "operations menu" (Fig. 2, elements 1 to 8) shows 
+the available operations for file processing:
 
 1.  **Remove by N(s)**: removes sequences with a number of Ns 
-(non identified bases) above a threshold value
+(non identified bases) above a selected threshold value
 
-2.  **Remove low complexity sequences**: remove sequences with a complexity 
-above a threshold value
+2.  **Remove low complexity sequences**: remove sequences with a value of 
+complexity above a threshold value
 
 3.  **Remove adapters**: removes adapters and partial adapters. 
 Adapter sequences from both ends of single or paired read reads 
-can be selected. The sequences can be reverse-complemented. 
-The program also allows to use the filter considering indels 
+can be selected. Sequences can be reverse-complemented before processing. 
+The program also allows to consider indels 
 and/or anchored adapters. Two method can be used for adapter 
-remotion: exact or error rate. The methods are based on 
+remotion: "exact" or "error rate". The methods are based on 
 lower-level `r Biocpkg("Biostrings")` infrastructure, working 
 as the function trimLRpatterns, but optimized for both anchored 
 and non anchored adapters
@@ -228,17 +109,9 @@ only one copy of each sequence present in the file
 
 ### Loading files
 
-The file selection menu (Fig. 7) contains the options for file loading, 
-operations and application resetting, and the “advanced” submenu.
-
-&nbsp;
-
-
-![](images/Fig7.jpg)
-
-**Figure 7**: File selection menu
-
-&nbsp;
+The "file selection menu" (Fig. 2, elements 9 to 17) 
+contains options to handle the input file (type of file, file selection), 
+buttons to run, clear and reset the aplication, and the “advanced” submenu:
 
 
 9.  **Single-end reads / paired-end reads**: type of input files
@@ -247,44 +120,42 @@ operations and application resetting, and the “advanced” submenu.
 
 11.  **“RUN!” button**: to run the program
 
-12.  **Output format**: to select if the output file should be compressed 
+12.  **Output format**: to select whether the output file should be compressed 
 (.gz) or not
 
 13.  **“CLEAR” button**: to clear the configuration of the operations menu 
 that have been selected in the first panel, but keeping the input file(s)
 
-14.  **“RESET” button**: to reset completly the application, removing the 
+14.  **“RESET” button**: to restart the application, removing the 
 input file(s) and the selected configurations
 
-15.  **Selection notificator**: it indicates the path of the selected file
+15.  **Selection notificator**:  information of the path of the selected file/s
 
-16.  **Encoding notificator**: it indicates the input file encoding
+16.  **Encoding notificator**: information of the input file/s encoding
 
-17.  **Advanced options button**: to select a custom encoding and to set 
+17.  **Advanced options button**: to select a custom encoding and set 
 the number of reads included in each chunk for processing, as described below
 
 
 ### Advanced options
 
-The advanced options submenu (Fig. 8) allows to customize some fine aspects 
-of file processing.
+The "advanced options submenu" (Fig. 3) allows to customize some fine aspects 
+of the trimming and filtering process:
 
 
-![](images/Fig8.jpg)
+![](images/Fig3.png)
 
-**Figure 8**: advanced options submenu
+**Figure 3**: Advanced options submenu
 
 &nbsp;
 
 
-18.  **Encoding menu**: In addition to the default approach used for the 
-program (auto-detection of file encoding), the user can select from a list
-of standard encodings
+18.  **Encoding menu**: in addition to the default approach used by the 
+program (auto-detection of file encoding), users can select a standard encoding 
+from a list
 
-19.  **Chunk size**: the program takes a random sample of the file with number 
-of reads = chunk size (default: 1000000), for detection of the file encoding
-
-
+19.  **Chunk size**: the program takes this number of reads at random from
+the file (default: 1000000), for encoding detection
 
 
 &nbsp;
@@ -293,21 +164,24 @@ of reads = chunk size (default: 1000000), for detection of the file encoding
 Second panel
 ----------------
 
-The “File Operations” panel (Fig. 9) indicates post-processing information.
 
-![](images/Fig9.jpg)
+The second panel (“file operations” panel, Fig. 4) shows the operations 
+that were sucessfuly performed on the input file after running the program.
 
-**Figure 9**: File operations panel, with its elements
+
+![](images/Fig4.png)
+
+**Figure 4**: File operations panel, with its elements
 
 &nbsp;  
 
 
-The elements of the panel are the following:
+The panel contains the following elements: 
 
-20.  **Files location**: Location of input and output files
+20.  **Files location**: location of input and output files
 
-21.  **Operations performed**: Operations perfomed on the input file, after 
-the program run. Each individual display indicates the number of reads that
+21.  **Operations performed**: operations perfomed on the input file.
+Each individual display indicates the number of reads that
 passed the corresponding filter
 
 
@@ -317,14 +191,16 @@ passed the corresponding filter
 Third panel
 ---------------
 
-The “Live Results” panel (Fig. 10) shows diagnostic plots, for both the 
-input and/or output files. The program takes a random sample of reads for 
-construction of the plots (default: 1000 reads).
+
+The third panel ( “live results” panel, Fig. 5) shows 
+interactive diagnostics plots for both input and output files. 
+The program takes a random sample of reads for 
+construction of the plots (default: 10000 reads).
 
 
-![](images/Fig10.jpg)
+![](images/Fig5.png)
 
-**Figure 10**: Live results panel
+**Figure 5**: Live results panel
 
 
 &nbsp;
@@ -335,7 +211,7 @@ The panel includes the following options in the menu located on the left:
 22. **Sample size**: the sample size used for construction of the plots. 
 Default: 10000 reads
 
-23. **Input / output**: ¿show diagnostics plots for the input or output files?
+23. **Input / output**: show diagnostics plots for input or output files?
 
 24. **Diagnostics plots**: the plot to be shown, that can be one of the 
 following:
@@ -350,7 +226,7 @@ following:
     *   _Mean quality distribution_: Quality distribution, using for 
     the construction of the histogram the mean quality of each read
 
-    *   _% reads with Phred scores > threshold_: % of reads with with all 
+    *   _% reads with Phred scores > threshold_: % of reads with all 
     the quality values > threshold
 
     *   _Per cycle base proportion_: Proportion of each base 
@@ -366,18 +242,18 @@ following:
     *   _Read ocurrence distribution_: % reads that ocurr at different 
     frequencies values in the file. The plot also includes a table
 
-    *   _Relative k-mer diversity_: relation of unique k-mers/ all posible 
+    *   _Relative k-mer diversity_:  unique k-mers / all posible 
     kmers for each cycle
 
 
 25. **Select k-mer size**: k-mer size for the k-mers frequency plot
 
 26. **Top sequences in duplication level analysis**: a list of duplicated 
-sequences can be desplegated from the "read ocurrence distribution" plot. 
-The number selected indicates the number of sequences to be show, ordered 
-from high to low duplication level. 
+sequences, ordered from high to low duplication level,
+can be desplegated from the "read ocurrence distribution" plot. 
+The number selected here indicates how many sequences should be shown.
 Note that the frequency of reads are relative to the sample size selected 
-(i.e, fold-times respect to the reads present only one time in the sample)
+(i.e., fold-times in relation to those reads present only once in the sample)
 
 27. **Plot panel**
 
@@ -387,7 +263,7 @@ Note that the frequency of reads are relative to the sample size selected
 A worked example: FASTQ processing in a nutshell
 ==================================================
 
-A sample FASTQ (gz-compressed) file 'example.fastq.gz' for testing can 
+A sample FASTQ (gz-compressed) file 'example.fastq.gz' can 
 be downloaded with the following command in R:
 
 ```{r eval=FALSE, include=TRUE}
@@ -398,115 +274,88 @@ A direct download is provided in <a href="https://goo.gl/hb4Kr9">
 this link </a>.
 &nbsp;
 
-A tipical `r Biocpkg("FastqCleaner")` workflows starts with the loading of 
-the input file/s (Figs. 11, 12).
+A tipical `r Biocpkg("FastqCleaner")` workflow starts with the input file/s 
+upload (Fig. 6).
 
 
-![](images/Fig11.jpg)
-**Figure 11**: File input menu. The example shows a single-end reads case 
+![](images/Fig6.png)
+
+**Figure 6**: File input menu. The example shows a single-end reads case 
 (sample file 'example.fastq.gz'). For paired-end reads, the selection of the
-corresponding library type generates an additional button for loading the 
-second file
-
-
-![](images/Fig12.jpg)
-
-**Figure 12**: When the "FILE" button is pressed, a browser for file selection 
-will appear
+corresponding library type generates an additional button to upload the 
+second file.
 
 &nbsp;  
 
-The file encoding is detected automatically by the program, but it can also be 
-manually specified in the advanced submenu (Fig. 13). This menu also allows to 
-customize the chunk size used for processing.
+The file encoding is automatically detected by the program, but it can also be 
+manually specified in the advanced submenu (Fig. 7). This menu also offers an
+option to customize the chunk size used for processing.
 
 
-![](images/Fig13.jpg)
+![](images/Fig7.png)
 
-**Figure 13**: Advanced submanu
+**Figure 7**: Advanced submanu
 
 &nbsp;
 
 Next, the operations to be performed on the input file are selected from the
-operations menu (Fig. 14).
+operations menu (Fig. 8).
 
-![](images/Fig14.jpg)
+![](images/Fig8.png)
 
-**Figure 14**: Example of operations selection. A dialog shows the expected 
-input in the box. For activating the filter, the “Use filter?” checkbox must
-be checked. An activated filter is indicated with a tickmarck in the box of 
-the filter
+**Figure 8**: Selection of operations. A dialog box shows the input expected 
+for the program. To use a filter, the “Use filter?” checkbox must
+be checked. A filter in use is indicated with a checkmark in the filter box 
 
 &nbsp;  
 
-The program is then run by pressing the “RUN!” button (Figs. 15, 16).
+The program then starts to run after pressing the “RUN!” button (Fig. 9).
 
 
-![](images/Fig15.jpg)
+![](images/Fig9.png)
 
-**Figure 15**: "RUN!" button action
+**Figure 9**: "RUN!" button action
 
 &nbsp;    
 
 
-![](images/Fig16.jpg)
-
-**Figure 16**: Message after a sucessful run of the program
-
-&nbsp;  
-
-The processing results are shown in the second panel (Fig. 17).  
+Post-processing results are shown in the second panel (Fig. 10).  
 
 
-![](images/Fig17.jpg)
+![](images/Fig10.png)
 
-**Figure 17**: Second panel of the app, showing the operations performed and 
+**Figure 10**: Second panel of the app, showing the operations performed and 
 the paths of the input and output files
 
 &nbsp;  
 
 
 The type of plot to be displayed and the options for the construction of the
-plot are available in the third panel (Fig. 18). This panel also contains the
-plots.
+plot are available in the third panel (Fig. 11). This panel also show the
+selected plot/s.
 
 
-![](images/Fig18.jpg)
+![](images/Fig11.png)
 
-**Figure 18**: Third panel, showing a “CG” content plot. 
-The plot corresponds to the output file. Note that this can be 
-modified from the lateral menu, in addition to other options
-
-&nbsp;    
-
-To clean the operations, for example for running the file using other
-configuration, the "CLEAN" button must be pressed (Fig. 19).
-
-
-![](images/Fig19.jpg)
-
-**Figure 19**: Clean button
-
-&nbsp;  
-
-
-The "RESET" button (Fig. 20) sets the interface at its inital state 
-(i.e., any file or operations are selected).
-
-
-![](images/Fig20.jpg)
-
-**Figure 20**: "RESET" button
+**Figure 11**: Third panel, showing as example a “CG” content plot. 
+for the output file
 
 &nbsp;    
 
-Additional help can be found pressing the "help" element the top-right
-of the app (Fig. 21).
+To clean the operations, for example to run a different
+configuration, the "CLEAN" i(Fig. 11) must be pressed. The "RESET" button 
+(Fig. 11) restarts the interface.
 
 
-![](images/Fig21.jpg)
+&nbsp;    
 
-**Figure 21**: help button. A webpage with help will be open
+Additional help can be found in the "help" button located at the top-right
+of the app (Fig. 12).
+
+
+![](images/Fig12.png)
+
+**Figure 12**: help button. A webpage with information will be open
 
 &nbsp;
 
@@ -514,11 +363,13 @@ of the app (Fig. 21).
 Advanced use of the package
 =============================
 
-`r Biocpkg("FastqCleaner")` processing functions are accesible from the 
-R command line as standard functions. Most of the functions make intensive 
-use of `r Biocpkg("Biostrings")` and `r Biocpkg("ShortRead")` packages in 
-the background. The complete documentation of the functions is accesible 
-following [this link](docs/reference/index.html)
+`r Biocpkg("FastqCleaner")` separates the interface from the implementation. 
+In consequence, the processing functions of the package can be used 
+as standard functions from the command line. 
+Most of the functions make intensive 
+use of `r Biocpkg("Biostrings")` and `r Biocpkg("ShortRead")`. Trimming
+and filtering is performed on ShortReadQ objects. A complete documentation 
+for the functions is available in [this link](docs/reference/index.html)
 
 The functions included in the package are described in the following section.
 
@@ -533,7 +384,7 @@ Based on the `r Biocpkg("Biostrings")` isMatchingStartingAt and
 isMatchingEndingAt functions. It can remove adapters and partial adapters
 from the 3’ and 5’ sequence ends. Adapters can be anchored or not.
 Two methods are available: one based on the exact matching of the 
-sequences and the adapter, and other in a mismatch rate. In the latter,
+sequences and the adapter, and other in a mismatch rate. For this latter,
 when indels are allowed, the method is based on the “edit distance” of
 the sequences.
 
@@ -621,7 +472,7 @@ in the whole pool of sequences.
 
 The relation $H_i/H_r$ between $H_i$ and a reference entropy value $H_r$ 
 is computed, and the obtained relations are compared with a given complexity 
-threshold.  By default, for the reference entropy the program uses a value 
+threshold.  By default the program uses a reference entropy 
 of 3.908, that corresponds to the entropy of the human genome in bits, 
 and a complexity threshold of 0.5.
 
@@ -657,7 +508,7 @@ H_plot <- function(x, H_max = 3.908135) {
 H_plot(input)
 ```
 
-**Figure 22**: Relative entropy plot for the sequences befor the operation
+**Figure 13**: Relative entropy plot for the sequences before the operation
 
 ```{r}
 # create qualities of widths 40
@@ -678,7 +529,7 @@ sread(filtered)
 
 H_plot(sread(filtered))
 ```
-**Figure 23**: Relative entropy plot for the sequences after the operation
+**Figure 14**: Relative entropy plot for the sequences after the operation
 
 
 [Documentation of the function](docs/reference/complex_filter.html)
@@ -687,7 +538,7 @@ H_plot(sread(filtered))
 
 *   **fixed_filter**
 
-Removes the specified number of bases from 3’ or 5’ in the set of sequences.
+Removes the specified number of bases from 3’ or 5’.
 
 ```{r}
 
@@ -723,8 +574,8 @@ sread(filtered3and5)
 
 *   **length_filter**
 
-Removes the sequences from a FASTQ file with a length lower than
-rm.min or/and higher than rm.max.
+Removes sequences with a length lower than
+minimum threshold value or/and higher than a maximum threshold value.
 
 ```{r}
 
@@ -745,8 +596,7 @@ sread(filtered)
 *   **n_filter**
 
 Wrapper of the `r Biocpkg("ShortRead")` nFilter function. Removes 
-the sequences with a number of N’s above a threshold value “rm.N”. 
-All the sequences with a number of N > rm.N will be removed.
+all those sequences with a number of N’s > a given threshold. 
 
 ```{r}
 # create 10 sequences of width 20
@@ -763,7 +613,7 @@ hist(letterFrequency(input, "N"), breaks = 0:10,
     main  = "Ns Frequency", xlab = "# Ns",
     col = "#1a81c2")
 ```
-**Figure 24**: N's histogram for the sequences after the filtering operation
+**Figure 15**: N's histogram for the sequences before the filtering operation
 
 ```{r}
 
@@ -780,7 +630,7 @@ hist(letterFrequency(sread(filtered), "N"),
     col = "#1a81c2")
 ```
 
-**Figure 25**: N's histogram for the sequences after the filtering operation
+**Figure 16**: N's histogram for the sequences after the filtering operation
 
 [Documentation of the function](docs/reference/n_filter.html)
 
@@ -788,7 +638,7 @@ hist(letterFrequency(sread(filtered), "N"),
 
 *   **qmean_filter**
 
-Removes the sequences with a quality lower than a “minq” threshold.
+Removes those sequences with quality < a give threshold.
 
 ```{r}
 
@@ -818,7 +668,7 @@ text(length(q), cutoff+2, cutoff)
 qual_plot(my_read, cutoff = 30)
 ```
 
-**Figure 26**:  Average qualities before the filtering operation
+**Figure 17**:  Average qualities before the filtering operation
 
 ```{r}
 # Apply the filter
@@ -828,7 +678,7 @@ filtered <- qmean_filter(my_read, minq = 30)
 qual_plot(filtered, cutoff = 30)
 
 ```
-**Figure 27**:  Average qualities after the filtering operation
+**Figure 18**:  Average qualities after the filtering operation
 
 [Documentation of the function](docs/reference/qmean_filter.html)
 
@@ -836,7 +686,7 @@ qual_plot(filtered, cutoff = 30)
 
 *   **seq_filter**
 
-Removes a set of sequences from a FASTQ file.
+Removes sequences that match those passed as argument.
 
 
 ```{r}
@@ -864,8 +714,8 @@ match_after
 
 *   **trim3q_filter**
 
-Removes from the 3’ ends nucleotides in-tandem with a quality 
-below a threshold value.
+Removes from the 3’ ends in-tandem nucleotides with a quality 
+< a threshold value.
 
 
 ```{r}
@@ -910,8 +760,8 @@ sread(filtered)
 
 *   **unique_filter**
 
-Wrapper to the `r Biocpkg("ShortRead")` occurrenceFilter function. 
-It removes the duplicated sequences of a FASTQ file.
+Wrapper of the `r Biocpkg("ShortRead")` occurrenceFilter function. 
+that removes duplicated sequences.
 
 ```{r}
 
@@ -971,7 +821,7 @@ Create a vector of names for a set of sequences.
 
 *   **random_length**
 
-Create a set of sequences with random lengths
+Create a set of sequences with random lengths.
 
 [Documentation of the function](docs/reference/seq_names.html)
 
@@ -979,7 +829,7 @@ Create a set of sequences with random lengths
 
 *   **inject_letter_random**
 
-Inject a character (e.g., 'N') at random position, given a set of parameters.
+Inject a character (e.g., 'N') at random positions, given a set of parameters.
 
 
 [Documentation of the function](docs/reference/inject_letter_random.html)
