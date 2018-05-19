@@ -9,8 +9,7 @@
 NULL
 
 cpp_base_content <- function(x, relative = TRUE) {
-    .Call('_FastqCleaner_cpp_base_content', 
-    PACKAGE = 'FastqCleaner', x, relative)
+    .Call('_FastqCleaner_cpp_base_content', PACKAGE = 'FastqCleaner', x, relative)
 }
 
 #' check by row if the values of a matrix are above a 
@@ -20,8 +19,7 @@ cpp_base_content <- function(x, relative = TRUE) {
 NULL
 
 cpp_check_quality_threshold <- function(x, thresVector) {
-    .Call('_FastqCleaner_cpp_check_quality_threshold', 
-    PACKAGE = 'FastqCleaner', x, thresVector)
+    .Call('_FastqCleaner_cpp_check_quality_threshold', PACKAGE = 'FastqCleaner', x, thresVector)
 }
 
 #' create a StringVector using the size of a given NumericVector
@@ -30,8 +28,7 @@ cpp_check_quality_threshold <- function(x, thresVector) {
 NULL
 
 cpp_create_stringvec <- function(vec, x) {
-    .Call('_FastqCleaner_cpp_create_stringvec', 
-    PACKAGE = 'FastqCleaner', vec, x)
+    .Call('_FastqCleaner_cpp_create_stringvec', PACKAGE = 'FastqCleaner', vec, x)
 }
 
 #' Compute CG content
@@ -39,8 +36,7 @@ cpp_create_stringvec <- function(vec, x) {
 NULL
 
 cpp_GC_content <- function(x) {
-    .Call('_FastqCleaner_cpp_GC_content', 
-    PACKAGE = 'FastqCleaner', x)
+    .Call('_FastqCleaner_cpp_GC_content', PACKAGE = 'FastqCleaner', x)
 }
 
 #' Select the correct match position for matching operations with
@@ -60,7 +56,6 @@ cpp_GC_content <- function(x) {
 NULL
 
 cpp_which_true <- function(m, width, origin) {
-    .Call('_FastqCleaner_cpp_which_true', 
-    PACKAGE = 'FastqCleaner', m, width, origin)
+    .Call('_FastqCleaner_cpp_which_true', PACKAGE = 'FastqCleaner', m, width, origin)
 }
 
