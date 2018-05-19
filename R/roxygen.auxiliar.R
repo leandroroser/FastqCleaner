@@ -4,7 +4,7 @@
 #' @import  Rcpp
 #' @import shiny except renderDataTable
 #' @importFrom graphics hist
-#' @importFrom methods as
+#' @importFrom methods as is
 #' @importFrom S4Vectors isConstant
 #' @importFrom DT renderDataTable dataTableOutput
 #' @importFrom stats quantile

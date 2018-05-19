@@ -1,7 +1,7 @@
 Package: FastqCleaner
 Type: Package
 Title: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
-Version: 0.99.26
+Version: 0.99.27
 Date: 2018-05-03
 Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
              email = "learoser@gmail.com"), 
@@ -12,7 +12,7 @@ Description: An interactive web application for quality control,  filtering and 
              Single-Read and Paired-End files can be locally processed. Diagnostic interactive plots (CG content, per-base sequence quality, etc.) are provided for both the input and output files.
 License: GPL (>= 2)
 LazyData: TRUE
-Imports: shiny, stats, IRanges, Biostrings, ShortRead, DT, 
+Imports: methods, shiny, stats, IRanges, Biostrings, ShortRead, DT, 
          methods, S4Vectors, graphics, htmltools, shinyBS, 
          Rcpp (>= 0.12.12)
 Suggests: 
