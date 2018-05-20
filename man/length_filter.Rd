@@ -27,7 +27,7 @@ require('ShortRead')
 
 # create  ShortReadQ object width widths between 1 and 100
 
-seed(10)
+set.seed(10)
 input <- random_length(100, widths = 1:100)
 
 # apply the filter, removing sequences with  10> length > 80
