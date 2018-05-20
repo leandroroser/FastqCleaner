@@ -40,7 +40,7 @@ my_qual <- random_qual(c(30,40), slength = 15, swidth = 20,
 encod = 'Sanger')
 ## low quality (15 sequences)
 set.seed(10)
-my_qual_2 <-   random_qual(c(5,30), slength = 20,  
+my_qual_2 <-   random_qual(c(5,30), slength = 15, swidth = 20,
 encod = 'Sanger')
 
 # concatenate vectors
