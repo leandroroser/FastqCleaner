@@ -39,6 +39,7 @@ function(x) random_seq(1, x))
 # for a total length:
 # input +  CG = 40
 
+set.seed(10)
 CG <- lapply(c(20, 17, 15, 12, 10, 7, 5, 2, 0), 
 function(x) paste(rep('CG', x), collapse = ''))
 
@@ -58,8 +59,9 @@ plot(H/H_max, type='b', xlab = 'Sequence', ylab= 'E')
 
 # create qualities of width 40
 
+set.seed(10)
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
-seed = 10, encod = 'Sanger')
+encod = 'Sanger')
 
 # create names
 input_names <- seq_names(9)

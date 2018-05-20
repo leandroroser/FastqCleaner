@@ -22,9 +22,11 @@ set.seed(10)
 ## ----eval=TRUE, echo=TRUE--------------------------------------------------
 
 # create sequences
-set.seed(10) # nota that the use of set.seed before the call to the 
-             # random generators allows reproducibility of the
-             # examples
+set.seed(10) 
+# nota that the use of set.seed before the call to the 
+# random generators allows reproducibility of the
+# examples
+
 input <- random_seq(6, 43)
 input
 
