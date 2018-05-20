@@ -519,7 +519,7 @@ H_plot(input)
 # create qualities of widths 40
 set.seed(10)
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
-           encod = "Sanger")
+               encod = "Sanger")
 
 # create names
 input_names <- seq_names(9)
@@ -554,7 +554,7 @@ input
 
 set.seed(10)
 input_q <- random_qual(c(30,40), slength = 6, swidth = 20, 
-           encod = "Sanger")
+               encod = "Sanger")
 
 input_names <- seq_names(6)
 
