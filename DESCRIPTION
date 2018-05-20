@@ -1,7 +1,7 @@
 Package: FastqCleaner
 Type: Package
 Title: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
-Version: 0.99.35
+Version: 0.99.36
 Date: 2018-05-19
 Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
              email = "learoser@gmail.com"), 
