@@ -168,7 +168,7 @@ input
 # inject N's
 set.seed(10)
 input <- inject_letter_random(input, how_many_seqs = 1:5,
-            how_many = 1:10)
+    how_many = 1:10)
 input
 
 #'  
@@ -199,11 +199,11 @@ input <- random_seq(30, 20)
 
 set.seed(10)
 my_qual_H <- random_qual(c(30,40), slength = 15, swidth = 20,
-                         encod = "Sanger")
+    encod = "Sanger")
 
 set.seed(10)
-my_qual_L <-   random_qual(c(5,30), slength = 15, swidth = 20, 
-                           encod = "Sanger")
+my_qual_L <- random_qual(c(5,30), slength = 15, swidth = 20, 
+    encod = "Sanger")
 input_q<- c(my_qual_H, my_qual_L)
 
 input_names <- seq_names(30)
@@ -260,15 +260,15 @@ input
 # for three of the sequences, put low qualities in tails
 set.seed(10)
 my_qual <- random_qual(c(30,40), slength = 6, swidth = 15, 
-                        encod = "Sanger")
+    encod = "Sanger")
 set.seed(10)
 tails <-   random_qual(c(30,40), slength = 6, swidth = 5, 
-                        encod = "Sanger")
+    encod = "Sanger")
 
 # Low quality tails in sequences 2, 3 & 4
 set.seed(10)
 tails[2:4] <- random_qual(c(3, 20), slength = 3, swidth = 5,
-                        encod = "Sanger")
+    encod = "Sanger")
 my_qual <- paste0(my_qual, tails)
 input_q <- BStringSet(my_qual)
 input_q
