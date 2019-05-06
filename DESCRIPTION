@@ -1,0 +1,32 @@
+Package: FastqCleaner
+Type: Package
+Title: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
+Version: 0.99.40
+Date: 2019-03-03
+Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
+             email = "learoser@gmail.com"), 
+             person(given = "Fernán", family = "Agüero", role = "aut"),
+             person(given = "Daniel", family = "Sánchez", role = "aut"))
+Description: An interactive web application for quality control,  filtering and trimming of FASTQ files. This user-friendly tool combines a pipeline for data processing  based on Biostrings and ShortRead infrastructure, with a cutting-edge visual environment.
+             Single-Read and Paired-End files can be locally processed. Diagnostic interactive plots (CG content, per-base sequence quality, etc.) are provided for both the input and output files.
+License: GPL (>= 2)
+LazyData: TRUE
+Imports: methods, shiny, stats, IRanges, Biostrings, ShortRead, DT, 
+         S4Vectors, graphics, htmltools, shinyBS, Rcpp (>= 0.12.12), htmltools
+Suggests: 
+    BiocStyle,
+    testthat,
+    knitr, 
+    rmarkdown
+LinkingTo: Rcpp
+Collate: 'roxygen.auxiliar.R' 'auxiliar.R' 'matching.R' 
+        'server_functions.R' 'n_filter.R' 'seq_filter.R' 
+        'complex_filter.R' 'adapter_filter.R' 'launch_fqc.R' 
+        'length_filter.R' 'fixed_filter.R' 'trim3q_filter.R'
+        'unique_filter.R' 'plotObjects.R' 'qmean_filter.R'
+        'simulate.R' 'RcppExports.R'
+biocViews: QualityControl,Sequencing,Software,SangerSeq,SequenceMatching
+VignetteBuilder: knitr
+Packaged: 2018-05-03 22:12:43 UTC; leandro
+Encoding: UTF-8
+RoxygenNote: 6.1.1

@@ -1,0 +1,4 @@
+Name: FastqCleaner
+Description: Launches FastqCleaner application
+Binding: launch_fqc()
+Interactive: true
