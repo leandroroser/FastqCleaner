@@ -155,7 +155,7 @@ set.seed(10)
 input <- random_length(10, widths = 1:60)
 sread(input)
 
-# apply the filter, removing sequences with  5>length> 30
+# apply the filter, removing sequences with length < 5 or length> 30
 filtered <- length_filter(input, rm.min = 5, rm.max = 30)
 sread(filtered)
 

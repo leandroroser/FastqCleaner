@@ -66,7 +66,8 @@ adapters from 3' and 5'. The adapters can be anchored or not.
 When indels are allowed, the error rate consists in the edit distance. 
 IUPAC simbols are allowed. The methods use the 
 \code{\link[Biostrings]{trimLRpatterns}} function
- of the \pkg{Biostrings} package, with some additions to take into account e.g., partial adaptors.
+ of the \pkg{Biostrings} package, with some additions 
+ to take into account e.g., partial adaptors.
  IUPAC symbols are allowed in all the cases. The present function 
 also removes partial adapters, without the need of additional steps
  (for example, creating a padded adapter with 'Ns', etc). 

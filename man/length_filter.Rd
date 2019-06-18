@@ -30,7 +30,7 @@ require('ShortRead')
  set.seed(10)
 input <- random_length(100, widths = 1:100)
 
-# apply the filter, removing sequences with  10> length > 80
+# apply the filter, removing sequences length < 10 or length > 80
 filtered <- length_filter(input, rm.min = 10, rm.max = 80)
 
 # look at the filtered sequences

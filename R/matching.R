@@ -81,72 +81,72 @@ cutRseq <- function(subject, Rpattern,
                     checks = TRUE, 
                     min_match_flank = 2L, 
                     ...) {
+    
+   Rpattern <- DNAString(Rpattern)
   
-  Rpattern <- DNAString(Rpattern)
-  
-  if (error_rate > 1 || error_rate < 0) {
+   if (error_rate > 1 || error_rate < 0) {
     stop("error_rate must be a number between 0 and 1")
-  }
+   }
 
-  if (checks) {
+   if (checks) {
     
-    if (!is(Rpattern, "DNAString")) {
-      stop("Rpattern must be a character string or a DNAString object")
-    }
+       if (!is(Rpattern, "DNAString")) {
+           stop("Rpattern must be a character string or a DNAString object")
+       }
  
-    csub <- class(subject)
-    if (csub != "DNAStringSet") {
-      stop("subject must be a DNAString or DNAStringSet object")
-    }
+       csub <- class(subject)
+       if (csub != "DNAStringSet") {
+           stop("subject must be a DNAString or DNAStringSet object")
+       }
     
-    if (csub == "DNAString") {
-      subject <- as(subject[[1]], "DNAStringSet")
-    }
+       if (csub == "DNAString") {
+           subject <- as(subject[[1]], "DNAStringSet")
+       }
     
-  }
+   }
   
-  p <- length(Rpattern)
-  s_width <- width(subject)
-  s <- max(width(subject))
+   p <- length(Rpattern)
+   s_width <- width(subject)
+   s <- max(width(subject))
   
-  if(error_rate > 0) {
-    flank_seq <- as.integer(seq_len(p) * error_rate)
-  } else {
-    flank_seq <- rep(0, length(seq_len(p)))
-  }
+   if(error_rate > 0) {
+       flank_seq <- as.integer(seq_len(p) * error_rate)
+   } else {
+       flank_seq <- rep(0, length(seq_len(p)))
+   }
   
   
-  if (min_match_flank >= 1L) {
-    if (p > min_match_flank) {
-      flank_seq[seq_len(min_match_flank)] <- -1
-    } else {
-      return(subject)
-    }
-  }
+   if (min_match_flank >= 1L) {
+       if (p > min_match_flank) {
+           flank_seq[seq_len(min_match_flank)] <- -1
+       } else {
+           return(subject)
+       }
+   }
  
-  if(!anchored) {
-    Rpattern <- as.character(Rpattern)
-    maxlen <-  max(width(subject)) - nchar(Rpattern)
-    if(maxlen > 0) {
-      Rpattern <- paste0(Rpattern,  paste(rep("N",maxlen), collapse = ""))
-    }
-    Rpattern <- DNAString(Rpattern)
-    flank_seq <- c(flank_seq, rep(0,maxlen))
-  }
+   if(!anchored) {
+       Rpattern <- as.character(Rpattern)
+       maxlen <-  max(width(subject)) - nchar(Rpattern)
+       if(maxlen > 0) {
+           Rpattern <- paste0(Rpattern,  paste(rep("N",maxlen), collapse = ""))
+       }
+       Rpattern <- DNAString(Rpattern)
+       flank_seq <- c(flank_seq, rep(0,maxlen))
+   }
   
-  out <- trimLRPatterns(Rpattern = Rpattern,
-                        subject = subject, 
-                        max.Rmismatch = flank_seq, 
-                        with.Rindels = with.indels, 
-                        Rfixed = fixed, 
-                        ...)
+   out <- trimLRPatterns(Rpattern = Rpattern,
+                       subject = subject, 
+                       max.Rmismatch = flank_seq, 
+                       with.Rindels = with.indels, 
+                       Rfixed = fixed, 
+                       ...)
   
   
-  if (ranges) {
-    out <- IRanges::IRanges(start = rep(1, length(out)), end = width(out))
-  } 
+   if (ranges) {
+       out <- IRanges::IRanges(start = rep(1, length(out)), end = width(out))
+   } 
   
-  out
+   out
 }
 
 #' Remove left and right full and partial patterns
@@ -162,66 +162,66 @@ cutLseq <- function(subject, Lpattern,
                     checks = TRUE, ...) {
 
 
-Lpattern <- DNAString(Lpattern)
+   Lpattern <- DNAString(Lpattern)
 
-if (checks) {
-    if (!is(Lpattern, "DNAString")) {
-        stop("Rpattern must be a character string or a DNAString object")
-    }
+   if (checks) {
+       if (!is(Lpattern, "DNAString")) {
+           stop("Rpattern must be a character string or a DNAString object")
+       }
 
-csub <- class(subject)
-if (csub != "DNAStringSet") {
-    stop("subject must be a DNAStringSet object")
-}
+       csub <- class(subject)
+       if (csub != "DNAStringSet") {
+           stop("subject must be a DNAStringSet object")
+       }
 
-if (csub == "DNAString") {
-    subject <- as(subject[[1]], "DNAStringSet")
-    }
-}
+       if (csub == "DNAString") {
+           subject <- as(subject[[1]], "DNAStringSet")
+       }
+   }
 
-p <- length(Lpattern)
-s_width <- width(subject)
-s <- max(width(subject))
-
-
-if(error_rate > 0) {
-  flank_seq <- as.integer(seq_len(p) * error_rate)
-} else {
-  flank_seq <- rep(0, length(seq_len(p)))
-}
+   p <- length(Lpattern)
+   s_width <- width(subject)
+   s <- max(width(subject))
 
 
-if (min_match_flank >= 1L) {
-  if (p > min_match_flank) {
-    flank_seq[seq_len(min_match_flank)] <- -1
-  } else {
-    return(subject)
+   if(error_rate > 0) {
+       flank_seq <- as.integer(seq_len(p) * error_rate)
+   } else {
+       flank_seq <- rep(0, length(seq_len(p)))
+   }
+
+
+   if (min_match_flank >= 1L) {
+       if (p > min_match_flank) {
+           flank_seq[seq_len(min_match_flank)] <- -1
+       } else {
+           return(subject)
+   }
+   }
+
+
+   if(!anchored) {
+       Lpattern <- as.character(Lpattern)
+       maxlen <-  max(width(subject)) - nchar(Lpattern)
+       if(maxlen > 0) {
+           Lpattern <- paste0(paste(rep("N",maxlen), collapse = ""), Lpattern)
+       }
+       Lpattern <- DNAString(Lpattern)
+       flank_seq <- c(flank_seq, rep(0,maxlen))
   }
-}
 
 
-if(!anchored) {
-  Lpattern <- as.character(Lpattern)
-  maxlen <-  max(width(subject)) - nchar(Lpattern)
-  if(maxlen > 0) {
-    Lpattern <- paste0(paste(rep("N",maxlen), collapse = ""), Lpattern)
-  }
-  Lpattern <- DNAString(Lpattern)
-  flank_seq <- c(flank_seq, rep(0,maxlen))
-}
+   out <- trimLRPatterns(Lpattern = Lpattern,
+                       subject = subject, 
+                       max.Lmismatch = flank_seq, 
+                       with.Lindels = with.indels, 
+                       Lfixed = fixed, 
+                       ...)
 
 
-out <- trimLRPatterns(Lpattern = Lpattern,
-                      subject = subject, 
-                      max.Lmismatch = flank_seq, 
-                      with.Lindels = with.indels, 
-                      Lfixed = fixed, 
-                      ...)
+   if (ranges) {
+       out <- IRanges::IRanges(start = rep(1, length(out)), end = width(out))
+   } 
 
-
-if (ranges) {
-  out <- IRanges::IRanges(start = rep(1, length(out)), end = width(out))
-} 
-
-out
+   out
 }

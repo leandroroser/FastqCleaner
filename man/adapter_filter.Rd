@@ -36,13 +36,14 @@ subsequence s of A and the subject is computed as: error_rate * L_s,
 where L_s is the length of the subsequence s}
 
 \item{anchored}{Adapter or partial adapter within sequence
-(anchored = FALSE, default) or only in 3' and 5' terminals? (anchored = TRUE)}
+(anchored = FALSE, default) or only in 3' and 5' terminals? 
+(anchored = TRUE)}
 
 \item{fixed}{Parameter passed to 
-\code{\link[Biostrings]{trimLRpatterns}}
+\code{\link[Biostrings]{trimLRPatterns}} 
 Default 'subject',  ambiguities in the pattern only are interpreted 
 as wildcard. See the argument fixed in 
-\code{\link[Biostrings]{trimLRpatterns}}}
+\code{\link[Biostrings]{trimLRPatterns}}}
 
 \item{remove_zero}{Remove zero-length sequences? Default TRUE}
 
@@ -65,19 +66,21 @@ object
 \description{
 This program can remove adapters and partial 
 adapters from 3' and 5', using the functions
- \code{\link[Biostrings]{trimLRpatterns}} The program extends the methodology of
-the \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
+\code{\link[Biostrings]{trimLRPatterns}} 
+ The program extends the methodology of
+the  \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
 being also capable of removing adapters present within reads and with other
-additional otpions (e.g., threshold of minimum number of bases for trimming). 
+additional otpions 
+(e.g., threshold of minimum number of bases for trimming). 
 For a given position in the read, the two Biostrings functions return TRUE 
 when a match is present between a substring of the read and the adapter.
-As \code{\link[Biostrings]{trimLRPatterns}}, adapter_filter also selects
+As \code{\link[Biostrings]{trimLRPatterns}} , adapter_filter also selects
 region and goes up to the end of the sequence in the corresponding flank 
 as the best match. The default error rate is 0.2.
 If several valid matches are found, the function removes the
 largest subsequence. Adapters can be anchored or not.  
-When indels are allowed, the second method uses the 'edit distance' between the subsequences 
-and the adapter
+When indels are allowed, the second method uses the 'edit distance' between 
+the subsequences and the adapter
 }
 \examples{
 

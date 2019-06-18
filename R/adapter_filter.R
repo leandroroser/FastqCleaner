@@ -21,30 +21,30 @@
 #' (anchored = FALSE, default) or only in 3' and 5' terminals? 
 #' (anchored = TRUE)
 #' @param fixed Parameter passed to 
-#' \code{\link[Biostrings]{trimLRpatterns}}
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' Default 'subject',  ambiguities in the pattern only are interpreted 
 #' as wildcard. See the argument fixed in 
-#' \code{\link[Biostrings]{trimLRpatterns}}
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' @param remove_zero Remove zero-length sequences? Default TRUE
 #' @param checks Perform checks? Default TRUE
-#'@param min_match_flank Do not trim in flanks of the subject,
+#' @param min_match_flank Do not trim in flanks of the subject,
 #'if a match has min_match_flank of less length. Default 1L 
 #'(only trim with >=2 coincidences in a flank match)
 #' @param ... additional parameters passed to
-#'  \code{\link[Biostrings]{trimLRpatterns}}
+#' \code{\link[Biostrings]{trimLRpatterns}}
 #' @return  Edited \code{\link[Biostrings:DNAString-class]{DNAString}} or 
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
 #' @description This program can remove adapters and partial 
 #' adapters from 3' and 5', using the functions
-#'  \code{\link[Biostrings]{trimLRpatterns}} 
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #'  The program extends the methodology of
-#' the \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
+#' the  \code{\link[Biostrings]{trimLRPatterns}} function of \pkg{Biostrings},
 #' being also capable of removing adapters present within reads and with other
 #' additional otpions 
 #' (e.g., threshold of minimum number of bases for trimming). 
 #' For a given position in the read, the two Biostrings functions return TRUE 
 #' when a match is present between a substring of the read and the adapter.
-#' As \code{\link[Biostrings]{trimLRPatterns}}, adapter_filter also selects
+#' As \code{\link[Biostrings]{trimLRPatterns}} , adapter_filter also selects
 #  the longest subsequence that includes the aligned
 #' region and goes up to the end of the sequence in the corresponding flank 
 #' as the best match. The default error rate is 0.2.
