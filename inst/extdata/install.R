@@ -108,20 +108,23 @@ if(this_os == "windows") {
 # install dependences------------------------------------------------------------------------------
 packages <- c("devtools", "Rcpp", "DT", "shiny", "methods", "graphics", "shinyBS", "RCurl")
 
-for(i in packages) {
-  if (!require(i, character.only = TRUE)) {
-    install.packages(i, lib = where, repos = R_repo)
-  }
-}
-
 # install Bioconductor dependences----------------------------------------------------------------
 bpackages <- c("IRanges", "Biostrings", "ShortRead", "S4Vectors")
+bpackages <- c("IRanges", "Biostrings", "ShortRead", "S4Vectors")
 source("https://bioconductor.org/biocLite.R")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+
 
 for(i in bpackages) {
+for(i in bpackages) {
+  if (!require(i, character.only = TRUE)) {
   if (!require(i, character.only = TRUE)) {
     biocLite(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
+    BiocManager::install(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
   }
+  }
+}
 }
 
 # install package --------------------------------------------------------------------------------
