@@ -37,11 +37,19 @@ input <- random_seq(30, 20)
 ## high quality (15 sequences)
 set.seed(10)
 my_qual <- random_qual(c(30,40), slength = 15, swidth = 20,
+<<<<<<< HEAD
                        encod = 'Sanger')
 ## low quality (15 sequences)
 set.seed(10)
 my_qual_2 <-   random_qual(c(5,30), slength = 15, swidth = 20,
                            encod = 'Sanger')
+=======
+encod = 'Sanger')
+## low quality (15 sequences)
+set.seed(10)
+my_qual_2 <-   random_qual(c(5,30), slength = 15, swidth = 20,
+encod = 'Sanger')
+>>>>>>> upstream/master
 
 # concatenate vectors
 input_q<- c(my_qual, my_qual_2)

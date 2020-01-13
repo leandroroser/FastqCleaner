@@ -91,8 +91,13 @@ shinyServer(
         messages$outResult = c("No file processed yet", "")
         
         inputNames <- c("rm.N", "rm.lowcomplex", "rm.adapt", 
+<<<<<<< HEAD
                         "rm.qual", "rmFixed", 
                         "rmSize", "rm.duplic", "nuc")
+=======
+          "rm.qual", "rmFixed", 
+          "rmSize", "rm.duplic", "nuc")
+>>>>>>> upstream/master
         
         for (i in inputNames) {
           updateCheckboxGroupInput(session, i, selected = character(0))

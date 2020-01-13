@@ -8,8 +8,13 @@ author:
 - affiliation: IIB-INTECH - UNSAM
   email: learoser@gmail.com
   name: Daniel Sánchez
+<<<<<<< HEAD
 date: "May 8, 2019"
 revised: "May 8, 2019"
+=======
+date: "May 18, 2018"
+revised: "May 18, 2018"
+>>>>>>> upstream/master
 
 output:
     BiocStyle::pdf_document
@@ -85,7 +90,15 @@ complexity above a threshold value
 Adapter sequences from both ends of single or paired read reads 
 can be selected. Sequences can be reverse-complemented before processing. 
 The program also allows to consider indels 
+<<<<<<< HEAD
 and/or anchored adapters.
+=======
+and/or anchored adapters. Two method can be used for adapter 
+remotion: "exact" or "error rate". The methods are based on 
+lower-level `r Biocpkg("Biostrings")` infrastructure, working 
+as the function trimLRpatterns, but optimized for both anchored 
+and non anchored adapters
+>>>>>>> upstream/master
 
 4.  **Filter by average quality**: computes the average quality of sequences 
 and removes those with a value below a given threshold
@@ -378,8 +391,15 @@ Main functions
 
 Based on the `r Biocpkg("Biostrings")` isMatchingStartingAt and 
 isMatchingEndingAt functions. It can remove adapters and partial adapters
+<<<<<<< HEAD
 from the 3’ and 5’ sequence ends. Adapters can be anchored or not. 
 When indels are allowed, the method is based on the “edit distance” of
+=======
+from the 3’ and 5’ sequence ends. Adapters can be anchored or not.
+Two methods are available: one based on the exact matching of the 
+sequences and the adapter, and other in a mismatch rate. For this latter,
+when indels are allowed, the method is based on the “edit distance” of
+>>>>>>> upstream/master
 the sequences.
 
 
@@ -584,7 +604,11 @@ set.seed(10)
 input <- random_length(10, widths = 1:60)
 sread(input)
 
+<<<<<<< HEAD
 # apply the filter, removing sequences with length < 5 or length> 30
+=======
+# apply the filter, removing sequences with  5>length> 30
+>>>>>>> upstream/master
 filtered <- length_filter(input, rm.min = 5, rm.max = 30)
 sread(filtered)
 ```
