@@ -32,7 +32,7 @@ require('ShortRead')
 # create  sequences of different width
 set.seed(10)
 input <- lapply(c(0, 6, 10, 16, 20, 26, 30, 36, 40), 
-function(x) random_seq(1, x))
+               function(x) random_seq(1, x))
 
 
 # create repetitive 'CG' sequences with length adequante 
@@ -41,7 +41,7 @@ function(x) random_seq(1, x))
 
 set.seed(10)
 CG <- lapply(c(20, 17, 15, 12, 10, 7, 5, 2, 0), 
-function(x) paste(rep('CG', x), collapse = ''))
+            function(x) paste(rep('CG', x), collapse = ''))
 
 
 # concatenate input and CG
@@ -61,7 +61,7 @@ plot(H/H_max, type='b', xlab = 'Sequence', ylab= 'E')
 
 set.seed(10)
 input_q <- random_qual(c(30,40), slength = 9, swidth = 40, 
-encod = 'Sanger')
+                       encod = 'Sanger')
 
 # create names
 input_names <- seq_names(9)

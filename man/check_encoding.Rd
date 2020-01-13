@@ -34,7 +34,7 @@ require(Biostrings)
 x <- list(PhredQuality(0:40), SolexaQuality(-5:40), IlluminaQuality(3:40))
 x <- lapply(x, function(i)utf8ToInt(as.character(i)[1]))
 lapply(x, check_encoding)
-
+ 
 SolexaQuality(0:40)
 IlluminaQuality(0:40)
 }

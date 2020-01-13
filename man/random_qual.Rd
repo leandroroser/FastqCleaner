@@ -4,8 +4,8 @@
 \alias{random_qual}
 \title{Create random qualities for a given encoding}
 \usage{
-random_qual(slength, swidth, qual = NULL, encod = c("Sanger", "Illumina1.8",
-"Illumina1.5", "Illumina1.3", "Solexa"), prob = NULL)
+random_qual(slength, swidth, qual = NULL, encod = c("Sanger",
+  "Illumina1.8", "Illumina1.5", "Illumina1.3", "Solexa"), prob = NULL)
 }
 \arguments{
 \item{slength}{number of sequences}
@@ -26,7 +26,7 @@ in the selected encoding:
 'Solexa' = [-5, 40]
 
 example: for a range from 20 to 30 in Sanger encoding,
-pass the argument = c(20, 30)}
+ pass the argument = c(20, 30)}
 
 \item{encod}{sequence encoding}
 

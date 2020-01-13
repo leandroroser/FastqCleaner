@@ -116,12 +116,11 @@ for(i in packages) {
 
 # install Bioconductor dependences----------------------------------------------------------------
 bpackages <- c("IRanges", "Biostrings", "ShortRead", "S4Vectors")
-if (!requireNamespace("BiocManager", quietly=TRUE))
-    install.packages("BiocManager")
+source("https://bioconductor.org/biocLite.R")
 
 for(i in bpackages) {
   if (!require(i, character.only = TRUE)) {
-    BiocManager::install(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
+    biocLite(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
   }
 }
 

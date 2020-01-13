@@ -4,8 +4,8 @@
 \alias{inject_letter_random}
 \title{Inject a letter in a set of sequences at random positions}
 \usage{
-inject_letter_random(my_seq, how_many_seqs = NULL, how_many_letters = NULL,
-letter = "N")
+inject_letter_random(my_seq, how_many_seqs = NULL,
+  how_many_letters = NULL, letter = "N")
 }
 \arguments{
 \item{my_seq}{character vector with sequences to inject}
