@@ -123,13 +123,6 @@ if (SeqInput()) {
         e3 <- expression(fileToProcess <- adapter_filter(fileToProcess,
             Lpattern = input$LpatternF, 
             Rpattern = input$RpatternF,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-            method = input$adapt_method,
->>>>>>> upstream/master
->>>>>>> upstream/master
             rc.L = input$reverseLF, 
             rc.R = input$reverseRF, 
             first = input$first_forward,
@@ -144,13 +137,6 @@ if (SeqInput()) {
         e3 <- expression(fileToProcess <- adapter_filter(fileToProcess, 
             Lpattern = input$LpatternR, 
             Rpattern = input$RpatternR, 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-            method = input$adapt_method,
->>>>>>> upstream/master
->>>>>>> upstream/master
             rc.L = input$reverseLR, 
             rc.R = input$reverseRR,
             first = input$first_reverse, 
