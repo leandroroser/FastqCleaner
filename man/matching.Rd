@@ -2,6 +2,7 @@
 % Please edit documentation in R/matching.R
 \name{cutRseq}
 \alias{cutRseq}
+<<<<<<< HEAD
 \alias{cutLseq}
 \title{Remove left and right full and partial patterns}
 \usage{
@@ -12,6 +13,26 @@ cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
 cutLseq(subject, Lpattern, with.indels = FALSE, fixed = "subject",
   error_rate = 0.2, anchored = TRUE, ranges = FALSE,
   min_match_flank = 3L, checks = TRUE, ...)
+=======
+<<<<<<< HEAD
+\alias{cutLseq}
+\title{Remove left and right full and partial patterns}
+\usage{
+cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
+  error_rate = 0.2, anchored = TRUE, ranges = FALSE, checks = TRUE,
+  min_match_flank = 2L, ...)
+
+cutLseq(subject, Lpattern, with.indels = FALSE, fixed = "subject",
+  error_rate = 0.2, anchored = TRUE, ranges = FALSE,
+  min_match_flank = 3L, checks = TRUE, ...)
+=======
+\title{Remove left and right full and partial patterns}
+\usage{
+cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
+method = c("exact", "er"), error_rate = 0.2, anchored = TRUE,
+ranges = FALSE, checks = TRUE, min_match_flank = 1L, ...)
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 }
 \arguments{
 \item{subject}{\code{\link[Biostrings:DNAString-class]{DNAString}} or 
@@ -20,6 +41,10 @@ cutLseq(subject, Lpattern, with.indels = FALSE, fixed = "subject",
 \item{Rpattern}{3' pattern,
 \code{\link[Biostrings:DNAString-class]{DNAString}} object}
 
+<<<<<<< HEAD
+\item{with.indels}{Allow indels?}
+=======
+<<<<<<< HEAD
 \item{with.indels}{Allow indels?}
 
 \item{fixed}{Parameter passed to 
@@ -29,6 +54,23 @@ as wildcard. See the argument fixed in
 \code{\link[Biostrings]{trimLRpatterns}}}
 
 \item{error_rate}{Error rate (value in [0, 1]). 
+=======
+\item{with.indels}{Allow indels? This feature is only available
+for er method.}
+>>>>>>> upstream/master
+
+\item{fixed}{Parameter passed to 
+\code{\link[Biostrings]{trimLRpatterns}}
+Default 'subject',  ambiguities in the pattern only are interpreted 
+as wildcard. See the argument fixed in 
+\code{\link[Biostrings]{trimLRpatterns}}}
+
+<<<<<<< HEAD
+\item{error_rate}{Error rate (value in [0, 1]). 
+=======
+\item{error_rate}{Error rate (value in [0, 1] used for 'er' method). 
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 The error rate is the proportion of mismatches allowed between
 the adapter and the aligned portion of the subject.
 For a given adapter A, the number of allowed mismatches between each 
@@ -49,7 +91,16 @@ if a match has min_match_flank of less length. Default 1L
 (only trim with >=2 coincidences in a flank match)}
 
 \item{...}{additional parameters passed to
+<<<<<<< HEAD
 \code{\link[Biostrings]{trimLRpatterns]}}}
+=======
+<<<<<<< HEAD
+\code{\link[Biostrings]{trimLRpatterns]}}}
+=======
+\code{\link[Biostrings:lowlevel-matching]{isMatchingStartingAt}} and
+\code{\link[Biostrings:lowlevel-matching]{isMatchingEndingAt}}}
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 
 \item{Lpattern}{5' pattern,
 \code{\link[Biostrings:DNAString-class]{DNAString}} object}
@@ -63,6 +114,9 @@ This set of programs are internal,
 and the function adapter_filter is recommended for trimming. 
 The programs can remove adapters and partial 
 adapters from 3' and 5'. The adapters can be anchored or not. 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 When indels are allowed, the error rate consists in the edit distance. 
 IUPAC simbols are allowed. The methods use the 
 \code{\link[Biostrings]{trimLRpatterns}} function
@@ -71,6 +125,23 @@ IUPAC simbols are allowed. The methods use the
  IUPAC symbols are allowed in all the cases. The present function 
 also removes partial adapters, without the need of additional steps
  (for example, creating a padded adapter with 'Ns', etc). 
+=======
+Two methods are available: one based on the exact matching 
+of the sequence and the adapter, and a second in an error rate. 
+>>>>>>> upstream/master
+When indels are allowed, the error rate consists in the edit distance. 
+IUPAC simbols are allowed. The methods use the 
+\code{\link[Biostrings]{trimLRpatterns}} function
+ of the \pkg{Biostrings} package, with some additions 
+ to take into account e.g., partial adaptors.
+ IUPAC symbols are allowed in all the cases. The present function 
+also removes partial adapters, without the need of additional steps
+<<<<<<< HEAD
+ (for example, creating a padded adapter with 'Ns', etc). 
+=======
+(for example, creating a padded adapter with 'Ns', etc). 
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 A similar result to the output of \code{\link[Biostrings]{trimLRPatterns}}
 can be obtained with the option anchored = TRUE.
 When several matches are found, the function removes the subsequence 
@@ -78,6 +149,13 @@ that starts in the first match when cutRseq is used, or ends
 in the last match when cutLseq is used.
 }
 \examples{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+\dontrun{
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 library(Biostrings)
 
 subject <- DNAStringSet(c('ATCATGCCATCATGAT',
@@ -91,9 +169,22 @@ cutRseq(subject, Rpattern)
 
 
 cutLseq(subject, Lpattern, anchored = FALSE)
+<<<<<<< HEAD
 cutLseq(subject, Lpattern,  error_rate = 0.2)
 cutLseq(subject, Lpattern,  error_rate = 0.2, 
 with.indels = TRUE)
+=======
+<<<<<<< HEAD
+cutLseq(subject, Lpattern,  error_rate = 0.2)
+cutLseq(subject, Lpattern,  error_rate = 0.2, 
+with.indels = TRUE)
+=======
+cutLseq(subject, Lpattern, method = 'er', error_rate = 0.2)
+cutLseq(subject, Lpattern, method = 'er', error_rate = 0.2, 
+with.indels = TRUE)
+}
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 
 }
 \author{

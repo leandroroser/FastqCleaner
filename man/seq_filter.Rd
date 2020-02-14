@@ -28,7 +28,15 @@ rm.seq  = c('TGGTC', 'CGGT', 'GTTCT', 'ATA')
 
 # verify that some sequences match
 match_before <- unlist(lapply(rm.seq,
+<<<<<<< HEAD
  function(x) grep(x, as.character(sread(input)))))
+=======
+<<<<<<< HEAD
+ function(x) grep(x, as.character(sread(input)))))
+=======
+function(x) grep(x, as.character(sread(input)))))
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 
 filtered <- seq_filter(input,rm.seq =  rm.seq)
 

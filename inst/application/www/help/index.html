@@ -10,7 +10,15 @@
 
 
 
+<<<<<<< HEAD
 <meta name="date" content="2019-05-08" />
+=======
+<<<<<<< HEAD
+<meta name="date" content="2019-05-08" />
+=======
+<meta name="date" content="2018-05-18" />
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 
 <title>An Introduction to FastqCleaner</title>
 
@@ -644,7 +652,19 @@ complexity above a threshold value</p></li>
 Adapter sequences from both ends of single or paired read reads
 can be selected. Sequences can be reverse-complemented before processing.
 The program also allows to consider indels
+<<<<<<< HEAD
 and/or anchored adapters. </p></li>
+=======
+<<<<<<< HEAD
+and/or anchored adapters. </p></li>
+=======
+and/or anchored adapters. Two method can be used for adapter
+remotion: “exact” or “error rate”. The methods are based on
+lower-level <em><a href="http://bioconductor.org/packages/Biostrings">Biostrings</a></em> infrastructure, working
+as the function trimLRpatterns, but optimized for both anchored
+and non anchored adapters</p></li>
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 <li><p><strong>Filter by average quality</strong>: computes the average quality of sequences
 and removes those with a value below a given threshold</p></li>
 <li><p><strong>Trim low quality 3’ tails</strong>: removes the 3’ tails of sequences that

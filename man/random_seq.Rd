@@ -5,7 +5,15 @@
 \title{Create random sequences}
 \usage{
 random_seq(slength, swidth, nuc = c("DNA", "RNA"), prob = c(0.25, 0.25,
+<<<<<<< HEAD
   0.25, 0.25))
+=======
+<<<<<<< HEAD
+  0.25, 0.25))
+=======
+0.25, 0.25))
+>>>>>>> upstream/master
+>>>>>>> upstream/master
 }
 \arguments{
 \item{slength}{Number of sequences}

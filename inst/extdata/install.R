@@ -110,8 +110,18 @@ packages <- c("devtools", "Rcpp", "DT", "shiny", "methods", "graphics", "shinyBS
 
 # install Bioconductor dependences----------------------------------------------------------------
 bpackages <- c("IRanges", "Biostrings", "ShortRead", "S4Vectors")
+<<<<<<< HEAD
 bpackages <- c("IRanges", "Biostrings", "ShortRead", "S4Vectors")
 source("https://bioconductor.org/biocLite.R")
+=======
+<<<<<<< HEAD
+source("https://bioconductor.org/biocLite.R")
+
+for(i in bpackages) {
+  if (!require(i, character.only = TRUE)) {
+    biocLite(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
+=======
+>>>>>>> upstream/master
 if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
 
@@ -122,6 +132,7 @@ for(i in bpackages) {
   if (!require(i, character.only = TRUE)) {
     biocLite(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
     BiocManager::install(i, lib = where,suppressUpdates = TRUE, dependencies = TRUE)
+>>>>>>> upstream/master
   }
   }
 }
