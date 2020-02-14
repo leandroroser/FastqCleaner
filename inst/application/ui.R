@@ -213,18 +213,6 @@ shinyUI(fluidPage(tabsetPanel(
                     ),
                     
                     
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-                    radioButtons("adapt_method",
-                      label = "",
-                      choices = list("exact" = "exact", "error-rate" = "er"),
-                      selected = "exact"
-                    ),
-                    
->>>>>>> upstream/master
->>>>>>> upstream/master
                     numericInput("errate",
                       label = p(class = "controlcheck-p1",
                         "Error rate"),
