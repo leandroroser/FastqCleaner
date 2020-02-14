@@ -5,10 +5,6 @@
 
 using namespace Rcpp;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> upstream/master
 // cpp_GC_content
 NumericMatrix cpp_GC_content(StringMatrix x);
 RcppExport SEXP _FastqCleaner_cpp_GC_content(SEXP xSEXP) {
@@ -20,11 +16,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> upstream/master
->>>>>>> upstream/master
 // cpp_base_content
 NumericMatrix cpp_base_content(StringMatrix x, bool relative);
 RcppExport SEXP _FastqCleaner_cpp_base_content(SEXP xSEXP, SEXP relativeSEXP) {
@@ -61,23 +52,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-// cpp_GC_content
-NumericMatrix cpp_GC_content(StringMatrix x);
-RcppExport SEXP _FastqCleaner_cpp_GC_content(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< StringMatrix >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(cpp_GC_content(x));
-    return rcpp_result_gen;
-END_RCPP
-}
->>>>>>> upstream/master
->>>>>>> upstream/master
 // cpp_which_true
 IntegerVector cpp_which_true(LogicalMatrix m, IntegerVector width, String origin);
 RcppExport SEXP _FastqCleaner_cpp_which_true(SEXP mSEXP, SEXP widthSEXP, SEXP originSEXP) {
@@ -93,24 +67,10 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-<<<<<<< HEAD
     {"_FastqCleaner_cpp_GC_content", (DL_FUNC) &_FastqCleaner_cpp_GC_content, 1},
     {"_FastqCleaner_cpp_base_content", (DL_FUNC) &_FastqCleaner_cpp_base_content, 2},
     {"_FastqCleaner_cpp_check_quality_threshold", (DL_FUNC) &_FastqCleaner_cpp_check_quality_threshold, 2},
     {"_FastqCleaner_cpp_create_stringvec", (DL_FUNC) &_FastqCleaner_cpp_create_stringvec, 2},
-=======
-<<<<<<< HEAD
-    {"_FastqCleaner_cpp_GC_content", (DL_FUNC) &_FastqCleaner_cpp_GC_content, 1},
-    {"_FastqCleaner_cpp_base_content", (DL_FUNC) &_FastqCleaner_cpp_base_content, 2},
-    {"_FastqCleaner_cpp_check_quality_threshold", (DL_FUNC) &_FastqCleaner_cpp_check_quality_threshold, 2},
-    {"_FastqCleaner_cpp_create_stringvec", (DL_FUNC) &_FastqCleaner_cpp_create_stringvec, 2},
-=======
-    {"_FastqCleaner_cpp_base_content", (DL_FUNC) &_FastqCleaner_cpp_base_content, 2},
-    {"_FastqCleaner_cpp_check_quality_threshold", (DL_FUNC) &_FastqCleaner_cpp_check_quality_threshold, 2},
-    {"_FastqCleaner_cpp_create_stringvec", (DL_FUNC) &_FastqCleaner_cpp_create_stringvec, 2},
-    {"_FastqCleaner_cpp_GC_content", (DL_FUNC) &_FastqCleaner_cpp_GC_content, 1},
->>>>>>> upstream/master
->>>>>>> upstream/master
     {"_FastqCleaner_cpp_which_true", (DL_FUNC) &_FastqCleaner_cpp_which_true, 3},
     {NULL, NULL, 0}
 };
