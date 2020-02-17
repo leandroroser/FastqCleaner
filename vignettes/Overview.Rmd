@@ -8,8 +8,8 @@ author:
 - affiliation: IIB-INTECH - UNSAM
   email: learoser@gmail.com
   name: Daniel Sánchez
-date: "May 8, 2019"
-revised: "May 8, 2019"
+date: "Feb 15, 2020"
+revised: "Feb 15, 2020"
 
 output:
     BiocStyle::pdf_document
