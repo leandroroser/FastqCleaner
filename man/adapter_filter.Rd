@@ -53,8 +53,8 @@ as wildcard. See the argument fixed in
 if a match has min_match_flank of less length. Default 1L 
 (only trim with >=2 coincidences in a flank match)}
 
-\item{...}{additional parameters passed to
-\code{\link[Biostrings]{trimLRpatterns}}}
+\item{...}{additional parameters passed to 
+\code{\link[Biostrings]{trimLRPatterns}}}
 }
 \value{
 Edited \code{\link[Biostrings:DNAString-class]{DNAString}} or 

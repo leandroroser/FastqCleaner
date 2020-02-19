@@ -30,8 +30,8 @@
 #' @param min_match_flank Do not trim in flanks of the subject,
 #'if a match has min_match_flank of less length. Default 1L 
 #'(only trim with >=2 coincidences in a flank match)
-#' @param ... additional parameters passed to
-#' \code{\link[Biostrings]{trimLRpatterns}}
+#' @param ... additional parameters passed to 
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' @return  Edited \code{\link[Biostrings:DNAString-class]{DNAString}} or 
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
 #' @description This program can remove adapters and partial 

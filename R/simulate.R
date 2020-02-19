@@ -41,7 +41,7 @@ random_seq <- function(slength, swidth, nuc = c("DNA", "RNA"),
         stop("prob must be a numeric vector of length 4")
     }
     
-    if (swidth < 0 || length(slength) != 1) {
+    if (any(swidth < 0) || length(slength) != 1) {
         stop("swidth must be > 1; slength must be of length 1")
     }
     
@@ -114,7 +114,7 @@ random_qual <- function(slength, swidth, qual = NULL,
     encod <- match.arg(encod)
     
     
-    if (swidth < 0 || length(slength) != 1) {
+    if (any(swidth < 0) || length(slength) != 1) {
         stop("swidth must be > 1; slength must be of length 1")
     }
     

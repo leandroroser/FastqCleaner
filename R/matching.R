@@ -18,17 +18,17 @@
 #' or only in the terminal regions of the sequence? (anchored = TRUE).
 #' Default TRUE (trim only flanking regions)
 #' @param fixed Parameter passed to 
-#' \code{\link[Biostrings]{trimLRpatterns}}
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' Default 'subject',  ambiguities in the pattern only are interpreted 
 #' as wildcard. See the argument fixed in 
-#' \code{\link[Biostrings]{trimLRpatterns}}
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' @param ranges Return ranges? Default FALSE
 #' @param checks Perform internal checks? Default TRUE
 #' @param min_match_flank Do not trim in flanks of the subject,
 #'  if a match has min_match_flank of less length. Default 1L 
 #'  (only trim with >=2 coincidences in a flank match)
 #' @param ... additional parameters passed to
-#'  \code{\link[Biostrings]{trimLRpatterns]}}
+#' \code{\link[Biostrings]{trimLRPatterns}} 
 #' @return  Edited \code{\link[Biostrings:DNAString-class]{DNAString}} or 
 #' \code{\link[Biostrings:XStringSet-class]{DNAStringSet}} object
 #' @description This set of programs are internal, 
@@ -37,13 +37,13 @@
 #' adapters from 3' and 5'. The adapters can be anchored or not. 
 #' When indels are allowed, the error rate consists in the edit distance. 
 #' IUPAC simbols are allowed. The methods use the 
-#' \code{\link[Biostrings]{trimLRpatterns}} function
+#' \code{\link[Biostrings]{trimLRPatterns}} function
 #'  of the \pkg{Biostrings} package, with some additions 
 #'  to take into account e.g., partial adaptors.
 #'  IUPAC symbols are allowed in all the cases. The present function 
 #' also removes partial adapters, without the need of additional steps
 #'  (for example, creating a padded adapter with 'Ns', etc). 
-#' A similar result to the output of \code{\link[Biostrings]{trimLRPatterns}}
+#' A similar result to the output of \code{\link[Biostrings]{trimLRPatterns}} 
 #' can be obtained with the option anchored = TRUE.
 #' When several matches are found, the function removes the subsequence 
 #' that starts in the first match when cutRseq is used, or ends 
@@ -57,14 +57,14 @@
 #' 
 #' Lpattern <- Rpattern <- 'TCATG'
 #' 
-#' cutLseq(subject, Lpattern)
-#' cutLseq(subject, Lpattern, ranges = TRUE)
-#' cutRseq(subject, Rpattern)
+#' FastqCleaner:::cutLseq(subject, Lpattern)
+#' FastqCleaner:::cutLseq(subject, Lpattern, ranges = TRUE)
+#' FastqCleaner:::cutRseq(subject, Rpattern)
 #' 
 #' 
-#' cutLseq(subject, Lpattern, anchored = FALSE)
-#' cutLseq(subject, Lpattern,  error_rate = 0.2)
-#' cutLseq(subject, Lpattern,  error_rate = 0.2, 
+#' FastqCleaner:::cutLseq(subject, Lpattern, anchored = FALSE)
+#' FastqCleaner:::cutLseq(subject, Lpattern,  error_rate = 0.2)
+#' FastqCleaner:::cutLseq(subject, Lpattern,  error_rate = 0.2, 
 #' with.indels = TRUE)
 #' 
 #' @author Leandro Roser \email{learoser@@gmail.com}
