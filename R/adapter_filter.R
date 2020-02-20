@@ -2,7 +2,7 @@
 #' Remove full and partial adapters from a ShortReadQ object
 #' @param input  \code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object
 #' @param Lpattern 5' pattern (character or
-#'  \code{\link[Biostrings]{DNAString}} object)
+##' \code{\link[Biostrings:DNAString-class]{DNAString}} object)
 #' @param Rpattern 3' pattern (character or 
 #' \code{\link[Biostrings:DNAString-class]{DNAString}} object)
 #' @param rc.L Reverse complement Lpattern? default FALSE
