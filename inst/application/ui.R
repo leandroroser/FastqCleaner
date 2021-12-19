@@ -1,27 +1,25 @@
 
-shinyUI(fluidPage(tabsetPanel(
   
-  tags$head(
-    tags$link(
-      rel = "icon",
-      href = "images/icon.png",
-      type = "image/png",
-      width = "1em",
-      height = "1em"
-    ),
-    tags$title("FastqCleaner"),
-    tags$link(rel = "stylesheet",
-      type = "text/css",
-      href = "styles/masterCss.css")
-  ),
-  
-  navbarPage(
+ navbarPage(
     id = "navbar",
     title = list(tags$div(
       tags$img(src = "images/icon.png",
         alt = "icon"),
       tags$p(" FastqCleaner")
     )),
+    header = tags$head(
+          tags$link(
+              rel = "icon",
+              href = "images/icon.png",
+              type = "image/png",
+              width = "1em",
+              height = "1em"
+          ),
+          tags$title("FastqCleaner"),
+          tags$link(rel = "stylesheet",
+              type = "text/css",
+              href = "styles/masterCss.css")
+      ),
     
     
     tabPanel( "Clean the Data", sidebarLayout(
@@ -641,6 +639,4 @@ shinyUI(fluidPage(tabsetPanel(
     
     panel3Input("panel3")
     
-    ) 
-    ) 
-))
+) 
