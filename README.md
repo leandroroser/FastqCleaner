@@ -7,15 +7,18 @@ A Shiny web-app to clean FASTQ files with R and Bioconductor
 ## This is a development repository
 ### Please install the application using the canonical way using Bioconductor
 
+```python
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("FastqCleaner")
-
+```
 
 ## Note: due to a change in Shiny, the Bioconductor version is working with Shiny <= 1.6. For the development version, please install using the following code:
 
+```python
 install.packages("devtools")
 devtools::install_github("https://github.com/leandroroser/FastqCleaner")
+```
 
 - The development version will be pushed to Bioconductor after proper checks (note from the author, 2022-07-01)
 
