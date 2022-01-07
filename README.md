@@ -12,3 +12,11 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("FastqCleaner")
 
 
+## Note: due to a change in Shiny, the Bioconductor version is working with Shiny <= 1.6. For the development version, please install using the following code:
+
+install.packages("devtools")
+devtools::install_github("https://github.com/leandroroser/FastqCleaner")
+
+- The development version will be pushed to Bioconductor after proper checks (note from the author, 2022-07-01)
+
+
