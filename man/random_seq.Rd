@@ -4,8 +4,12 @@
 \alias{random_seq}
 \title{Create random sequences}
 \usage{
-random_seq(slength, swidth, nuc = c("DNA", "RNA"), prob = c(0.25, 0.25,
-  0.25, 0.25))
+random_seq(
+  slength,
+  swidth,
+  nuc = c("DNA", "RNA"),
+  prob = c(0.25, 0.25, 0.25, 0.25)
+)
 }
 \arguments{
 \item{slength}{Number of sequences}

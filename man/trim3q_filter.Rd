@@ -4,8 +4,13 @@
 \alias{trim3q_filter}
 \title{Filter sequences with low quality in 3' tails}
 \usage{
-trim3q_filter(input, rm.3qual, q_format = NULL, check.encod = TRUE,
-  remove_zero = TRUE)
+trim3q_filter(
+  input,
+  rm.3qual,
+  q_format = NULL,
+  check.encod = TRUE,
+  remove_zero = TRUE
+)
 }
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}

@@ -4,11 +4,20 @@
 \alias{random_length}
 \title{Create a named object with random sequences and qualities}
 \usage{
-random_length(n, widths, random_widths = TRUE, replace = TRUE,
-  len_prob = NULL, seq_prob = c(0.25, 0.25, 0.25, 0.25),
-  q_prob = NULL, nuc = c("DNA", "RNA"), qual = NULL,
-  encod = c("Sanger", "Illumina1.8", "Illumina1.5", "Illumina1.3",
-  "Solexa"), base_name = "s", sep = "_")
+random_length(
+  n,
+  widths,
+  random_widths = TRUE,
+  replace = TRUE,
+  len_prob = NULL,
+  seq_prob = c(0.25, 0.25, 0.25, 0.25),
+  q_prob = NULL,
+  nuc = c("DNA", "RNA"),
+  qual = NULL,
+  encod = c("Sanger", "Illumina1.8", "Illumina1.5", "Illumina1.3", "Solexa"),
+  base_name = "s",
+  sep = "_"
+)
 }
 \arguments{
 \item{n}{number of sequences}

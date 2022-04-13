@@ -5,13 +5,31 @@
 \alias{cutLseq}
 \title{Remove left and right full and partial patterns}
 \usage{
-cutRseq(subject, Rpattern, with.indels = FALSE, fixed = "subject",
-  error_rate = 0.2, anchored = TRUE, ranges = FALSE, checks = TRUE,
-  min_match_flank = 2L, ...)
+cutRseq(
+  subject,
+  Rpattern,
+  with.indels = FALSE,
+  fixed = "subject",
+  error_rate = 0.2,
+  anchored = TRUE,
+  ranges = FALSE,
+  checks = TRUE,
+  min_match_flank = 2L,
+  ...
+)
 
-cutLseq(subject, Lpattern, with.indels = FALSE, fixed = "subject",
-  error_rate = 0.2, anchored = TRUE, ranges = FALSE,
-  min_match_flank = 3L, checks = TRUE, ...)
+cutLseq(
+  subject,
+  Lpattern,
+  with.indels = FALSE,
+  fixed = "subject",
+  error_rate = 0.2,
+  anchored = TRUE,
+  ranges = FALSE,
+  min_match_flank = 3L,
+  checks = TRUE,
+  ...
+)
 }
 \arguments{
 \item{subject}{\code{\link[Biostrings:DNAString-class]{DNAString}} or 

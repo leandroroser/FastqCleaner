@@ -4,16 +4,28 @@
 \alias{adapter_filter}
 \title{Remove full and partial adapters from a ShortReadQ object}
 \usage{
-adapter_filter(input, Lpattern = "", Rpattern = "", rc.L = FALSE,
-  rc.R = FALSE, first = c("R", "L"), with_indels = FALSE,
-  error_rate = 0.2, anchored = TRUE, fixed = "subject",
-  remove_zero = TRUE, checks = TRUE, min_match_flank = 3L, ...)
+adapter_filter(
+  input,
+  Lpattern = "",
+  Rpattern = "",
+  rc.L = FALSE,
+  rc.R = FALSE,
+  first = c("R", "L"),
+  with_indels = FALSE,
+  error_rate = 0.2,
+  anchored = TRUE,
+  fixed = "subject",
+  remove_zero = TRUE,
+  checks = TRUE,
+  min_match_flank = 3L,
+  ...
+)
 }
 \arguments{
 \item{input}{\code{\link[ShortRead:ShortReadQ-class]{ShortReadQ}} object}
 
 \item{Lpattern}{5' pattern (character or
-\code{\link[Biostrings]{DNAString}} object)}
+\code{\link[Biostrings:DNAString-class]{DNAString}} object)}
 
 \item{Rpattern}{3' pattern (character or 
 \code{\link[Biostrings:DNAString-class]{DNAString}} object)}

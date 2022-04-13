@@ -1,8 +1,8 @@
 Package: FastqCleaner
 Type: Package
 Title: A Shiny Application for Quality Control, Filtering and Trimming of FASTQ Files
-Version: 1.5.1
-Date: 2020-02-15
+Version: 2.0.0
+Date: 2022-04-10
 Authors@R: c(person(given = "Leandro", family = "Roser", role = c("aut", "cre"), 
              email = "learoser@gmail.com"), 
              person(given = "Fernán", family = "Agüero", role = "aut"),
@@ -27,6 +27,6 @@ Collate: 'roxygen.auxiliar.R' 'auxiliar.R' 'matching.R'
         'simulate.R' 'RcppExports.R'
 biocViews: QualityControl,Sequencing,Software,SangerSeq,SequenceMatching
 VignetteBuilder: knitr
-Packaged: 2020-02-15 13:00:03 UTC; leandro
+Packaged: 2022-04-10 13:00:03 UTC; leandro
 Encoding: UTF-8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2
