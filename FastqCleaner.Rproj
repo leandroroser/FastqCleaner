@@ -19,3 +19,4 @@ PackageInstallArgs: --no-multiarch --with-keep.source
 PackageBuildArgs: --no-build-vignettes
 PackageBuildBinaryArgs: --no-build-vignettes
 PackageCheckArgs: --no-build-vignettes
+PackageRoxygenize: vignette

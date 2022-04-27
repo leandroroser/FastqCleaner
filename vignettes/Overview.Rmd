@@ -2,17 +2,20 @@
 title: "An Introduction to FastqCleaner"
 author:
 - affiliation: IIB-INTECH - UNSAM
+  email: learoser@gmail.com
   name: Leandro Roser
 - affiliation: IIB-INTECH - UNSAM
   name: Fernán Agüero
 - affiliation: IIB-INTECH - UNSAM
-  email: learoser@gmail.com
   name: Daniel Sánchez
 date: "Feb 15, 2020"
-revised: "Feb 15, 2020"
-
+revised: "`r Sys.Date()`"
+package: "`r library(BiocStyle); pkg_ver('FastqCleaner')`"
 output:
-    BiocStyle::pdf_document
+  BiocStyle::html_document:
+    toc_float: true
+    code_folding: show
+  BiocStyle::pdf_document: default
 df_print: paged
 abstract: |
     `r Biocpkg("FastqCleaner")` is an interactive application 
@@ -25,7 +28,6 @@ vignette: |
     %\VignetteIndexEntry{An Introduction to FastqCleaner}
     %\VignetteEncoding{UTF-8}
     %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
 chunk_output_type: console
 ---
 
