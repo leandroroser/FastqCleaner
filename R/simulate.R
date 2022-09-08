@@ -65,7 +65,7 @@ random_seq <- function(slength, swidth, nuc = c("DNA", "RNA"),
     
     out <- list()
     for (i in seq_len(slength)) {
-        samp <- sample(samplefrom, swidth[i], replace = TRUE, prob = prob)
+        samp <- sample(samplefrom, size = swidth[i], replace = TRUE, prob = prob)
         out[[i]] <- paste(samp, collapse = "")
     }
     DNAStringSet(do.call("c", out))
@@ -164,13 +164,13 @@ random_qual <- function(slength, swidth, qual = NULL,
 
     
     out <- vapply(seq_len(slength), function(x) {
-        paste(sample(samplefrom, swidth, replace = TRUE, prob = prob), 
+        paste(sample(samplefrom, size = swidth, replace = TRUE, prob = prob), 
                     collapse = "")
     }, character(1))
     
     out <- list()
     for (i in seq_len(slength)) {
-        out[[i]] <- paste(sample(samplefrom, swidth[i], replace = TRUE, 
+        out[[i]] <- paste(sample(samplefrom, size = swidth[i], replace = TRUE, 
                                 prob = prob), 
             collapse = "")
     }
@@ -294,7 +294,7 @@ inject_letter_random <- function(my_seq, how_many_seqs = NULL,
     } else {
         how_many_seqs <- c(max(min(how_many_seqs), 1), 
         min(max(how_many_seqs), length(my_seq)))
-        how_many_seqs <- sample(how_many_seqs[1]:how_many_seqs[2], 1)
+        how_many_seqs <- sample(how_many_seqs[1]:how_many_seqs[2], size = 1)
     }
     
     inject_to <- sample(seq_along(my_seq), size = how_many_seqs)
@@ -304,7 +304,7 @@ inject_letter_random <- function(my_seq, how_many_seqs = NULL,
         this_seq_len <- length(this_seq)
         
         if (is.null(how_many_letters)) {
-            this_how_many <- sample(seq_len(this_seq_len), 1)
+            this_how_many <- sample(seq_len(this_seq_len), size = 1)
         } else {
             this_how_many <- c(max(min(how_many_letters), 1), 
             min(max(how_many_letters), this_seq_len))
@@ -414,7 +414,7 @@ random_length <- function(n, widths, random_widths = TRUE,
     if (random_widths) {
         widths <- sample(min(widths):max(widths), n, replace = replace)
     } else {
-        widths <- sample(widths, n, replace = replace, prob = len_prob)
+        widths <- sample(widths, size = n, replace = replace, prob = len_prob)
     }
     
     s_out <- random_seq(slength = n, swidth = widths, nuc = nuc, 

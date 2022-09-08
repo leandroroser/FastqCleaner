@@ -404,7 +404,7 @@ require("FastqCleaner")
 ```{r eval=TRUE, echo=TRUE}
 
 # create sequences
-set.seed(10) 
+set.seed(15) 
 # nota that the use of set.seed before the call to the 
 # random generators allows reproducibility of the
 # examples
