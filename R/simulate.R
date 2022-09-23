@@ -162,12 +162,6 @@ random_qual <- function(slength, swidth, qual = NULL,
         }
     }
 
-    
-    out <- vapply(seq_len(slength), function(x) {
-        paste(sample(samplefrom, size = swidth, replace = TRUE, prob = prob), 
-                    collapse = "")
-    }, character(1))
-    
     out <- list()
     for (i in seq_len(slength)) {
         out[[i]] <- paste(sample(samplefrom, size = swidth[i], replace = TRUE, 
